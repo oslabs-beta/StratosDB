@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Interface } from 'readline'
+
 
   interface AnnouncementState {
     announcement1 : string,
