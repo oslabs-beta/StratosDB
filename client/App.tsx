@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import Container from './Container';
+
 
 class App extends Component<{}, { name: string }> {
   render() {
     return (
       <div>
-        <h1>HELLO! This is Joal, Sophia, Tyler, and Tommy!</h1>
+       <Container />
       </div>
     );
   }
