@@ -1,9 +1,13 @@
-// IMPORTING REQUEST & RESPONSE TO ASSIGN AS TYPES FOR req & res PARAMETERS
-import { Request, Response } from 'express';
-const express = require('express');
-const bodyParser = require('body-parser');
-const path = require('path');
+import express from 'express';
+import bodyParser from 'body-parser';
+import path from 'path';
+
 const app = express();
+
+// TESTING TO MAKE SURE ROUTE IS WORKING - VERIFIED!
+app.get('/test', (req, res) => {
+  res.send('Hello World!');
+});
 
 // LISTENING TO SERVER ON PORT 3000
 app.listen(3000, () => {
