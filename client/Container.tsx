@@ -1,19 +1,21 @@
-import React, { Component } from 'react'
-import Announcement from './Announcement';
+import React, { Component } from 'react';
+import Announcement from './components/Announcement';
+import Sidebar from './components/Sidebar';
 
 interface obj {
-  name: string; 
+  name: string;
 }
 
 class Container extends Component<{}, obj> {
-  state: obj = {name: 'Tyler'};
+  state: obj = { name: 'Tyler' };
   render() {
     return (
       <div>
+        <Sidebar />
         <Announcement />
       </div>
-    )
+    );
   }
 }
 
-export default Container; 
+export default Container;
