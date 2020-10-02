@@ -1,16 +1,15 @@
-import React, { Component } from "react";
-import MainContainer from "./containers/MainContainer";
-import { Provider } from "react-redux";
-import store from "./store";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import Container from './Container';
 
-
- const App:React.FC = (props) => {
+class App extends Component<{}, { name: string }> {
+  render() {
     return (
-      <Provider store = {store}>
-         <MainContainer />  
-      </Provider>
-  )
+      <div>
+       <Container />
+      </div>
+    );
+  }
+}
 
-} 
-
-export default App;
+render(<App />, document.querySelector('#root'));
