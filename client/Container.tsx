@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Interface } from 'readline'
 import Announcement from './Announcement';
 
 interface obj {
