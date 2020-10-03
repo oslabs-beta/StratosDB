@@ -12,7 +12,6 @@ class Sidebar extends Component<{}, SidebarState> {
     return (
       <div>
         <img src='./../assets/images/stratosdb_logo_black.png' alt='picture' />
-        {/* <h1>{`${this.state.url}`}</h1> */}
         <button>1</button>
         <button>2</button>
         <button>3</button>
