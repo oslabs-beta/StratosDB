@@ -4,9 +4,9 @@
   "description": "StratosDB",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=production node backend/server.ts",
+    "start": "NODE_ENV=production node server/server.ts",
     "build": "NODE_ENV=production webpack",
-    "dev": "cross-env NODE_ENV=development concurrently \"nodemon backend/server.ts\" \"webpack-dev-server --open --hot\"",
+    "dev": "cross-env NODE_ENV=development concurrently \"nodemon server/server.ts\" \"webpack-dev-server --open --hot\"",
     "compile": "tsc"
   },
   "repository": {
