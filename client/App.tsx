@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
-import Container from './Container';
+import React, { Component } from "react";
+import { render } from "react-dom";
+import Container from "./Container";
+import "codemirror/lib/codemirror.css";
 
 class App extends Component<{}, { name: string }> {
   render() {
@@ -12,4 +13,4 @@ class App extends Component<{}, { name: string }> {
   }
 }
 
-render(<App />, document.querySelector('#root'));
+render(<App />, document.querySelector("#root"));
