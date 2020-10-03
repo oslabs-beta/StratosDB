@@ -1,12 +1,12 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
 module.exports = {
-  entry: './client/App.tsx',
+  entry: "./client/App.tsx",
   mode: process.env.NODE_ENV,
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist"),
   },
   module: {
     rules: [
@@ -14,21 +14,21 @@ module.exports = {
         test: /\.s?css$/,
         use: [
           {
-            loader: 'style-loader',
+            loader: "style-loader",
           },
           {
-            loader: 'css-loader',
+            loader: "css-loader",
           },
           {
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
             options: {
-              plugins() {
-                return [require('autoprefixer')];
+              postcssOptions: {
+                plugins: ["autoprefixer"],
               },
             },
           },
           {
-            loader: 'sass-loader',
+            loader: "sass-loader",
           },
         ],
       },
@@ -36,23 +36,23 @@ module.exports = {
         test: /\.jsx?/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
+            presets: ["@babel/preset-env", "@babel/preset-react"],
           },
         },
       },
       {
         test: /\.ts(x)?$/,
         exclude: /node_modules/,
-        loader: 'ts-loader',
+        loader: "ts-loader",
       },
       {
         test: /\.(jpg|jpeg|png|ttf|svg)$/,
         use: [
-          'file-loader',
+          "file-loader",
           {
-            loader: 'image-webpack-loader',
+            loader: "image-webpack-loader",
             options: {
               mozjpeg: {
                 quality: 10,
@@ -65,23 +65,23 @@ module.exports = {
     ],
   },
   resolve: {
-    modules: [path.resolve(__dirname, 'node_modules')],
+    modules: [path.resolve(__dirname, "node_modules")],
     extensions: [
-      '.js',
-      '.jsx',
-      '.json',
-      '.scss',
-      '.less',
-      '.css',
-      '.tsx',
-      '.ts',
+      ".js",
+      ".jsx",
+      ".json",
+      ".scss",
+      ".less",
+      ".css",
+      ".tsx",
+      ".ts",
     ],
   },
   devServer: {
-    publicPath: '/dist/',
-    contentBase: path.resolve(__dirname, '../StratosDB'),
-    host: 'localhost',
-    port: '8080',
+    publicPath: "/dist/",
+    contentBase: path.resolve(__dirname, "../StratosDB"),
+    host: "localhost",
+    port: "8080",
     hot: true,
     compress: true,
     watchContentBase: true,
@@ -91,23 +91,23 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      filename: 'index.html',
-      title: 'StratosDB',
+      filename: "index.html",
+      title: "StratosDB",
       cspPlugin: {
         enabled: true,
         policy: {
-          'base-uri': "'self'",
-          'object-src': "'none'",
-          'script-src': ["'self'"],
-          'style-src': ["'self'"],
+          "base-uri": "'self'",
+          "object-src": "'none'",
+          "script-src": ["'self'"],
+          "style-src": ["'self'"],
         },
         hashEnable: {
-          'script-src': true,
-          'style-src': true,
+          "script-src": true,
+          "style-src": true,
         },
         nonceEnabled: {
-          'script-src': true,
-          'style-src': true,
+          "script-src": true,
+          "style-src": true,
         },
       },
     }),

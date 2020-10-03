@@ -31,7 +31,9 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
     "@skidding/react-codemirror": "^1.0.2",
+    "@types/react-codemirror": "^1.0.3",
     "@types/react-redux": "^7.1.9",
+    "autoprefixer": "^10.0.1",
     "axios": "^0.20.0",
     "body-parser": "^1.19.0",
     "codemirror": "^5.58.1",
@@ -39,6 +41,7 @@
     "express": "^4.17.1",
     "node": "^14.13.0",
     "pg": "^8.3.3",
+    "postcss": "^8.1.1",
     "react": "^16.13.1",
     "react-codemirror": "^1.0.0",
     "react-dom": "^16.13.1",
