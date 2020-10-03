@@ -1,0 +1,24 @@
+version: "3"
+
+services: 
+    bb:
+        image: busybox:latest
+        restart: always
+        ports: 
+            - "5000: 8080"
+        volumes: 
+            - db-data:/var/lib/postgresql/data
+        container_name: busybox1
+    db: 
+        image: postgresql: latest
+        restart: always
+        environment: 
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_USER: postgres
+            POSTGRES_DB: defaultDB
+        volumes:
+            db-data
+        depends_on: bb
+        container_name: postgres1
+        ports: "5432:5432"
+        hostname: localhost
