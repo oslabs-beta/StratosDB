@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Announcement from './components/Announcement';
+import CodeEditor from './components/CodeEditor';
 import Sidebar from './components/Sidebar';
 
 interface obj {
@@ -13,6 +14,7 @@ class Container extends Component<{}, obj> {
       <div>
         <Sidebar />
         <Announcement />
+        <CodeEditor />
       </div>
     );
   }
