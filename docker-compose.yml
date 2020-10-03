@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  bb:
+    image: busybox
+    restart: always
+    ports:
+      - "5000:8080"
+    volumes:
+      - database-data:/var/lib/postgresql/data
+    container_name: busybox
+  db:
+    image: postgresql
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: defaultDB
+    volumes:
+      - database-data
+    depends_on:
+      - bb
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    hostname: localhost
+
+volumes:
+  database-data: # named volumes can be managed easier using docker-compose
+
