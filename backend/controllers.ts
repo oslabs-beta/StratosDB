@@ -1,3 +1,14 @@
-const stratosController = {};
+import express from 'express';
 
-module.exports = stratosController;
+// DECLARING DATA TYPES FOR ALL THE CONTROLLERS IN STRATOSCONTROLLER
+interface controllers {
+  getResults: any;
+}
+
+export const stratosController: controllers = {
+  getResults: (
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction
+  ) => {},
+};
