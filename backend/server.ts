@@ -5,15 +5,21 @@ import dotenv from 'dotenv';
 
 const app: express.Application = express();
 
+app.use(bodyParser.json());
+
 // INITIALIZE CONFIGURATION
 dotenv.config();
 
 const PORT = process.env.SERVER_PORT;
 
 // SEND IMPORTED/INPUTTED SCHEMAS TO CLOUD DB
-app.post('/results', (req, res) => {
-  // SENDING CLIENT THE RESULTS FROM THE PERFORMANCE TEST
-});
+app.post(
+  '/results',
+  /* INSERT MIDDLEWARE HERE */
+  (req, res) => {
+    // SENDING CLIENT THE RESULTS FROM THE PERFORMANCE TEST
+  }
+);
 
 // TESTING TO MAKE SURE ROUTE IS WORKING - VERIFIED!
 app.get('/test', (req, res) => {
