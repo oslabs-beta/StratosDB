@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=production node server/server.ts",
+    "docker": "docker-compose up -d",
+    "resetContainer": "docker container stop postgres-1 && docker container prune && docker container ls -a",
     "build": "NODE_ENV=production webpack",
     "dev": "cross-env NODE_ENV=development concurrently \"nodemon server/server.ts\" \"webpack-dev-server --open --hot\"",
     "compile": "tsc"
