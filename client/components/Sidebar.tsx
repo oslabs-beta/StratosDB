@@ -12,8 +12,9 @@ class Sidebar extends Component<{}, SidebarState> {
     return (
       <div id="sidebar">
         <img
-          src="./../client/assets/images/stratosdb_logo_black.png"
+          src="./../client/assets/images/stratosdb_logo_visual.png"
           alt="picture"
+          id="stratos-logo"
           width="100px"
         />
         <button>1</button>

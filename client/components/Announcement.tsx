@@ -7,7 +7,7 @@ interface AnnouncementState {
 }
 
 class Announcement extends Component<{}, AnnouncementState> {
-  state: AnnouncementState = { announcement1: 'Hey this works' };
+  state: AnnouncementState = { announcement1: 'Welcome to stratosDB' };
   render() {
     return (
       <div id="announcement-bar">
