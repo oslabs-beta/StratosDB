@@ -1,0 +1,15 @@
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  margin: 25px 15px;
+
+  img {
+    margin: 0 0 25px 0;
+  }
+
+  button {
+    margin: 25px auto;
+    height: 75px;
+    width: 75px;
+  }
+}
