@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Alata&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+/************************************************************
+ ************************ TYPOGRAPHY ************************
+ ************************************************************/
+/************************************************************
+ ************************** COLORS **************************
+ ************************************************************/
+#code-editor {
+  width: 50%;
+  height: 100vh;
+}
+
+#code-editor .CodeMirror {
+  border: 1px solid #eee;
+  height: 100%;
+}
+
+#code-editor #submit-button {
+  width: 100%;
+  height: 50px;
+  background-color: #ffb600;
+  border: none;
+}
+
+#code-editor #submit-button:hover {
+  background-color: #399cff;
+}
+
+#code-editor #submit-button:active {
+  background-color: #3fe078;
+}

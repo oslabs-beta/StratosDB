@@ -44,16 +44,18 @@ class CodeEditor extends Component<{}, CodeEditorState> {
       lineNumbers: true,
       mode: 'sql',
       theme: 'lesser-dark',
+      lineWrapping: true,
+      scrollbarStyle: 'null',
+      viewportMargin: Infinity,
     };
     return (
-      <div>
-        <h1>Type your code here!</h1>
+      <div id="code-editor">
         <form onSubmit={this.handleSubmit}>
           <CodeMirror
             onChange={(e) => this.handleChange(e)}
             options={options}
           />
-          <button>Submit</button>
+          <button id="submit-button">Submit</button>
         </form>
       </div>
     );

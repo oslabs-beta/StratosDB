@@ -1,0 +1,26 @@
+@import './variables.scss';
+
+#code-editor {
+  width: 50%;
+  height: 100vh;
+
+  .CodeMirror {
+    border: 1px solid #eee;
+    height: 100%;
+  }
+
+  #submit-button {
+    width: 100%;
+    height: 50px;
+    background-color: $stratos-yellow;
+    border: none;
+
+    &:hover {
+      background-color: $stratos-blue;
+    }
+
+    &:active {
+      background-color: $stratos-green;
+    }
+  }
+}

@@ -1,3 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Alata&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+/************************************************************
+ ************************ TYPOGRAPHY ************************
+ ************************************************************/
+/************************************************************
+ ************************** COLORS **************************
+ ************************************************************/
 #sidebar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6,15 +14,40 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin: 25px 15px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-#sidebar img {
-  margin: 0 0 25px 0;
+#sidebar #main-sidebar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-#sidebar button {
+#sidebar #main-sidebar img {
+  margin: 25px auto;
+}
+
+#sidebar #main-sidebar button {
   margin: 25px auto;
   height: 75px;
   width: 75px;
+  border-radius: 50px;
+  border: none;
+}
+
+#sidebar #main-sidebar button:hover {
+  background-color: #ffb600;
+}
+
+#sidebar #bottom-sidebar {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  height: 29.69px;
 }

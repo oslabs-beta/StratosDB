@@ -1,15 +1,33 @@
+@import './variables.scss';
+
 #sidebar {
   display: flex;
   flex-direction: column;
-  margin: 25px 15px;
+  justify-content: space-between;
 
-  img {
-    margin: 0 0 25px 0;
+  #main-sidebar {
+    display: flex;
+    flex-direction: column;
+
+    img {
+      margin: 25px auto;
+    }
+
+    button {
+      margin: 25px auto;
+      height: 75px;
+      width: 75px;
+      border-radius: 50px;
+      border: none;
+
+      &:hover {
+        background-color: $stratos-yellow;
+      }
+    }
   }
 
-  button {
-    margin: 25px auto;
-    height: 75px;
-    width: 75px;
+  #bottom-sidebar {
+    height: fit-content;
+    height: 29.69px;
   }
 }
