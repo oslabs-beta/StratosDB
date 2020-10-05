@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/images/stratosdb_logo_black.png" width=250px>
+<img src="./client/assets/images/stratosdb_logo_black.png" width=250px>
 
 <br>
 
@@ -25,22 +25,22 @@
 <table>
 <tr>
 <td align="center">
-<a href="https://github.com/joalk"><img src="./assets/images/joalk.png" width="120px"/></a>
+<a href="https://github.com/joalk"><img src="./client/assets/images/joalk.png" width="120px"/></a>
 <br>
 <a href="https://github.com/joalk">Joal Kim</a>
 </td>
 <td align="center">
-<a href="https://github.com/sophiapak"><img src="./assets/images/sophiapak.png" width="120px"/></a>
+<a href="https://github.com/sophiapak"><img src="./client/assets/images/sophiapak.png" width="120px"/></a>
 <br>
 <a href="https://github.com/sophiapak">Sophia Pak</a>
 </td>
 <td align="center">
-<a href="https://github.com/tysong24"><img src="./assets/images/tysong24.png" width="120px"/></a>
+<a href="https://github.com/tysong24"><img src="./client/assets/images/tysong24.png" width="120px"/></a>
 <br>
 <a href="https://github.com/tysong24">Tommy Song</a>
 </td>
 <td align="center">
-<a href="https://github.com/morgan562"><img src="./assets/images/morgan562.png" width="120px"/></a>
+<a href="https://github.com/morgan562"><img src="./client/assets/images/morgan562.png" width="120px"/></a>
 <br>
 <a href="https://github.com/morgan562">Tyler Morgan</a>
 </td>
