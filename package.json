@@ -2,7 +2,7 @@
   "name": "StratosDB",
   "version": "1.0.0",
   "description": "StratosDB",
-  "main": "index.js",
+  "main": "App.tsx",
   "scripts": {
     "start": "NODE_ENV=production node server/server.ts",
     "docker": "docker-compose up -d",
@@ -18,11 +18,40 @@
   "nodemonConfig": {
     "ignore": [
       "dist",
-      "client"
+      "client",
+      "node_modules",
+      "assets",
+      "stylesheets",
+      ".env"
     ]
   },
   "keywords": [],
-  "author": "Joal, Sophia, Tommy, Tyler",
+  "author": {
+    "name": "stratosDB",
+    "url": "http://www.stratosDB.io"
+  },
+  "contributors": [
+    {
+      "name": "Joal Kim",
+      "email": "joalkims@gmail.com",
+      "url": "https://github.com/joalk"
+    },
+    {
+      "name": "Sophia Pak",
+      "email": "sophiakpak@gmail.com",
+      "url": "https://github.com/sophiapak"
+    },
+    {
+      "name": "Tommy Song",
+      "email": "tommysong123@gmail.com",
+      "url": "https://github.com/tysong24"
+    },
+    {
+      "name": "Tyler Morgan",
+      "email": "tylermor562@gmail.com",
+      "url": "https://github.com/morgan562"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/morgan562/StratosDB/issues"
