@@ -11,7 +11,7 @@ class Container extends Component<{}, obj> {
   state: obj = { name: 'Tyler' };
   render() {
     return (
-      <div>
+      <div id="main-container">
         <Sidebar />
         <Announcement />
         <CodeEditor />

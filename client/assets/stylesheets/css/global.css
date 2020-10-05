@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Alata&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+/************************************************************
+ ************************ TYPOGRAPHY ************************
+ ************************************************************/
+/************************************************************
+ ************************** COLORS **************************
+ ************************************************************/
+/*
+GLOBAL DEFAULTS:
+- Box-Sizing: Margin & Padding is included within the height/width adjustments
+- Margin & Padding: override the pre-built margin & padding to absolute zero
+- Font: change default font to selected variable
+*/
+html,
+body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-family: "Karla", sans-serif;
+}
+
+/*
+GLOBAL INHERITANCE:
+- Box-Sizing: Making sure that all elements will inherit the Border-Box Global Default
+- Font: Making sure that all elements will inherit the selected font variable
+*/
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+  font-family: "Karla", sans-serif;
+}

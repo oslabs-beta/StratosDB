@@ -6,7 +6,7 @@ import "codemirror/lib/codemirror.css";
 class App extends Component<{}, { name: string }> {
   render() {
     return (
-      <div>
+      <div id="app">
         <Container />
       </div>
     );
