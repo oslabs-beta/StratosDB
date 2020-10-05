@@ -10,8 +10,12 @@ class Sidebar extends Component<{}, SidebarState> {
   };
   render() {
     return (
-      <div>
-        <img src='./../assets/images/stratosdb_logo_black.png' alt='picture' />
+      <div id="sidebar">
+        <img
+          src="./../client/assets/images/stratosdb_logo_black.png"
+          alt="picture"
+          width="100px"
+        />
         <button>1</button>
         <button>2</button>
         <button>3</button>

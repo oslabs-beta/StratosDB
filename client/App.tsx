@@ -5,7 +5,7 @@ import Container from './Container';
 class App extends Component<{}, { name: string }> {
   render() {
     return (
-      <div>
+      <div id="app">
         <Container />
       </div>
     );
