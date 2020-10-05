@@ -1,0 +1,29 @@
+@import './variables.scss';
+
+/*
+GLOBAL DEFAULTS:
+- Box-Sizing: Margin & Padding is included within the height/width adjustments
+- Margin & Padding: override the pre-built margin & padding to absolute zero
+- Font: change default font to selected variable
+*/
+
+html,
+body {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-family: $font-karla;
+}
+
+/*
+GLOBAL INHERITANCE:
+- Box-Sizing: Making sure that all elements will inherit the Border-Box Global Default
+- Font: Making sure that all elements will inherit the selected font variable
+*/
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  font-family: $font-karla;
+}
