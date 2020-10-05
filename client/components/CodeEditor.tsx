@@ -1,35 +1,60 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import "codemirror/lib/codemirror.css";
-import "codemirror/mode/sql/sql";
-import "codemirror/theme/lesser-dark.css";
-import CodeMirror from "react-codemirror";
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/mode/sql/sql';
+import 'codemirror/theme/lesser-dark.css';
+import CodeMirror from 'react-codemirror';
 
-interface SchemaInputProps {
+interface CodeEditorProps {
   onClose: any;
   schemaName: string;
 }
 
-interface SchemaInputState {
+interface CodeEditorState {
   schemaEntry: string;
 }
 
-class CodeEditor extends Component<{}, SchemaInputState> {
-  state: SchemaInputState = {
-    schemaEntry: "",
+class CodeEditor extends Component<{}, CodeEditorState> {
+  constructor(props: CodeEditorProps) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  state: CodeEditorState = {
+    schemaEntry: '',
   };
+
+  handleChange(event: string) {
+    this.setState({
+      schemaEntry: event,
+    });
+  }
+
+  handleSubmit(event: any) {
+    event.preventDefault();
+
+    const schemaObj = {
+      schemaEntry: this.state.schemaEntry,
+    };
+    console.log(schemaObj);
+  }
 
   render() {
     // Codemirror module configuration options
     const options = {
       lineNumbers: true,
-      mode: "sql",
-      theme: "lesser-dark",
+      mode: 'sql',
+      theme: 'lesser-dark',
     };
     return (
       <div>
         <h1>Type your code here!</h1>
-        <CodeMirror options={options} />
+        <form onSubmit={this.handleSubmit}>
+          <CodeMirror
+            onChange={(e) => this.handleChange(e)}
+            options={options}
+          />
+          <button>Submit</button>
+        </form>
       </div>
     );
   }
