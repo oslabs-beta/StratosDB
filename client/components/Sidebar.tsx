@@ -1,3 +1,4 @@
+import e from 'express';
 import React, { Component } from 'react';
 
 interface SidebarState {
@@ -8,6 +9,10 @@ class Sidebar extends Component<{}, SidebarState> {
   state: SidebarState = {
     url: '',
   };
+
+  handleClick(event: React.ChangeEvent<HTMLSelectElement>) {
+
+  }
   render() {
     return (
       <div id="sidebar">

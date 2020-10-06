@@ -88,6 +88,9 @@ module.exports = {
     watchOptions: {
       ignored: /node_modules/,
     },
+    proxy: {
+      "/results": "http://localhost:3000",
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({

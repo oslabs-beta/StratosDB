@@ -4,6 +4,7 @@ import 'codemirror/lib/codemirror.css';
 import 'codemirror/mode/sql/sql';
 import 'codemirror/theme/blackboard.css';
 import CodeMirror from 'react-codemirror';
+import axios from "axios";
 
 interface CodeEditorProps {
   onClose: any;
@@ -12,6 +13,7 @@ interface CodeEditorProps {
 
 interface CodeEditorState {
   schemaEntry: string;
+  data: object;
 }
 
 class CodeEditor extends Component<{}, CodeEditorState> {
@@ -21,10 +23,12 @@ class CodeEditor extends Component<{}, CodeEditorState> {
   }
   state: CodeEditorState = {
     schemaEntry: '',
+    data: {},
   };
 
   handleChange(event: string) {
     this.setState({
+      ...this.state,
       schemaEntry: event,
     });
   }
@@ -35,7 +39,12 @@ class CodeEditor extends Component<{}, CodeEditorState> {
     const schemaObj = {
       schemaEntry: this.state.schemaEntry,
     };
-    console.log(schemaObj);
+
+    axios.post('/results', schemaObj).then((data) => {
+      console.log('logging data', data.data);
+      this.setState({data: data})
+    })
+    
   }
 
   render() {

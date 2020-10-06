@@ -18,6 +18,7 @@ app.post(
   /* INSERT MIDDLEWARE HERE */
   (req, res) => {
     // SENDING CLIENT THE RESULTS FROM THE PERFORMANCE TEST
+    res.status(200).send('success')
   }
 );
 
