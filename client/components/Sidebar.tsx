@@ -3,17 +3,11 @@ import React, { Component } from 'react';
 
 interface SidebarState {
   url: string;
+  refresh: any;
 }
 
-class Sidebar extends Component<{}, SidebarState> {
-  state: SidebarState = {
-    url: '',
-  };
-
-  handleClick(event: React.ChangeEvent<HTMLSelectElement>) {
-
-  }
-  render() {
+const Sidebar : React.FC<SidebarState> = (props:SidebarState) => {
+  
     return (
       <div id="sidebar">
         <div id="main-sidebar">
@@ -23,7 +17,7 @@ class Sidebar extends Component<{}, SidebarState> {
             id="stratos-logo"
             width="100px"
           />
-          <button>1</button>
+          <button onClick={props.refresh}>1</button>
           <button>2</button>
           <button>3</button>
         </div>
@@ -38,6 +32,6 @@ class Sidebar extends Component<{}, SidebarState> {
       </div>
     );
   }
-}
+
 
 export default Sidebar;

@@ -4,50 +4,24 @@ import 'codemirror/lib/codemirror.css';
 import 'codemirror/mode/sql/sql';
 import 'codemirror/theme/blackboard.css';
 import CodeMirror from 'react-codemirror';
-import axios from "axios";
 
-interface CodeEditorProps {
-  onClose: any;
-  schemaName: string;
-}
+
+// interface CodeEditorProps {
+//   onClose: any;
+//   schemaName: string;
+// }
 
 interface CodeEditorState {
   schemaEntry: string;
   data: object;
+  onClose: any;
+  schemaName: string;
+  handleChange: any;
+  handleSubmit: any;
 }
 
-class CodeEditor extends Component<{}, CodeEditorState> {
-  constructor(props: CodeEditorProps) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  state: CodeEditorState = {
-    schemaEntry: '',
-    data: {},
-  };
+const CodeEditor: React.FC<CodeEditorState> = (props:CodeEditorState ) => {
 
-  handleChange(event: string) {
-    this.setState({
-      ...this.state,
-      schemaEntry: event,
-    });
-  }
-
-  handleSubmit(event: any) {
-    event.preventDefault();
-
-    const schemaObj = {
-      schemaEntry: this.state.schemaEntry,
-    };
-
-    axios.post('/results', schemaObj).then((data) => {
-      console.log('logging data', data.data);
-      this.setState({data: data})
-    })
-    
-  }
-
-  render() {
     // Codemirror module configuration options
     const options = {
       lineNumbers: true,
@@ -60,9 +34,9 @@ class CodeEditor extends Component<{}, CodeEditorState> {
     };
     return (
       <div id="code-editor">
-        <form onSubmit={this.handleSubmit} id="code-submit-form">
+        <form onSubmit={props.handleSubmit} id="code-submit-form">
           <CodeMirror
-            onChange={(e) => this.handleChange(e)}
+            onChange={(e) => props.handleChange(e)}
             options={options}
           />
           <button id="submit-button">Submit</button>
@@ -70,6 +44,6 @@ class CodeEditor extends Component<{}, CodeEditorState> {
       </div>
     );
   }
-}
+
 
 export default CodeEditor;

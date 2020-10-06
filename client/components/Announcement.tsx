@@ -1,20 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, Props } from 'react';
 
 interface AnnouncementState {
-  announcement1: string;
-  announcement2?: string;
-  announcement3?: string;
+  announcement: string;
 }
 
-class Announcement extends Component<{}, AnnouncementState> {
-  state: AnnouncementState = { announcement1: 'Welcome to stratosDB' };
-  render() {
+const Announcement: React.FC<AnnouncementState> = (props:AnnouncementState) => {
+  
     return (
       <div id="announcement-bar">
-        <h1>{`${this.state.announcement1}`}</h1>
+        <h1>{`${props.announcement}`}</h1>
       </div>
     );
-  }
 }
 
 export default Announcement;
