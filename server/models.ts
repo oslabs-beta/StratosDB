@@ -1,9 +1,12 @@
-const { Pool } = require('pg');
+const { Pool } = require("pg");
 
 const PG_URI = process.env.DATABASE_PG_URI;
 
 const pool = new Pool({
-  connectionString: PG_URI,
+  host: PG_URI,
+  user: process.env.RDS_USER,
+  password: process.env.RDS_PASSWORD,
+  port: process.env.RDS_PORT,
 });
 
 module.exports = {
