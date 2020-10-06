@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/mode/sql/sql';
-import 'codemirror/theme/lesser-dark.css';
+import 'codemirror/theme/blackboard.css';
 import CodeMirror from 'react-codemirror';
 
 interface CodeEditorProps {
@@ -43,17 +43,20 @@ class CodeEditor extends Component<{}, CodeEditorState> {
     const options = {
       lineNumbers: true,
       mode: 'sql',
-      theme: 'lesser-dark',
+      theme: 'blackboard',
+      lineWrapping: true,
+      scrollbarStyle: 'null',
+      viewportMargin: Infinity,
+      tabSize: 2,
     };
     return (
-      <div>
-        <h1>Type your code here!</h1>
-        <form onSubmit={this.handleSubmit}>
+      <div id="code-editor">
+        <form onSubmit={this.handleSubmit} id="code-submit-form">
           <CodeMirror
             onChange={(e) => this.handleChange(e)}
             options={options}
           />
-          <button>Submit</button>
+          <button id="submit-button">Submit</button>
         </form>
       </div>
     );

@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Alata&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+/************************************************************
+ ************************ TYPOGRAPHY ************************
+ ************************************************************/
+/************************************************************
+ ************************** COLORS **************************
+ ************************************************************/
+/************************************************************
+ ********************** MAIN CONTAINER **********************
+ ************************************************************/
+#main-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+}
+
+/************************************************************
+ ************************ LEFT PANEL ************************
+ ************************************************************/
+#left-panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #2a2b47;
+}
+
+/************************************************************
+ ************************ RIGHT PANEL ***********************
+ ************************************************************/
+#right-panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  background-color: #1b1b2c;
+}
+
+#right-panel #announcement-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 25px;
+  background-color: #ff0086;
+}
+
+#right-panel #announcement-bar h1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: white;
+  font-size: 15px;
+  margin: auto;
+}

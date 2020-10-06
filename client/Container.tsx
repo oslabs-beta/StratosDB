@@ -12,9 +12,13 @@ class Container extends Component<{}, obj> {
   render() {
     return (
       <div id="main-container">
-        <Sidebar />
-        <Announcement />
-        <CodeEditor />
+        <div id="left-panel">
+          <Sidebar />
+        </div>
+        <div id="right-panel">
+          <Announcement />
+          <CodeEditor />
+        </div>
       </div>
     );
   }
