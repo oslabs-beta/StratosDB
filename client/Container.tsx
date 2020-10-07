@@ -33,6 +33,7 @@ class Container extends Component<{}, obj> {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.refresh = this.refresh.bind(this);
   }
+
   handleChange(event: string) {
     console.log('EVENT: ', event);
     this.setState({

@@ -1,5 +1,4 @@
-import express from 'express';
-// NEED TO IMPORT DB FROM MODELS (HAVEN'T DUE TO TS COMPILE ERROR)
+import express, { query } from 'express';
 const db = require('./models');
 
 // DECLARING DATA TYPES FOR ALL THE CONTROLLERS IN STRATOSCONTROLLER
@@ -27,20 +26,36 @@ export const stratosController: controllers = {
       queryStatistics: '',
     };
 
+    // const queryTester = `
+    // SELECT * FROM test_table;`;
+
+    // db.query(schemaEntry)
+    //   .then((result: any) => {
+    //     console.log('RESULT: ', result.rows);
+    //   })
+    //   .catch((error: string) => {
+    //     console.log(
+    //       'Error in Controllers getResults Query Entry and Analysis: ',
+    //       error
+    //     );
+    //   });
+
     db.query(schemaEntry)
-      .then((result: any) => {
-        console.log('RESULT: ', result);
-      })
       .then((queryData: any) => {
         newData.queryData = queryData.rows;
 
         console.log('queryData.rows: ', queryData.rows);
 
+        const queryPlan: any = 'QUERY PLAN';
         // Running Explain for tests
         db.query('EXPLAIN (FORMAT JSON, ANALYZE) ' + schemaEntry).then(
           (queryStatistics: any) => {
             newData.queryStatistics = queryStatistics.rows;
-            console.log('Returned query stats: ', newData.queryStatistics);
+            console.log(
+              'Returned query stats: ',
+              newData.queryStatistics[0][queryPlan]
+            );
+            return next();
           }
         );
       })
@@ -50,6 +65,5 @@ export const stratosController: controllers = {
           error
         );
       });
-    return next();
   },
 };
