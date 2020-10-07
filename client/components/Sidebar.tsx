@@ -6,7 +6,7 @@ interface SidebarState {
   refresh: any;
 }
 
-const Sidebar : React.FC<SidebarState> = (props:SidebarState) => {
+const Sidebar: React.FC<SidebarState> = (props:SidebarState) => {
   
     return (
       <div id="sidebar">

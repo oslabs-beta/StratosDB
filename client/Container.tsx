@@ -56,16 +56,17 @@ class Container extends Component<{}, obj> {
   // possibly needs componenet did update
   refresh(event: React.ChangeEvent<HTMLSelectElement>) {
     event.preventDefault();
-    this.setState({
-      name: 'Tyler',
-      announcement: 'Welcome to StratosDB',
-      schemaEntry: '',
-      data: {},
-      onClose: true,
-      schemaName: '',
-      url: '',
-    });
-    console.log('refreshing');
+    window.location.reload(false);
+    // this.setState({
+    //   name: 'Tyler', 
+    //   announcement: 'Welcome to StratosDB',   
+    //   schemaEntry: '', 
+    //   data:{},
+    //   onClose: true,
+    //   schemaName: '',
+    //   url: ''
+    // })
+    console.log("refreshing");
   }
   render() {
     return (
