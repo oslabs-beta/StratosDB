@@ -26,20 +26,6 @@ export const stratosController: controllers = {
       queryStatistics: '',
     };
 
-    // const queryTester = `
-    // SELECT * FROM test_table;`;
-
-    // db.query(schemaEntry)
-    //   .then((result: any) => {
-    //     console.log('RESULT: ', result.rows);
-    //   })
-    //   .catch((error: string) => {
-    //     console.log(
-    //       'Error in Controllers getResults Query Entry and Analysis: ',
-    //       error
-    //     );
-    //   });
-
     db.query(schemaEntry)
       .then((queryData: any) => {
         newData.queryData = queryData.rows;
