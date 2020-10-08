@@ -56,19 +56,18 @@ export const stratosController: controllers = {
     // VARIABLE STORING THE NEW.DATA.QUERYSTATISTICS[0] (WHICH IS AN OBJECT) PROPERTY NAME BECAUSE OF TS COMPILE ERROR
     const queryPlan: any = "QUERY PLAN";
 
+    console.log("schemaEntry: ", schemaEntry);
+
     // RUNNING EXPLAIN BY PASSING IN A CONCANTENATED STRING OF EXPLAIN... AND THE SCHEMAENTRY QUERY STRING
     db.query("EXPLAIN (FORMAT JSON, ANALYZE) " + schemaEntry)
       .then((queryStatistics: any) => {
         // RE-ASSIGNING OUR NEWDATA.QUERYSTATISTICS TO OUR RETURNED DATA ANALYTICS
-        newData.queryStatistics = queryStatistics.rows; // THIS NEEDS TO BE MORE SPECIFIC
+        newData.queryStatistics = queryStatistics.rows[0][queryPlan]; // THIS NEEDS TO BE MORE SPECIFIC
 
-        console.log(
-          "Returned query stats: ",
-          newData.queryStatistics[0][queryPlan]
-        );
+        console.log("Returned query stats: ", newData.queryStatistics);
 
         // RETURN THE SPECIFIC RESULT
-
+        res.locals.explain = newData.queryStatistics;
         return next();
       })
       .catch((error: string) => {

@@ -23,14 +23,16 @@ app.get("/reset", stratosController.reset, (req, res) => {
   res.status(200).send("DATABASE HAS BEEN RESET");
 });
 
+// SEND IMPORTED/INPUTTED SCHEMAS TO CLOUD DB
 app.post("/newSchema", stratosController.createSchema, (req, res) => {
-  // SEND THING BACK TO FRONT
+  // SENDING CLIENT STATUS FOR SCHEMA CREATION
+  res.status(200).send("success");
 });
 
-// SEND IMPORTED/INPUTTED SCHEMAS TO CLOUD DB
-app.get("/results", stratosController.runTest, (req, res) => {
+// RUNNING TESTS ON THE SCHEMAS IN THE CLOUD
+app.post("/results", stratosController.runTest, (req, res) => {
   // SENDING CLIENT THE RESULTS FROM THE PERFORMANCE TEST
-  res.status(200).send("success");
+  res.status(200).send(res.locals.explain);
 });
 
 // LISTENING TO SERVER ON PORT 3000
