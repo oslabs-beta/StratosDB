@@ -9,8 +9,8 @@ interface CodeEditorState {
   data: object;
   onClose: any;
   schemaName: string;
-  handleChange: any;
-  handleClick: any;
+  schemaChange: any;
+  schemaSubmit: any;
 }
 
 const CodeEditor: React.FC<CodeEditorState> = (props: CodeEditorState) => {
@@ -26,7 +26,7 @@ const CodeEditor: React.FC<CodeEditorState> = (props: CodeEditorState) => {
   };
   return (
     <div id="code-editor">
-      <CodeMirror onChange={(e) => props.handleChange(e)} options={options} />
+      <CodeMirror onChange={(e) => props.schemaChange(e)} options={options} />
       <div id="buttons-section">
         <svg
           id="cancel-button"
@@ -39,7 +39,7 @@ const CodeEditor: React.FC<CodeEditorState> = (props: CodeEditorState) => {
         </svg>
         <svg
           id="submit-button"
-          onClick={props.handleClick}
+          onClick={props.schemaSubmit}
           xmlns="http://www.w3.org/2000/svg"
           width="75"
           height="75"

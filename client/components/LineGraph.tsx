@@ -40,7 +40,7 @@ class LineGraph extends Component<LineGraphProps> {
     };
 
     return (
-      <div className='LineGraph'>
+      <div id="line-graph" className="LineGraph">
         <Line
           data={data}
           options={{

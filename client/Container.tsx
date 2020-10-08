@@ -27,8 +27,8 @@ class Container extends Component<{}, ContainerState> {
   constructor(props: {}) {
     super(props);
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.schemaChange = this.schemaChange.bind(this);
+    this.schemaSubmit = this.schemaSubmit.bind(this);
     this.refresh = this.refresh.bind(this);
   }
 
@@ -53,24 +53,24 @@ class Container extends Component<{}, ContainerState> {
     this.setState({ queries });
   }
 
-  handleChange(event: string) {
+  schemaChange(event: string) {
     console.log('EVENT: ', event);
     this.setState({
       schemaEntry: event,
     });
   }
 
-  handleClick(event: React.MouseEvent<HTMLElement>) {
+  schemaSubmit(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
 
     const schemaObj = {
       schemaEntry: this.state.schemaEntry,
     };
     console.log('queryData', schemaObj);
-    // axios.post('/results', schemaObj).then((data) => {
-    //   console.log('logging data', data.data);
-    //   this.setState({ queries.queryData: data });
-    // });
+    axios.post('/results', schemaObj).then((data) => {
+      console.log('logging data', data.data);
+      // this.setState({ queries.queryData: data });
+    });
   }
   // possibly needs componenet did update
   refresh(event: React.ChangeEvent<HTMLSelectElement>) {
@@ -92,8 +92,8 @@ class Container extends Component<{}, ContainerState> {
               data={this.state.queries}
               onClose={this.state.onClose}
               schemaName={this.state.schemaName}
-              handleChange={this.handleChange}
-              handleClick={this.handleClick}
+              schemaChange={this.schemaChange}
+              schemaSubmit={this.schemaSubmit}
             />
             <LineGraph queries={this.state.queries} />
           </div>
