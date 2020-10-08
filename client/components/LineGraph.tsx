@@ -29,12 +29,13 @@ class LineGraph extends Component<LineGraphProps> {
       datasets: [
         {
           label: 'Runtime',
-          fill: false,
+          fill: true,
           lineTension: 0.5,
           backgroundColor: 'rgb(108, 187, 169)',
           borderColor: 'rgba(247,247,247,247)',
           borderWidth: 2,
           data: runtimeData(),
+          fontColor: '#ffffff',
         },
       ],
     };
@@ -46,12 +47,12 @@ class LineGraph extends Component<LineGraphProps> {
           options={{
             title: {
               display: true,
-              text: 'QUERY LABEL VS RUNTIME (ms)',
+              text: 'QUERY REQUEST VS RUNTIME (ms)',
               fontSize: 16,
+              fontColor: '#ffffff',
             },
             legend: {
               display: false,
-              position: 'right',
             },
           }}
         />
