@@ -7,13 +7,7 @@ import axios from "axios";
 
 interface ContainerState {
   queries: {}[];
-  // {
-  //   queryString: string;
-  //   queryData: {}[];
-  //   queryStatistics: any;
-  //   querySchema: string;
-  //   queryLabel: string;
-  // };
+  queryEntry: any;
   //Announcement
   announcement: string;
   //codeEditorState
@@ -30,19 +24,15 @@ class Container extends Component<{}, ContainerState> {
 
     this.schemaChange = this.schemaChange.bind(this);
     this.schemaSubmit = this.schemaSubmit.bind(this);
+    this.queryChange = this.queryChange.bind(this);
+    this.querySubmit = this.querySubmit.bind(this);
     this.refresh = this.refresh.bind(this);
     this.testFunc = this.testFunc.bind(this);
   }
 
   state: ContainerState = {
     queries: [],
-    //  {
-    //   queryString: "",
-    //   queryData: [],
-    //   queryStatistics: "",
-    //   querySchema: "",
-    //   queryLabel: "",
-    // },
+    queryEntry: "",
     announcement: "Welcome to StratosDB",
     schemaEntry: "",
     onClose: true,
@@ -87,17 +77,42 @@ class Container extends Component<{}, ContainerState> {
       schemaEntry: this.state.schemaEntry,
     };
     console.log("queryData", schemaObj);
-    axios.post("/results", schemaObj).then((data) => {
+    axios.post("/newSchema", schemaObj).then((data) => {
       console.log("explain data", data.data[0]);
       this.setState({ queries: data.data[0] });
       console.log("state after axios: ", this.state);
     });
   }
+
+  queryChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
+    console.log("EVENT: ", event.target.value);
+    this.setState({
+      queryEntry: event.target.value,
+    });
+  }
+
+  querySubmit(event: React.MouseEvent<HTMLElement>) {
+    event.preventDefault();
+
+    console.log("state.queries before axios: ", this.state);
+
+    // DIFFERENT OBJECT FOR QUERY ENTRY
+    const queryObj: any = {
+      queryEntry: this.state.queryEntry,
+    };
+    console.log("queryData", queryObj);
+    axios.post("/results", queryObj).then((data) => {
+      console.log("explain data", data.data[0]);
+      this.setState({ queries: data.data[0] });
+      console.log("state after axios: ", this.state);
+    });
+  }
+
   // possibly needs componenet did update
   refresh(event: React.ChangeEvent<HTMLSelectElement>) {
     event.preventDefault();
     window.location.reload(false);
-    console.log('refreshing');
+    console.log("refreshing");
   }
   render() {
     return (
@@ -118,11 +133,16 @@ class Container extends Component<{}, ContainerState> {
             />
             <div id="queries-results-panel">
               <div id="query-request">
-                <textarea id="query-input"></textarea>
-                <button id="query-submit">Submit Query</button>
+                <textarea
+                  id="query-input"
+                  onChange={this.queryChange}
+                ></textarea>
+                <button id="query-submit" onClick={this.querySubmit}>
+                  Submit Query
+                </button>
               </div>
               <div id="visual-data">
-                <LineGraph queries={this.state.queries} />
+                {/* <LineGraph queries={this.state.queries} /> */}
               </div>
             </div>
           </div>

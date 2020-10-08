@@ -45,7 +45,7 @@ export const stratosController: controllers = {
     next: express.NextFunction
   ) => {
     // THIS IS GOING TO BE DIFFERENT
-    const { schemaEntry } = req.body;
+    const { queryEntry } = req.body;
 
     // OBJECT DECLARATION THAT WILL HOLD OUR RESULTS FROM OUR DB.QUERY
     const newData: dataType = {
@@ -56,10 +56,10 @@ export const stratosController: controllers = {
     // VARIABLE STORING THE NEW.DATA.QUERYSTATISTICS[0] (WHICH IS AN OBJECT) PROPERTY NAME BECAUSE OF TS COMPILE ERROR
     const queryPlan: any = "QUERY PLAN";
 
-    console.log("schemaEntry: ", schemaEntry);
+    console.log("schemaEntry: ", queryEntry);
 
     // RUNNING EXPLAIN BY PASSING IN A CONCANTENATED STRING OF EXPLAIN... AND THE SCHEMAENTRY QUERY STRING
-    db.query("EXPLAIN (FORMAT JSON, ANALYZE) " + schemaEntry)
+    db.query("EXPLAIN (FORMAT JSON, ANALYZE) " + queryEntry)
       .then((queryStatistics: any) => {
         // RE-ASSIGNING OUR NEWDATA.QUERYSTATISTICS TO OUR RETURNED DATA ANALYTICS
         newData.queryStatistics = queryStatistics.rows[0][queryPlan]; // THIS NEEDS TO BE MORE SPECIFIC
