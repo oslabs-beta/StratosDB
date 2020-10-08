@@ -30,7 +30,7 @@ class Container extends Component<{}, obj> {
       url: '',
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.refresh = this.refresh.bind(this);
   }
 
@@ -41,7 +41,7 @@ class Container extends Component<{}, obj> {
     });
   }
 
-  handleSubmit(event: React.ChangeEvent<HTMLSelectElement>) {
+  handleClick(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
 
     const schemaObj = {
@@ -57,16 +57,7 @@ class Container extends Component<{}, obj> {
   refresh(event: React.ChangeEvent<HTMLSelectElement>) {
     event.preventDefault();
     window.location.reload(false);
-    // this.setState({
-    //   name: 'Tyler', 
-    //   announcement: 'Welcome to StratosDB',   
-    //   schemaEntry: '', 
-    //   data:{},
-    //   onClose: true,
-    //   schemaName: '',
-    //   url: ''
-    // })
-    console.log("refreshing");
+    console.log('refreshing');
   }
   render() {
     return (
@@ -82,7 +73,7 @@ class Container extends Component<{}, obj> {
             onClose={this.state.onClose}
             schemaName={this.state.schemaName}
             handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
+            handleClick={this.handleClick}
           />
         </div>
       </div>
