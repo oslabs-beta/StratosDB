@@ -1,18 +1,19 @@
-import React, { Component, SyntheticEvent } from 'react';
-import Announcement from './components/Announcement';
-import CodeEditor from './components/CodeEditor';
-import Sidebar from './components/Sidebar';
-import LineGraph from './components/LineGraph';
-import axios from 'axios';
+import React, { Component, SyntheticEvent } from "react";
+import Announcement from "./components/Announcement";
+import CodeEditor from "./components/CodeEditor";
+import Sidebar from "./components/Sidebar";
+import LineGraph from "./components/LineGraph";
+import axios from "axios";
 
 interface ContainerState {
-  queries: {
-    queryString: string;
-    queryData: {}[];
-    queryStatistics: any;
-    querySchema: string;
-    queryLabel: string;
-  }[];
+  queries: {}[];
+  // {
+  //   queryString: string;
+  //   queryData: {}[];
+  //   queryStatistics: any;
+  //   querySchema: string;
+  //   queryLabel: string;
+  // };
   //Announcement
   announcement: string;
   //codeEditorState
@@ -27,50 +28,70 @@ class Container extends Component<{}, ContainerState> {
   constructor(props: {}) {
     super(props);
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.schemaChange = this.schemaChange.bind(this);
+    this.schemaSubmit = this.schemaSubmit.bind(this);
     this.refresh = this.refresh.bind(this);
+    this.testFunc = this.testFunc.bind(this);
   }
 
   state: ContainerState = {
     queries: [],
-    announcement: 'Welcome to StratosDB',
-    schemaEntry: '',
+    //  {
+    //   queryString: "",
+    //   queryData: [],
+    //   queryStatistics: "",
+    //   querySchema: "",
+    //   queryLabel: "",
+    // },
+    announcement: "Welcome to StratosDB",
+    schemaEntry: "",
     onClose: true,
-    schemaName: '',
-    url: '',
+    schemaName: "",
+    url: "",
+  };
+
+  testFunc = () => {
+    const newQuery: any = {
+      queryString: "hey",
+      queryData: [{ test: "test" }],
+      queryStatistics: "is",
+      querySchema: "a",
+      queryLabel: "test",
+    };
+    this.setState({
+      queries: newQuery,
+    });
   };
 
   componentDidMount() {
-    const newQuery = {
-      queryString: 'hey',
-      queryData: [{ test: 'test' }],
-      queryStatistics: 'is',
-      querySchema: 'a',
-      queryLabel: 'test',
-    };
-    let queries = this.state.queries.slice();
-    this.setState({ queries });
+    // let queries = this.state.queries.slice();
+    // queries.push(newQuery);
+    console.log("state.queries1: ", this.state);
+    this.testFunc();
+    console.log("state.queries2: ", this.state);
   }
 
-  handleChange(event: string) {
-    console.log('EVENT: ', event);
+  schemaChange(event: string) {
+    console.log("EVENT: ", event);
     this.setState({
       schemaEntry: event,
     });
   }
 
-  handleSubmit(event: React.ChangeEvent<HTMLSelectElement>) {
+  schemaSubmit(event: React.ChangeEvent<HTMLSelectElement>) {
     event.preventDefault();
 
-    const schemaObj = {
+    console.log("state.queries before axios: ", this.state);
+
+    const schemaObj: any = {
       schemaEntry: this.state.schemaEntry,
     };
-    console.log('queryData', schemaObj);
-    // axios.post('/results', schemaObj).then((data) => {
-    //   console.log('logging data', data.data);
-    //   this.setState({ queries.queryData: data });
-    // });
+    console.log("queryData", schemaObj);
+    axios.post("/results", schemaObj).then((data) => {
+      console.log("explain data", data.data[0]);
+      this.setState({ queries: data.data[0] });
+      console.log("state after axios: ", this.state);
+    });
   }
   // possibly needs componenet did update
   refresh(event: React.ChangeEvent<HTMLSelectElement>) {
@@ -85,26 +106,26 @@ class Container extends Component<{}, ContainerState> {
     //   schemaName: '',
     //   url: ''
     // })
-    console.log('refreshing');
+    console.log("refreshing");
   }
   render() {
     return (
-      <div id='main-container'>
-        <div id='left-panel'>
+      <div id="main-container">
+        <div id="left-panel">
           <Sidebar url={this.state.url} refresh={this.refresh} />
         </div>
-        <div id='right-panel'>
+        <div id="right-panel">
           <Announcement announcement={this.state.announcement} />
-          <div id='main-feature'>
+          <div id="main-feature">
             <CodeEditor
               schemaEntry={this.state.schemaEntry}
               data={this.state.queries}
               onClose={this.state.onClose}
               schemaName={this.state.schemaName}
-              handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
+              schemaChange={this.schemaChange}
+              schemaSubmit={this.schemaSubmit}
             />
-            <LineGraph queries={this.state.queries} />
+            {/* <LineGraph queries={this.state.queries} /> */}
           </div>
         </div>
       </div>
