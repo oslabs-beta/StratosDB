@@ -78,7 +78,7 @@ class Container extends Component<{}, ContainerState> {
     });
   }
 
-  schemaSubmit(event: React.ChangeEvent<HTMLSelectElement>) {
+  schemaSubmit(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
 
     console.log("state.queries before axios: ", this.state);
@@ -97,16 +97,7 @@ class Container extends Component<{}, ContainerState> {
   refresh(event: React.ChangeEvent<HTMLSelectElement>) {
     event.preventDefault();
     window.location.reload(false);
-    // this.setState({
-    //   name: 'Tyler',
-    //   announcement: 'Welcome to StratosDB',
-    //   schemaEntry: '',
-    //   data:{},
-    //   onClose: true,
-    //   schemaName: '',
-    //   url: ''
-    // })
-    console.log("refreshing");
+    console.log('refreshing');
   }
   render() {
     return (
@@ -125,7 +116,15 @@ class Container extends Component<{}, ContainerState> {
               schemaChange={this.schemaChange}
               schemaSubmit={this.schemaSubmit}
             />
-            {/* <LineGraph queries={this.state.queries} /> */}
+            <div id="queries-results-panel">
+              <div id="query-request">
+                <textarea id="query-input"></textarea>
+                <button id="query-submit">Submit Query</button>
+              </div>
+              <div id="visual-data">
+                <LineGraph queries={this.state.queries} />
+              </div>
+            </div>
           </div>
         </div>
       </div>

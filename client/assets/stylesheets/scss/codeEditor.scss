@@ -1,47 +1,29 @@
-@import './variables.scss';
+@import './variables';
 
 #code-editor {
   width: 40%;
-  height: 100%;
-
-  #code-submit-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+  display: flex;
+  flex-direction: column;
 
   .ReactCodeMirror {
-    height: 100%;
-
-    .CodeMirror-scroll {
-      padding: 0;
-      height: 100%;
-    }
-  }
-
-  #code-submit-form {
-    height: 100%;
+    height: 93%;
   }
 
   .CodeMirror {
-    height: 100%;
+    height: 93%;
+  }
+
+  #buttons-section {
+    display: flex;
+    justify-content: space-around;
+    margin: -25px 0 10px 0;
+  }
+
+  #cancel-button {
+    fill: $stratos-yellow;
   }
 
   #submit-button {
-    width: 100%;
-    height: 50.5px;
-    background-color: $stratos-yellow;
-    border: none;
-    padding: 0;
-    margin: -30px 0 0 0;
-    z-index: 10;
-
-    &:hover {
-      background-color: $stratos-blue;
-    }
-
-    &:active {
-      background-color: $stratos-green;
-    }
+    fill: $stratos-green;
   }
 }
