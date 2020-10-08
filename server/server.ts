@@ -13,20 +13,20 @@ dotenv.config();
 
 const PORT = process.env.SERVER_PORT;
 
-// SEND IMPORTED/INPUTTED SCHEMAS TO CLOUD DB
-app.post(
-  '/results',
-  /* INSERT MIDDLEWARE HERE */
-  stratosController.getResults,
-  (req, res) => {
-    // SENDING CLIENT THE RESULTS FROM THE PERFORMANCE TEST
-    res.status(200).send('success');
-  }
-);
+// WHEN REFRESHED, THE APP WILL WIPE ANY EXISTING TABLES IN THE DB
+app.get('/', stratosController.reset, (req, res) => {
+  res.status(200).send('DATABASE HAS A CLEAN SLATE');
+});
 
-// TESTING TO MAKE SURE ROUTE IS WORKING - VERIFIED!
-app.get('/test', (req, res) => {
-  res.send('Hello World!');
+// FRONTEND BUTTON THAT WILL ALLOW USER TO DROP ALL TABLES FROM DB
+app.get('/reset', stratosController.reset, (req, res) => {
+  res.status(200).send('DATABASE HAS BEEN RESET');
+});
+
+// SEND IMPORTED/INPUTTED SCHEMAS TO CLOUD DB
+app.post('/results', stratosController.getResults, (req, res) => {
+  // SENDING CLIENT THE RESULTS FROM THE PERFORMANCE TEST
+  res.status(200).send('success');
 });
 
 // LISTENING TO SERVER ON PORT 3000

@@ -1,9 +1,17 @@
 import express, { query } from 'express';
 const db = require('./models');
 
+/**
+ * NOTE TO TEAM: CONTROLLER TO RESET/WIPE/DROP ALL TABLES FROM DB
+ * -> QUERY HAS TO BE TWO SEPARATE ENTRIES & SECOND ENTRY IS REQUIRED
+ * DROP SCHEMA public CASCADE;
+ * CREATE SCHEMA public;
+ */
+
 // DECLARING DATA TYPES FOR ALL THE CONTROLLERS IN STRATOSCONTROLLER - WILL NEED TO ADD IF YOU ARE ADDING A NEW CONTROLLER
 interface controllers {
   getResults: any;
+  reset: any;
 }
 
 interface dataType {
@@ -64,6 +72,34 @@ export const stratosController: controllers = {
       .catch((error: string) => {
         console.log(
           'Error in Controllers > getResults > db.query > SCHEMAENTRY: ',
+          error
+        );
+      });
+  },
+
+  reset: (
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction
+  ) => {
+    // DROPS ALL TABLES WITH SCHEMA SET TO PUBLIC
+    db.query('DROP SCHEMA public CASCADE;')
+      .then((result: any) => {
+        // REINSTATES TABLE SCHEMAS TO PUBLIC
+        db.query('CREATE SCHEMA public;')
+          .then((result: any) => {
+            return next();
+          })
+          .catch((error: string) => {
+            console.log(
+              'Error in Controllers > reset > db.query > CREATE SCHEMA: ',
+              error
+            );
+          });
+      })
+      .catch((error: string) => {
+        console.log(
+          'Error in Controllers > reset > db.query > DROP SCHEMA: ',
           error
         );
       });
