@@ -1,8 +1,8 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import path from 'path';
-import dotenv from 'dotenv';
-import { stratosController } from './controllers';
+import express from "express";
+import bodyParser from "body-parser";
+import path from "path";
+import dotenv from "dotenv";
+import { stratosController } from "./controllers";
 
 const app: express.Application = express();
 
@@ -14,19 +14,25 @@ dotenv.config();
 const PORT = process.env.SERVER_PORT;
 
 // WHEN REFRESHED, THE APP WILL WIPE ANY EXISTING TABLES IN THE DB
-app.get('/', stratosController.reset, (req, res) => {
-  res.status(200).send('DATABASE HAS A CLEAN SLATE');
+app.get("/", stratosController.reset, (req, res) => {
+  res.status(200).send("DATABASE HAS A CLEAN SLATE");
 });
 
 // FRONTEND BUTTON THAT WILL ALLOW USER TO DROP ALL TABLES FROM DB
-app.get('/reset', stratosController.reset, (req, res) => {
-  res.status(200).send('DATABASE HAS BEEN RESET');
+app.get("/reset", stratosController.reset, (req, res) => {
+  res.status(200).send("DATABASE HAS BEEN RESET");
 });
 
 // SEND IMPORTED/INPUTTED SCHEMAS TO CLOUD DB
-app.post('/results', stratosController.getResults, (req, res) => {
+app.post("/newSchema", stratosController.createSchema, (req, res) => {
+  // SENDING CLIENT STATUS FOR SCHEMA CREATION
+  res.status(200).send("success");
+});
+
+// RUNNING TESTS ON THE SCHEMAS IN THE CLOUD
+app.post("/results", stratosController.runTest, (req, res) => {
   // SENDING CLIENT THE RESULTS FROM THE PERFORMANCE TEST
-  res.status(200).send('success');
+  res.status(200).send(res.locals.explain);
 });
 
 // LISTENING TO SERVER ON PORT 3000

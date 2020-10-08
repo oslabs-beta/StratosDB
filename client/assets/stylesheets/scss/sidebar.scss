@@ -1,4 +1,4 @@
-@import './variables.scss';
+@import './variables';
 
 #sidebar {
   display: flex;
@@ -8,25 +8,23 @@
   #main-sidebar {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 
     img {
       margin: 25px auto;
     }
 
-    button {
-      margin: 25px auto;
-      height: 75px;
-      width: 75px;
-      border-radius: 50px;
-      border: none;
+    svg {
+      margin: 20px auto;
+      fill: #ffffff;
 
       &:hover {
-        background-color: $stratos-yellow;
+        fill: $stratos-blue;
       }
     }
   }
 
   #bottom-sidebar {
-    height: 49.83px;
+    height: 41.53px;
   }
 }

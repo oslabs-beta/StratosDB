@@ -1,4 +1,4 @@
-@import './variables.scss';
+@import './variables';
 
 /************************************************************
  ********************** MAIN CONTAINER **********************
@@ -25,6 +25,7 @@
 #right-panel {
   display: flex;
   flex-direction: column;
+  height: 100%;
   width: 100%;
   background-color: $background-darkmode-darker;
 
@@ -39,6 +40,16 @@
       color: white;
       font-size: 15px;
       margin: auto;
+    }
+  }
+
+  #main-feature {
+    display: flex;
+    flex-direction: row;
+    height: 95%;
+
+    #queries-results-panel {
+      width: 60%;
     }
   }
 }
