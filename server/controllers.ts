@@ -1,5 +1,5 @@
-import express, { query } from 'express';
-const db = require('./models');
+import express, { query } from "express";
+const db = require("./models");
 
 /**
  * NOTE TO TEAM: CONTROLLER TO RESET/WIPE/DROP ALL TABLES FROM DB
@@ -10,8 +10,9 @@ const db = require('./models');
 
 // DECLARING DATA TYPES FOR ALL THE CONTROLLERS IN STRATOSCONTROLLER - WILL NEED TO ADD IF YOU ARE ADDING A NEW CONTROLLER
 interface controllers {
-  getResults: any;
+  createSchema: any;
   reset: any;
+  runTest: any;
 }
 
 interface dataType {
@@ -20,58 +21,59 @@ interface dataType {
 }
 
 export const stratosController: controllers = {
-  getResults: (
+  createSchema: (
     req: express.Request,
     res: express.Response,
     next: express.NextFunction
   ) => {
-    // DECONSTRUCTURED VARIABLE DECLARACTION THAT WILL EXTRACT THE VALUE FROM REQ.BODY.SCHEMAENTRY
+    // DESTRUCTURING SCHEMAENTRY FROM REQ.BODY
+    const { schemaEntry } = req.body;
+    db.query(schemaEntry)
+      .then((result: any) => {
+        return next();
+      })
+      .catch((error: string) => {
+        console.log(
+          "Error in Controllers > createSchema > db.query > SCHEMA: "
+        );
+      });
+  },
+
+  runTest: (
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction
+  ) => {
+    // THIS IS GOING TO BE DIFFERENT
     const { schemaEntry } = req.body;
 
     // OBJECT DECLARATION THAT WILL HOLD OUR RESULTS FROM OUR DB.QUERY
     const newData: dataType = {
-      queryData: '',
-      queryStatistics: '',
+      queryData: "",
+      queryStatistics: "",
     };
 
-    // DB QUERY THAT WILL FETCH OUR RESULT BASED ON THE QUERY STRING
-    db.query(schemaEntry)
-      .then((queryData: any) => {
-        // RE-ASSIGNING NEWDATA.QUERYDATA TO OUR RETURNED DB REQUESTED DATA
-        newData.queryData = queryData.rows;
+    // VARIABLE STORING THE NEW.DATA.QUERYSTATISTICS[0] (WHICH IS AN OBJECT) PROPERTY NAME BECAUSE OF TS COMPILE ERROR
+    const queryPlan: any = "QUERY PLAN";
 
-        console.log('queryData.rows: ', queryData.rows);
+    // RUNNING EXPLAIN BY PASSING IN A CONCANTENATED STRING OF EXPLAIN... AND THE SCHEMAENTRY QUERY STRING
+    db.query("EXPLAIN (FORMAT JSON, ANALYZE) " + schemaEntry)
+      .then((queryStatistics: any) => {
+        // RE-ASSIGNING OUR NEWDATA.QUERYSTATISTICS TO OUR RETURNED DATA ANALYTICS
+        newData.queryStatistics = queryStatistics.rows; // THIS NEEDS TO BE MORE SPECIFIC
 
-        // VARIABLE STORING THE NEW.DATA.QUERYSTATISTICS[0] (WHICH IS AN OBJECT) PROPERTY NAME BECAUSE OF TS COMPILE ERROR
-        const queryPlan: any = 'QUERY PLAN';
+        console.log(
+          "Returned query stats: ",
+          newData.queryStatistics[0][queryPlan]
+        );
 
-        // RUNNING EXPLAIN BY PASSING IN A CONCANTENATED STRING OF EXPLAIN... AND THE SCHEMAENTRY QUERY STRING
-        db.query('EXPLAIN (FORMAT JSON, ANALYZE) ' + schemaEntry)
-          .then((queryStatistics: any) => {
-            // RE-ASSIGNING OUR NEWDATA.QUERYSTATISTICS TO OUR RETURNED DATA ANALYTICS
-            newData.queryStatistics = queryStatistics.rows;
-
-            console.log(
-              'Returned query stats: ',
-              newData.queryStatistics[0][queryPlan]
-            );
-
-            return next();
-          })
-          .catch((error: string) => {
-            console.log(
-              'Error in Controllers > getResults > db.query > EXPLAIN: ',
-              error
-            );
-          });
-
-        // NEED TO SEND NEWDATA UNDER RES.LOCALS
+        // RETURN THE SPECIFIC RESULT
 
         return next();
       })
       .catch((error: string) => {
         console.log(
-          'Error in Controllers > getResults > db.query > SCHEMAENTRY: ',
+          "Error in Controllers > getResults > db.query > EXPLAIN: ",
           error
         );
       });
@@ -83,23 +85,23 @@ export const stratosController: controllers = {
     next: express.NextFunction
   ) => {
     // DROPS ALL TABLES WITH SCHEMA SET TO PUBLIC
-    db.query('DROP SCHEMA public CASCADE;')
+    db.query("DROP SCHEMA public CASCADE;")
       .then((result: any) => {
         // REINSTATES TABLE SCHEMAS TO PUBLIC
-        db.query('CREATE SCHEMA public;')
+        db.query("CREATE SCHEMA public;")
           .then((result: any) => {
             return next();
           })
           .catch((error: string) => {
             console.log(
-              'Error in Controllers > reset > db.query > CREATE SCHEMA: ',
+              "Error in Controllers > reset > db.query > CREATE SCHEMA: ",
               error
             );
           });
       })
       .catch((error: string) => {
         console.log(
-          'Error in Controllers > reset > db.query > DROP SCHEMA: ',
+          "Error in Controllers > reset > db.query > DROP SCHEMA: ",
           error
         );
       });
