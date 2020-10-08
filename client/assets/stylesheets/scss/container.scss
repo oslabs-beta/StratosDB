@@ -25,6 +25,7 @@
 #right-panel {
   display: flex;
   flex-direction: column;
+  height: 100vh;
   width: 100%;
   background-color: $background-darkmode-darker;
 
@@ -40,5 +41,10 @@
       font-size: 15px;
       margin: auto;
     }
+  }
+  #main-feature {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
   }
 }
