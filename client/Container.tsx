@@ -95,7 +95,15 @@ class Container extends Component<{}, ContainerState> {
               schemaChange={this.schemaChange}
               schemaSubmit={this.schemaSubmit}
             />
-            <LineGraph queries={this.state.queries} />
+            <div id="queries-results-panel">
+              <div id="query-request">
+                <textarea id="query-input"></textarea>
+                <button id="query-submit">Submit Query</button>
+              </div>
+              <div id="visual-data">
+                <LineGraph queries={this.state.queries} />
+              </div>
+            </div>
           </div>
         </div>
       </div>

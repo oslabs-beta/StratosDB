@@ -1,4 +1,4 @@
-@import './variables.scss';
+@import './variables';
 
 #sidebar {
   display: flex;
@@ -25,6 +25,6 @@
   }
 
   #bottom-sidebar {
-    height: 49.83px;
+    height: 41.53px;
   }
 }

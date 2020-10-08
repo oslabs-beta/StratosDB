@@ -51,7 +51,7 @@ const Sidebar: React.FC<SidebarState> = (props: SidebarState) => {
           src="./../client/assets/images/stratosdb_footer_banner.png"
           alt="footer"
           id="stratos-footer"
-          width="150px"
+          width="125px"
         />
       </div>
     </div>

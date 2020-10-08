@@ -1,4 +1,4 @@
-@import './variables.scss';
+@import './variables';
 
 /************************************************************
  ********************** MAIN CONTAINER **********************
@@ -48,7 +48,7 @@
     flex-direction: row;
     height: 95%;
 
-    #line-graph {
+    #queries-results-panel {
       width: 60%;
     }
   }
