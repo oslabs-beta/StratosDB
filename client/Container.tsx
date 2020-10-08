@@ -86,15 +86,17 @@ class Container extends Component<{}, ContainerState> {
         </div>
         <div id="right-panel">
           <Announcement announcement={this.state.announcement} />
-          <CodeEditor
-            schemaEntry={this.state.schemaEntry}
-            data={this.state.queries}
-            onClose={this.state.onClose}
-            schemaName={this.state.schemaName}
-            handleChange={this.handleChange}
-            handleClick={this.handleClick}
-          />
-          <LineGraph queries={this.state.queries} />
+          <div id="main-feature">
+            <CodeEditor
+              schemaEntry={this.state.schemaEntry}
+              data={this.state.queries}
+              onClose={this.state.onClose}
+              schemaName={this.state.schemaName}
+              handleChange={this.handleChange}
+              handleClick={this.handleClick}
+            />
+            <LineGraph queries={this.state.queries} />
+          </div>
         </div>
       </div>
     );

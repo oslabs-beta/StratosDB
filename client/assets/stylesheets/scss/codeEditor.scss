@@ -2,20 +2,21 @@
 
 #code-editor {
   width: 40%;
-  height: 95%;
-
-  #code-submit-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+  display: flex;
+  flex-direction: column;
 
   .ReactCodeMirror {
-    height: 95%;
+    height: 93%;
   }
 
   .CodeMirror {
-    height: 95%;
+    height: 93%;
+  }
+
+  #buttons-section {
+    display: flex;
+    justify-content: space-around;
+    margin: -25px 0 10px 0;
   }
 
   #cancel-button {
