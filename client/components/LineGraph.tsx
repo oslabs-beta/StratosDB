@@ -23,14 +23,15 @@ class LineGraph extends Component<LineGraphProps> {
   //   });
   // }
   // const execTime: any = 'Execution Time';
-  
+
   render() {
-    const { queries } = this.props;
-  
-    //  const labelData = () => queries.map((query) => query.queryLabel);
-    // const runtimeData = () => queries.map((query) => queries);
+    const { queries, queryStatistics } = this.props;
+
+    const labelData = () => queryStatistics.map((query, i) => i);
+    // const runtimeData = () => queryStatistics.map((query) => queries);
+
     const data = {
-      labels: ['Query1', 'Query2', 'Query3', 'Query4'],
+      labels: () => queryStatistics.map((query, i) => i),
       datasets: [
         {
           label: 'Runtime',
@@ -39,7 +40,7 @@ class LineGraph extends Component<LineGraphProps> {
           backgroundColor: '#399cff',
           borderColor: 'rgba(247,247,247,247)',
           borderWidth: 2,
-          // data: [queries.execution],
+          data: queryStatistics,
         },
       ],
     };
