@@ -1,18 +1,19 @@
 import express, { query } from 'express';
-// const db = require("./server");
 import db from './server';
 
 /**
- * NOTE TO TEAM: CONTROLLER TO RESET/WIPE/DROP ALL TABLES FROM DB
- * -> QUERY HAS TO BE TWO SEPARATE ENTRIES & SECOND ENTRY IS REQUIRED
+ * NOTE TO TEAM: PSQL CLI TO RESET/WIPE/DROP ALL TABLES FROM DB (FOR TESTING/DEMO PURPOSES)
  * DROP SCHEMA public CASCADE;
  * CREATE SCHEMA public;
  */
 
-// DECLARING DATA TYPES FOR ALL THE CONTROLLERS IN STRATOSCONTROLLER - WILL NEED TO ADD IF YOU ARE ADDING A NEW CONTROLLER
+/**
+ * TYPESCRTIPT INTERFACE DECLARACTIONS
+ * NOTE TO DEVS: WILL NEED TO ADD TO INTERFACE CONTROLLERSS
+ * IF YOU ARE ADDING A NEW CONTROLLER
+ */
 interface controllers {
   createSchema: any;
-  reset: any;
   runTest: any;
   queryTable: any;
 }
@@ -35,7 +36,6 @@ export const stratosController: controllers = {
   ) => {
     // DESTRUCTURING SCHEMAENTRY FROM REQ.BODY
     const { schemaEntry } = req.body;
-    console.log('state: ', req.body.queryEntry);
     db.query(schemaEntry)
       .then((result: any) => {
         return next();
@@ -58,6 +58,7 @@ export const stratosController: controllers = {
     res: express.Response,
     next: express.NextFunction
   ) => {
+    // DESTRUCTURING QUERYENTRY FROM REQ.BODY
     const { queryEntry } = req.body;
     db.query(queryEntry)
       .then((results: any) => {
@@ -82,67 +83,27 @@ export const stratosController: controllers = {
     res: express.Response,
     next: express.NextFunction
   ) => {
-    // THIS IS GOING TO BE DIFFERENT
+    // DESTRUCTURING QUERYENTRY FROM REQ.BODY
     const { queryEntry } = req.body;
-
     // OBJECT DECLARATION THAT WILL HOLD OUR RESULTS FROM OUR DB.QUERY
     const newData: dataType = {
       queryData: '',
       queryStatistics: '',
     };
-
     // VARIABLE STORING THE NEW.DATA.QUERYSTATISTICS[0] (WHICH IS AN OBJECT) PROPERTY NAME BECAUSE OF TS COMPILE ERROR
     const queryPlan: any = 'QUERY PLAN';
-
-    console.log('schemaEntry: ', queryEntry);
-
     // RUNNING EXPLAIN BY PASSING IN A CONCANTENATED STRING OF EXPLAIN... AND THE SCHEMAENTRY QUERY STRING
     db.query('EXPLAIN (FORMAT JSON, ANALYZE) ' + queryEntry)
       .then((queryStatistics: any) => {
         // RE-ASSIGNING OUR NEWDATA.QUERYSTATISTICS TO OUR RETURNED DATA ANALYTICS
-        newData.queryStatistics = queryStatistics.rows[0][queryPlan]; // THIS NEEDS TO BE MORE SPECIFIC
-
+        newData.queryStatistics = queryStatistics.rows[0][queryPlan];
         console.log('Returned query stats: ', newData.queryStatistics);
-
-        // RETURN THE SPECIFIC RESULT
         res.locals.explain = newData.queryStatistics;
         return next();
       })
       .catch((error: string) => {
         console.log(
           'Error in Controllers > runTest > db.query > EXPLAIN: ',
-          error
-        );
-      });
-  },
-
-  /**
-   * CONTROLLER: RESET
-   * WILL WIPE THE CONNECTED AWS RDS DATABASE CLEAN
-   */
-  reset: (
-    req: express.Request,
-    res: express.Response,
-    next: express.NextFunction
-  ) => {
-    // DROPS ALL TABLES WITH SCHEMA SET TO PUBLIC
-    db.query('DROP SCHEMA public CASCADE;')
-      .then((result: any) => {
-        // REINSTATES TABLE SCHEMAS TO PUBLIC
-        db.query('CREATE SCHEMA public;')
-          .then((result: any) => {
-            return next();
-          })
-          .catch((error: string) => {
-            console.log(
-              'Error in Controllers > reset > db.query > CREATE SCHEMA: ',
-              error
-            );
-          });
-      })
-      .catch((error: string) => {
-        console.log(
-          'Error in Controllers > reset > db.query > DROP SCHEMA: ',
           error
         );
       });

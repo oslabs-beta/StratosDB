@@ -1,29 +1,26 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import path from 'path';
-import dotenv from 'dotenv';
 import { stratosController } from './controllers';
 const { Pool } = require('pg');
-
-// INITIALIZE CONFIGURATION
-dotenv.config();
-
 const app: express.Application = express();
 
+/**
+ * TYPESCRTIPT INTERFACE DECLARACTIONS
+ */
 interface queryResultObjType {
   queryStatistics: any;
   queryTable: any;
 }
 
-// FOR PRODUCTION
-// INTERFACE FOR AWS INFORMATION
-// interface awsTypes {
-//   user: string;
-//   host: string;
-//   database: string;
-//   password: string;
-//   port: string;
-// };
+interface awsTypes {
+  user: string;
+  host: string;
+  database: string;
+  password: string;
+  port: string;
+}
+
+const PORT = 3000;
 
 // OBJECT CONTAINING AWS INFO FROM THE FRONT END
 let awsInfo: awsTypes = {
@@ -34,41 +31,17 @@ let awsInfo: awsTypes = {
   port: '',
 };
 
-// FOR TESTING
-interface awsTypes {
-  user: any;
-  host: any;
-  database: any;
-  password: any;
-  port: any;
-}
-
-// let awsInfo: awsTypes = {
-//   user: process.env.RDS_USER,
-//   host: process.env.RDS_ENDPOINT,
-//   database: process.env.RDS_DB_NAME,
-//   password: process.env.RDS_PASSWORD,
-//   port: process.env.RDS_PORT,
-// }
-
-// SETTING AWS INFO AS THE POOL INFORMATION
+// DECLARING INITIAL POOL VARIABLE THAT WILL BE UPDATED ONCE APPLICATION REFRESHES
 let pool: any;
-// const pool = new Pool({
-//   user: process.env.RDS_USER,
-//   host: process.env.RDS_ENDPOINT,
-//   database: process.env.RDS_DB_NAME,
-//   password: process.env.RDS_PASSWORD,
-//   port: process.env.RDS_PORT,
-// });
 
-// EXPORTING POOL QUERY METHOD
+// DECLARING INITIAL DB VARIABLE THAT WILL BE UPDATED ONCE APPLICATION REFRESHES
 const db: any = {};
 
 app.use(bodyParser.json());
 
-const PORT = 3000;
-
-// WHEN REFRESHED, THE APP WILL WIPE ANY EXISTING TABLES IN THE DB
+/**
+ * APP.GET REQUEST (/REFRESH): WHEN REFRESHED, THE APP WILL RESET AWS CONNECTION INFO TO EMPTY VALUES
+ */
 app.get('/refresh', (req, res) => {
   awsInfo = {
     user: '',
@@ -77,17 +50,16 @@ app.get('/refresh', (req, res) => {
     password: '',
     port: '',
   };
-  pool = new Pool(awsInfo);
-  db['query'] = (text: string, params?: any, callback?: any) => {
-    return pool.query(text, params, callback);
-  };
   console.log('refreshed: ', awsInfo);
-  res.status(200).send('DATABASE HAS A CLEAN SLATE');
+  res.status(200).send('DATABASE CONNECTION HAS BEEN RESET');
 });
 
-// CONNECTING TO AWS
-app.post("/connect", (req, res) => {
-  console.log("Incoming form information: ", req.body)
+/**
+ * APP.POST REQUEST (/CONNECT): USER WILL CONNECT TO DB BASED ON THEIR INPUTTED AWS RDS INFORMATION
+ */
+app.post('/connect', (req, res) => {
+  console.log('Incoming form information: ', req.body);
+  // REASSIGNING AWSINFO PROPERTY VALUES TO THE USER INPUTTED VALUES FROM THE FRONT END SIDEBAR CLOUD BUTTON MODAL
   awsInfo = {
     user: req.body.user,
     host: req.body.host,
@@ -95,39 +67,33 @@ app.post("/connect", (req, res) => {
     password: req.body.password,
     port: req.body.port,
   };
+  // ESTABLISHING A POOL CONNECTION BASED ON OUR NEWLY INPUTTED DB CONNECTION INFORMATION
   pool = new Pool(awsInfo);
-  db["query"] = (text: string, params?: any, callback?: any) => {
-      return pool.query(text, params, callback);
-    };
-  
-  console.log("HOOPLAH MAGIC: ", awsInfo, "We have connected!")
+  // ADDING A NEW PROPERTY TO OUR DB VARIABLE WITH OUR POOL METHOD THAT WILL ALLOW US TO QUERY OUR DB
+  db['query'] = (text: string, params?: any, callback?: any) => {
+    return pool.query(text, params, callback);
+  };
+  console.log('HOOPLAH MAGIC: ', awsInfo, 'We have connected!');
   res.status(200);
 });
-// PASSING AWS DATABASE INFORMATION INTO SERVER FROM STATE
-app.post('/aws', (req, res) => {
-  // assigning AWS info to awsInfo
-  awsInfo = req.body.awsInfo;
-  console.log('AWS info set: ', awsInfo);
-  res.status(200).send('AWS info has been set');
-});
 
-// FRONTEND BUTTON THAT WILL ALLOW USER TO DROP ALL TABLES FROM DB
-app.get('/reset', stratosController.reset, (req, res) => {
-  res.status(200).send('DATABASE HAS BEEN RESET');
-});
-
-// SEND IMPORTED/INPUTTED SCHEMAS TO CLOUD DB
+/**
+ * APP.POST REQUEST (/NEWSCHEMA): SEND IMPORTED/INPUTTED SCHEMAS TO CLOUD DB
+ */
 app.post('/newSchema', stratosController.createSchema, (req, res) => {
   // SENDING CLIENT STATUS FOR SCHEMA CREATION
   res.status(200).send('success');
 });
 
-// RUNNING TESTS ON THE SCHEMAS IN THE CLOUD
+/**
+ * APP.POST REQUEST (/RESULTS): RUNNING QUERY REQUEST & TESTS ON THE SCHEMAS IN THE CLOUD
+ */
 app.post(
   '/results',
   stratosController.queryTable,
   stratosController.runTest,
   (req, res) => {
+    // CONDENSING OUR RES.LOCALS VARIABLES INTO AN OBJECT TO SEND BACK TO THE FRONTEND TO BE PARSED
     const queryResultObj: queryResultObjType = {
       queryStatistics: res.locals.explain,
       queryTable: res.locals.queryResult,
@@ -137,9 +103,12 @@ app.post(
   }
 );
 
-// LISTENING TO SERVER ON PORT 3000
+/**
+ * APP.LISTEN: PORT 3000
+ */
 app.listen(PORT, () => {
   console.log(`stratosDB server is running on port ${PORT}`);
 });
 
+// EXPORTING OUR DB SO THAT WE CAN UTILIZE THE QUERY METHOD IN OUR CONTROLLERS.TS
 export default db;
