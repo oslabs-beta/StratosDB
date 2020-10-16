@@ -30,8 +30,6 @@
 - <a href="https://github.com/oslabs-beta/StratosDB#core-team">Core Team</a>
 - <a href="https://github.com/oslabs-beta/StratosDB#license">License</a>
 
-## Overview
-
 <br>
 
 ## Beta Stage
@@ -44,6 +42,16 @@ Team StratosDB will strive to continuously release updates and additional featur
 
 2. If you happen to come across any issues while tinkering with the application:
    - Please report the bug/issue located under the Issues Tab located in this repository
+
+<br>
+
+## Overview
+
+<br>
+
+## Main Features
+
+<br>
 
 ## Built With
 
