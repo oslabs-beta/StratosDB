@@ -10,6 +10,11 @@ dotenv.config();
 
 const app: express.Application = express();
 
+interface queryResultObjType {
+  queryStatistics: any;
+  queryTable: any;
+}
+
 // FOR PRODUCTION
 // INTERFACE FOR AWS INFORMATION
 // interface awsTypes {
@@ -66,17 +71,16 @@ const PORT = 3000;
 // WHEN REFRESHED, THE APP WILL WIPE ANY EXISTING TABLES IN THE DB
 app.get('/refresh', (req, res) => {
   awsInfo = {
-    user: "",
-    host: "",
-    database: "",
-    password: "",
-    port: "",
+    user: '',
+    host: '',
+    database: '',
+    password: '',
+    port: '',
   };
   pool = new Pool(awsInfo);
   db['query'] = (text: string, params?: any, callback?: any) => {
     return pool.query(text, params, callback);
   };
-
   console.log('refreshed: ', awsInfo);
   res.status(200).send('DATABASE HAS A CLEAN SLATE');
 });
@@ -119,10 +123,19 @@ app.post('/newSchema', stratosController.createSchema, (req, res) => {
 });
 
 // RUNNING TESTS ON THE SCHEMAS IN THE CLOUD
-app.post('/results', stratosController.runTest, (req, res) => {
-  // SENDING CLIENT THE RESULTS FROM THE PERFORMANCE TEST
-  res.status(200).send(res.locals.explain);
-});
+app.post(
+  '/results',
+  stratosController.queryTable,
+  stratosController.runTest,
+  (req, res) => {
+    const queryResultObj: queryResultObjType = {
+      queryStatistics: res.locals.explain,
+      queryTable: res.locals.queryResult,
+    };
+    // SENDING CLIENT THE RESULTS FROM THE PERFORMANCE TEST
+    res.status(200).send(queryResultObj);
+  }
+);
 
 // LISTENING TO SERVER ON PORT 3000
 app.listen(PORT, () => {
