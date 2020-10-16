@@ -89,10 +89,10 @@ module.exports = {
       ignored: /node_modules/,
     },
     proxy: {
+      '/refresh': 'http://localhost:3000',
       '/results': 'http://localhost:3000',
       '/newSchema': 'http://localhost:3000',
-      '/refresh': 'http://localhost:3000',
-      '/aws': 'http://localhost:3000',
+      '/connect': 'http://localhost:3000',
     },
   },
   plugins: [

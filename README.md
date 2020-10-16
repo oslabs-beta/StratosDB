@@ -15,11 +15,55 @@
 
 <br>
 
-<p><b>stratosDB: </b>A Cloud-env database analytic and pre-deployment tool that abstracts databases out of local memory into a cloud-like controlled environment for SQL database testing.</p>
+<p><b>stratosDB: </b>A Cloud SQL database performance tester and deployment tool</p>
 
 </div>
 
 <br>
+
+## Table of Contents
+
+- <a href="https://github.com/oslabs-beta/StratosDB#beta-stage">Beta Stage</a>
+- <a href="https://github.com/oslabs-beta/StratosDB#overview">Overview</a>
+- <a href="https://github.com/oslabs-beta/StratosDB#main-features">Main Features</a>
+- <a href="https://github.com/oslabs-beta/StratosDB#built-with">Built With</a>
+- <a href="https://github.com/oslabs-beta/StratosDB#core-team">Core Team</a>
+- <a href="https://github.com/oslabs-beta/StratosDB#license">License</a>
+
+<br>
+
+## Beta Stage
+
+Team StratosDB will strive to continuously release updates and additional features.
+
+1. If you would like to contribute to this project:
+
+   - Please feel free to submit a PR
+
+2. If you happen to come across any issues while tinkering with the application:
+   - Please report the bug/issue by submitting a ticket located in the Issues Tab within this repository
+
+<br>
+
+## Overview
+
+<br>
+
+## Main Features
+
+<br>
+
+## Built With
+
+- React
+- TypeScript
+- CodeMirror
+- AWS RDS
+  - PostgreSQL
+
+<br>
+
+## Core Team
 
 <div align="center">
 <table>
@@ -47,3 +91,9 @@
 </tr>
 </table>
 </div>
+
+<br>
+
+## License
+
+This project is licensed under the MIT License
