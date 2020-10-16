@@ -19,15 +19,15 @@ const app: express.Application = express();
 //   password: string;
 //   port: string;
 // };
-// 
+
 // OBJECT CONTAINING AWS INFO FROM THE FRONT END
-// let awsInfo: awsTypes = {
-//   user: "",
-//   host: "",
-//   database: "",
-//   password: "",
-//   port: "",
-// };
+let awsInfo: awsTypes = {
+  user: "",
+  host: "",
+  database: "",
+  password: "",
+  port: "",
+};
 
 // FOR TESTING
 interface awsTypes {
@@ -38,30 +38,26 @@ interface awsTypes {
   port: any;
 };
 
-let awsInfo: awsTypes = {
-  user: process.env.RDS_USER,
-  host: process.env.RDS_ENDPOINT,
-  database: process.env.RDS_DB_NAME,
-  password: process.env.RDS_PASSWORD,
-  port: process.env.RDS_PORT,
-}
+// let awsInfo: awsTypes = {
+//   user: process.env.RDS_USER,
+//   host: process.env.RDS_ENDPOINT,
+//   database: process.env.RDS_DB_NAME,
+//   password: process.env.RDS_PASSWORD,
+//   port: process.env.RDS_PORT,
+// }
 
 // SETTING AWS INFO AS THE POOL INFORMATION
-const pool = new Pool({
-  user: process.env.RDS_USER,
-  host: process.env.RDS_ENDPOINT,
-  database: process.env.RDS_DB_NAME,
-  password: process.env.RDS_PASSWORD,
-  port: process.env.RDS_PORT,
-});
+let pool: any;
+// const pool = new Pool({
+//   user: process.env.RDS_USER,
+//   host: process.env.RDS_ENDPOINT,
+//   database: process.env.RDS_DB_NAME,
+//   password: process.env.RDS_PASSWORD,
+//   port: process.env.RDS_PORT,
+// });
 
 // EXPORTING POOL QUERY METHOD
-const db = {
-  query: (text: string, params?: any, callback?: any) => {
-    return pool.query(text, params, callback);
-  },
-};
-
+let db: any;
 
 app.use(bodyParser.json());
 
@@ -76,6 +72,13 @@ app.get("/refresh", (req, res) => {
     password: process.env.RDS_PASSWORD,
     port: process.env.RDS_PORT,
   };
+  pool = new Pool(awsInfo);
+  db = {
+    query: (text: string, params?: any, callback?: any) => {
+      return pool.query(text, params, callback);
+    },
+  };
+  
   console.log("refreshed: ", awsInfo)
   res.status(200).send("DATABASE HAS A CLEAN SLATE");
 });
