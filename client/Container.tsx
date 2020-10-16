@@ -51,7 +51,7 @@ class Container extends Component<{}, ContainerState> {
     onClose: true,
     schemaName: '',
     url: '',
-    modalIsOpen: false,
+    modalIsOpen: true,
     awsInfo: {
       user: '',
       host: '',

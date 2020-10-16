@@ -7,6 +7,7 @@
   p {
     color: $stratos-red;
     margin: 0 auto 10px auto;
+    font-family: $font-karla;
   }
 
   .primary-button {
@@ -33,7 +34,13 @@
       border: none;
       margin: 10px 0;
       height: 30px;
-      width: 200px;
+      width: 100%;
+      background-color: $background-darkmode-darker;
+      color: $stratos-red;
+
+      &::placeholder {
+        color: $stratos-red;
+      }
     }
   }
 }
