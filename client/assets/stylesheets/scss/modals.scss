@@ -1,0 +1,39 @@
+@import './variables';
+
+#aws-modal {
+  display: flex;
+  flex-direction: column;
+
+  p {
+    color: $stratos-red;
+    margin: 0 auto 10px auto;
+  }
+
+  .primary-button {
+    margin: 10px 0 0 0;
+    height: 30px;
+    background-color: $stratos-red;
+    border: none;
+  }
+
+  .secondary-button {
+    margin: 10px 0 0 0;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid $stratos-red;
+    color: $stratos-red;
+  }
+
+  #aws-modal-form {
+    display: flex;
+    flex-direction: column;
+
+    input {
+      text-align: center;
+      border: none;
+      margin: 10px 0;
+      height: 30px;
+      width: 200px;
+    }
+  }
+}

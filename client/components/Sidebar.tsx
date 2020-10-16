@@ -69,11 +69,9 @@ const Sidebar: React.FC<SidebarState> = (props: SidebarState) => {
           onRequestClose={props.closeModal}
           style={customStyles}
           contentLabel="Cloud Modal"
-          // className="aws-modal-class"
         >
-          {/* <h2 ref={_subtitle => (subtitle = _subtitle)}>Hello</h2> */}
-          <button onClick={props.closeModal}>close</button>
-          <form>
+          <p>CONNECT TO YOUR AWS RDS</p>
+          <form id="aws-modal-form">
             <input
               type="user"
               id="user"
@@ -109,8 +107,13 @@ const Sidebar: React.FC<SidebarState> = (props: SidebarState) => {
               value={props.awsInfo.port}
               onChange={props.awsInfoChange}
             />
-            <button onClick={props.connect}>Connect to AWS!!</button>
+            <button className="primary-button" onClick={props.connect}>
+              Connect
+            </button>
           </form>
+          <button className="secondary-button" onClick={props.closeModal}>
+            Cancel
+          </button>
         </Modal>
         <svg
           id="information-button"

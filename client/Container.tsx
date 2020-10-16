@@ -1,9 +1,9 @@
-import React, { Component, SyntheticEvent } from "react";
-import Announcement from "./components/Announcement";
-import CodeEditor from "./components/CodeEditor";
-import Sidebar from "./components/Sidebar";
-import LineGraph from "./components/LineGraph";
-import axios from "axios";
+import React, { Component, SyntheticEvent } from 'react';
+import Announcement from './components/Announcement';
+import CodeEditor from './components/CodeEditor';
+import Sidebar from './components/Sidebar';
+import LineGraph from './components/LineGraph';
+import axios from 'axios';
 
 interface ContainerState {
   queries: any;
@@ -45,35 +45,34 @@ class Container extends Component<{}, ContainerState> {
   state: ContainerState = {
     queries: [],
     queryStatistics: [],
-    queryEntry: "",
-    announcement: "Welcome to StratosDB",
-    schemaEntry: "",
+    queryEntry: '',
+    announcement: 'Welcome to StratosDB',
+    schemaEntry: '',
     onClose: true,
-    schemaName: "",
-    url: "",
+    schemaName: '',
+    url: '',
     modalIsOpen: false,
     awsInfo: {
-      user: "",
-      host: "",
-      database: "",
-      password: "",
-      port: "",
+      user: '',
+      host: '',
+      database: '',
+      password: '',
+      port: '',
     },
   };
 
   componentDidMount() {
-
-    console.log("component mounted");
-    console.log("before axios");
+    console.log('component mounted');
+    console.log('before axios');
     axios
-      .get("/refresh")
+      .get('/refresh')
       .then((result) => console.log(result))
       .catch((err) => console.error(err));
   }
 
   // UPDATING SCHEMA STATE DURING TYPING
   schemaChange(event: string) {
-    console.log("EVENT: ", event);
+    console.log('EVENT: ', event);
     this.setState({
       schemaEntry: event,
     });
@@ -83,22 +82,22 @@ class Container extends Component<{}, ContainerState> {
   schemaSubmit(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
 
-    console.log("state.queries before axios: ", this.state);
+    console.log('state.queries before axios: ', this.state);
 
     const schemaObj: any = {
       schemaEntry: this.state.schemaEntry,
     };
-    console.log("queryData", schemaObj);
-    axios.post("/newSchema", schemaObj).then((data) => {
-      console.log("explain data", data.data[0]);
+    console.log('queryData', schemaObj);
+    axios.post('/newSchema', schemaObj).then((data) => {
+      console.log('explain data', data.data[0]);
       this.setState({ queries: data.data[0] });
-      console.log("state after axios: ", this.state);
+      console.log('state after axios: ', this.state);
     });
   }
 
   // UPDATING QUERY STATE WHILE TYPING
   queryChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
-    console.log("EVENT: ", event.target.value);
+    console.log('EVENT: ', event.target.value);
     this.setState({
       queryEntry: event.target.value,
     });
@@ -108,15 +107,15 @@ class Container extends Component<{}, ContainerState> {
   querySubmit(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
 
-    console.log("state.queries before axios: ", this.state);
+    console.log('state.queries before axios: ', this.state);
 
     // DIFFERENT OBJECT FOR QUERY ENTRY
     const queryObj: any = {
       queryEntry: this.state.queryEntry,
     };
-    console.log("queryData", queryObj);
-    axios.post("/results", queryObj).then((data) => {
-      console.log("explain data", data.data[0]);
+    console.log('queryData', queryObj);
+    axios.post('/results', queryObj).then((data) => {
+      console.log('explain data', data.data[0]);
       this.setState({ queries: data.data[0] });
       console.log('state after axios: ', this.state);
       console.log('exec time', this.state.queries['Execution Time']);
@@ -128,15 +127,15 @@ class Container extends Component<{}, ContainerState> {
   // ESTABLISH CLOUD CONNECTION FUNCTION
   connect(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
-    console.log("in connect");
+    console.log('in connect');
     // ADD THE PROPERTIES IN THE FORM INTO STATE BY USING SETSTATE
-    console.log("state aws info: ", this.state.awsInfo);
+    console.log('state aws info: ', this.state.awsInfo);
     let info = this.state.awsInfo;
     // REMEMBER TO CHANGE THIS INTO A POST REQUEST ONCE WE GET THE ROUTE WORKING
     axios
-      .post("/connect", info)
-      .then(() => console.log("Success"))
-      .catch((err) => console.log("There has been an error: ", err));
+      .post('/connect', info)
+      .then(() => console.log('Success'))
+      .catch((err) => console.log('There has been an error: ', err));
 
     // CLOSING MODAL
     this.setState({ modalIsOpen: false });
@@ -163,7 +162,7 @@ class Container extends Component<{}, ContainerState> {
   refresh(event: React.ChangeEvent<HTMLSelectElement>) {
     event.preventDefault();
     window.location.reload(false);
-    console.log("refreshing");
+    console.log('refreshing');
   }
 
   render() {
