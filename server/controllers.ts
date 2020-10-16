@@ -61,6 +61,7 @@ export const stratosController: controllers = {
     const { queryEntry } = req.body;
     db.query(queryEntry)
       .then((results: any) => {
+        console.log(results.rows);
         res.locals.queryResult = results.rows;
         return next();
       })
