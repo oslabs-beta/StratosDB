@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import Modal from 'react-modal';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import Modal from "react-modal";
 
 interface SidebarState {
   url: string;
@@ -9,20 +9,22 @@ interface SidebarState {
   openModal: any;
   closeModal: any;
   modalIsOpen: boolean;
+  awsInfo: any;
+  awsInfoChange: any;
 }
 
 const customStyles = {
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
   },
 };
 
-Modal.setAppElement('#root');
+Modal.setAppElement("#root");
 
 const Sidebar: React.FC<SidebarState> = (props: SidebarState) => {
   return (
@@ -59,21 +61,49 @@ const Sidebar: React.FC<SidebarState> = (props: SidebarState) => {
         <Modal
           id="aws-modal"
           isOpen={props.modalIsOpen}
-          // onAfterOpen={props.afterOpenModal}
           onRequestClose={props.closeModal}
           style={customStyles}
           contentLabel="Cloud Modal"
         >
           {/* <h2 ref={_subtitle => (subtitle = _subtitle)}>Hello</h2> */}
           <button onClick={props.closeModal}>close</button>
-          <div>I am a modal</div>
-          <form action="http://localhost:3000/connect" method="post">
-            <input placeholder="User" />
-            <input placeholder="Host" />
-            <input placeholder="Database" />
-            <input placeholder="Password" />
-            <input placeholder="Port" />
-            <button type="submit">Connect to AWS!!</button>
+          <form>
+            <input
+              type="user"
+              id="user"
+              placeholder="User"
+              value={props.awsInfo.user}
+              onChange={props.awsInfoChange}
+            />
+            <input
+              type="host"
+              id="host"
+              placeholder="Host"
+              value={props.awsInfo.host}
+              onChange={props.awsInfoChange}
+            />
+            <input
+              type="database"
+              id="database"
+              placeholder="Database"
+              value={props.awsInfo.database}
+              onChange={props.awsInfoChange}
+            />
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              value={props.awsInfo.password}
+              onChange={props.awsInfoChange}
+            />
+            <input
+              type="port"
+              id="port"
+              placeholder="Port"
+              value={props.awsInfo.port}
+              onChange={props.awsInfoChange}
+            />
+            <button onClick={props.connect}>Connect to AWS!!</button>
           </form>
         </Modal>
         <svg
