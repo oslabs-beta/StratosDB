@@ -7,7 +7,7 @@ import axios from 'axios';
 
 interface ContainerState {
   queries: any;
-  queryStatistics: number[];
+  queryStatistics: any;
   queryEntry: any;
   //Announcement
   announcement: string;
@@ -97,20 +97,31 @@ class Container extends Component<{}, ContainerState> {
   querySubmit(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
 
-    console.log('state.queries before axios: ', this.state);
+    // console.log('state.queries before axios: ', this.state);
 
     // DIFFERENT OBJECT FOR QUERY ENTRY
     const queryObj: any = {
       queryEntry: this.state.queryEntry,
     };
-    console.log('queryData', queryObj);
+
+    // console.log('queryData', queryObj);
+    console.log('state before axios', this.state);
+    let newArr: any = this.state.queryStatistics;
     axios.post('/results', queryObj).then((data) => {
-      console.log('explain data', data.data[0]);
-      this.setState({ queries: data.data[0] });
+      newArr = newArr.concat(data.data[0]['Execution Time']);
+      // console.log('newArr', newArr);
+      console.log('explain data', data.data);
+      this.setState({
+        // queries: data.data[0],
+        queryStatistics: newArr,
+      });
       console.log('state after axios: ', this.state);
-      console.log('exec time', this.state.queries['Execution Time']);
-      this.state.queryStatistics.push(this.state.queries['Execution Time']);
-      console.log('BOOM', this.state.queryStatistics);
+      // this.setState({
+      //   queryStatistics: [this.state.queries['Execution Time']],
+      // });
+      // this.state.queryStatistics.push(this.state.queries['Execution Time']);
+      // console.log('state after push: ', this.state);
+      // console.log('BOOM', this.state.queryStatistics);
     });
   }
 
