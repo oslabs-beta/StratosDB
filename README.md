@@ -15,9 +15,22 @@
 
 <br>
 
-<p><b>stratosDB: </b>A Cloud-env database analytic and pre-deployment tool that abstracts databases out of local memory into a cloud-like controlled environment for SQL database testing.</p>
+<p><b>stratosDB: </b>A Cloud SQL database performance tester and deployment tool</p>
 
 </div>
+
+<br>
+
+## Beta Version
+
+Team StratosDB will strive to continuously release updates and additional features.
+
+1. If you would like to contribute to this project:
+
+   - Please feel free to submit a PR
+
+2. If you happen to come across any issues while tinkering with the application:
+   - Please report the bug/issue located under the Issues Tab located in this repository
 
 <br>
 
