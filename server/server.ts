@@ -1,29 +1,25 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import path from 'path';
-import dotenv from 'dotenv';
 import { stratosController } from './controllers';
-const { Pool } = require('pg');
-
-// INITIALIZE CONFIGURATION
-dotenv.config();
-
-const app: express.Application = express();
 
 interface queryResultObjType {
   queryStatistics: any;
   queryTable: any;
 }
 
-// FOR PRODUCTION
-// INTERFACE FOR AWS INFORMATION
-// interface awsTypes {
-//   user: string;
-//   host: string;
-//   database: string;
-//   password: string;
-//   port: string;
-// };
+interface awsTypes {
+  user: string;
+  host: string;
+  database: string;
+  password: string;
+  port: string;
+}
+
+const { Pool } = require('pg');
+
+const app: express.Application = express();
+
+const PORT = 3000;
 
 // OBJECT CONTAINING AWS INFO FROM THE FRONT END
 let awsInfo: awsTypes = {
@@ -34,41 +30,15 @@ let awsInfo: awsTypes = {
   port: '',
 };
 
-// FOR TESTING
-interface awsTypes {
-  user: any;
-  host: any;
-  database: any;
-  password: any;
-  port: any;
-}
-
-// let awsInfo: awsTypes = {
-//   user: process.env.RDS_USER,
-//   host: process.env.RDS_ENDPOINT,
-//   database: process.env.RDS_DB_NAME,
-//   password: process.env.RDS_PASSWORD,
-//   port: process.env.RDS_PORT,
-// }
-
 // SETTING AWS INFO AS THE POOL INFORMATION
 let pool: any;
-// const pool = new Pool({
-//   user: process.env.RDS_USER,
-//   host: process.env.RDS_ENDPOINT,
-//   database: process.env.RDS_DB_NAME,
-//   password: process.env.RDS_PASSWORD,
-//   port: process.env.RDS_PORT,
-// });
 
 // EXPORTING POOL QUERY METHOD
 const db: any = {};
 
 app.use(bodyParser.json());
 
-const PORT = 3000;
-
-// WHEN REFRESHED, THE APP WILL WIPE ANY EXISTING TABLES IN THE DB
+// WHEN REFRESHED, THE APP WILL RESET AWS CONNECTION INFO TO EMPTY VALUES
 app.get('/refresh', (req, res) => {
   awsInfo = {
     user: '',
@@ -86,8 +56,8 @@ app.get('/refresh', (req, res) => {
 });
 
 // CONNECTING TO AWS
-app.post("/connect", (req, res) => {
-  console.log("Incoming form information: ", req.body)
+app.post('/connect', (req, res) => {
+  console.log('Incoming form information: ', req.body);
   awsInfo = {
     user: req.body.user,
     host: req.body.host,
@@ -96,13 +66,14 @@ app.post("/connect", (req, res) => {
     port: req.body.port,
   };
   pool = new Pool(awsInfo);
-  db["query"] = (text: string, params?: any, callback?: any) => {
-      return pool.query(text, params, callback);
-    };
-  
-  console.log("HOOPLAH MAGIC: ", awsInfo, "We have connected!")
+  db['query'] = (text: string, params?: any, callback?: any) => {
+    return pool.query(text, params, callback);
+  };
+
+  console.log('HOOPLAH MAGIC: ', awsInfo, 'We have connected!');
   res.status(200);
 });
+
 // PASSING AWS DATABASE INFORMATION INTO SERVER FROM STATE
 app.post('/aws', (req, res) => {
   // assigning AWS info to awsInfo
