@@ -1,5 +1,6 @@
 import express, { query } from "express";
-const db = require("./models");
+// const db = require("./server");
+import db from "./server";
 
 /**
  * NOTE TO TEAM: CONTROLLER TO RESET/WIPE/DROP ALL TABLES FROM DB
@@ -28,6 +29,7 @@ export const stratosController: controllers = {
   ) => {
     // DESTRUCTURING SCHEMAENTRY FROM REQ.BODY
     const { schemaEntry } = req.body;
+    console.log("state: ", req.body.queryEntry);
     db.query(schemaEntry)
       .then((result: any) => {
         return next();

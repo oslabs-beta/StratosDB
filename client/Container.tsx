@@ -55,13 +55,11 @@ class Container extends Component<{}, ContainerState> {
     });
   };
 
-  // componentDidMount() {
-  //   // let queries = this.state.queries.slice();
-  //   // queries.push(newQuery);
-  //   console.log('state.queries1: ', this.state);
-  //   this.testFunc();
-  //   console.log('state.queries2: ', this.state);
-  // }
+  componentDidMount() {
+    console.log("component mounted")
+    console.log("before axios");
+    axios.get("/refresh").then((result) => console.log(result)).catch(err => console.error(err));
+  }
 
   schemaChange(event: string) {
     console.log('EVENT: ', event);
