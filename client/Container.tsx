@@ -123,6 +123,8 @@ class Container extends Component<{}, ContainerState> {
 
   // ESTABLISH CLOUD CONNECTION FUNCTION
   connect(event: React.MouseEvent<HTMLElement>) {
+    event.preventDefault();
+    console.log("in connect");
     // ADD THE PROPERTIES IN THE FORM INTO STATE BY USING SETSTATE
     console.log("state aws info: ", this.state.awsInfo);
     let info = this.state.awsInfo;
@@ -131,6 +133,9 @@ class Container extends Component<{}, ContainerState> {
       .post("/connect", info)
       .then(() => console.log("Success"))
       .catch((err) => console.log("There has been an error: ", err));
+
+    // CLOSING MODAL
+    this.setState({ modalIsOpen: false });
   }
 
   // SHOW POPUP CLOUD MODAL

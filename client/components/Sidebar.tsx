@@ -67,7 +67,7 @@ const Sidebar: React.FC<SidebarState> = (props: SidebarState) => {
         >
           {/* <h2 ref={_subtitle => (subtitle = _subtitle)}>Hello</h2> */}
           <button onClick={props.closeModal}>close</button>
-          <form action="http://localhost:3000/connect" method="post">
+          <form>
             <input
               type="user"
               id="user"
@@ -103,7 +103,7 @@ const Sidebar: React.FC<SidebarState> = (props: SidebarState) => {
               value={props.awsInfo.port}
               onChange={props.awsInfoChange}
             />
-            <button type="submit">Connect to AWS!!</button>
+            <button onClick={props.connect}>Connect to AWS!!</button>
           </form>
         </Modal>
         <svg

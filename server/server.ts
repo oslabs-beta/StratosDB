@@ -79,19 +79,19 @@ app.get("/refresh", (req, res) => {
 // CONNECTING TO AWS
 app.post("/connect", (req, res) => {
   console.log("Incoming form information: ", req.body)
-  // awsInfo = {
-  //   user: process.env.RDS_USER,
-  //   host: process.env.RDS_ENDPOINT,
-  //   database: process.env.RDS_DB_NAME,
-  //   password: process.env.RDS_PASSWORD,
-  //   port: process.env.RDS_PORT,
-  // };
-  // pool = new Pool(awsInfo);
-  // db["query"] = (text: string, params?: any, callback?: any) => {
-  //     return pool.query(text, params, callback);
-  //   };
+  awsInfo = {
+    user: req.body.user,
+    host: req.body.host,
+    database: req.body.database,
+    password: req.body.password,
+    port: req.body.port,
+  };
+  pool = new Pool(awsInfo);
+  db["query"] = (text: string, params?: any, callback?: any) => {
+      return pool.query(text, params, callback);
+    };
   
-  // console.log("HOOPLAH MAGIC: ", awsInfo)
+  console.log("HOOPLAH MAGIC: ", awsInfo, "We have connected!")
   res.status(200);
 });
 // PASSING AWS DATABASE INFORMATION INTO SERVER FROM STATE
