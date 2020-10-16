@@ -4,6 +4,7 @@ import { Line, defaults } from 'react-chartjs-2';
 interface LineGraphProps {
   queries: {}[];
   queryStatistics: number[];
+  queryHistory: any;
 }
 
 class LineGraph extends Component<LineGraphProps> {
@@ -25,16 +26,24 @@ class LineGraph extends Component<LineGraphProps> {
   // const execTime: any = 'Execution Time';
 
   render() {
-    const { queries, queryStatistics } = this.props;
+    const { queries, queryStatistics, queryHistory } = this.props;
+    const labelData = () => {
+      let newArr = [];
+      for (let i = 0; i < queryHistory.length; i++) {
+        newArr.push(queryHistory[i]);
+      }
+      return newArr;
+    };
 
-    const labelData = () => queryStatistics.map((query, i) => i);
+    // const labelData = () => queryStatistics.map((query, i) => i);
     // const runtimeData = () => queryStatistics.map((query) => queries);
 
     const data = {
-      labels: () => queryStatistics.map((query, i) => i),
+      // labels: () => queryStatistics.map((query, i) => i),
+      labels: labelData(),
       datasets: [
         {
-          label: 'Runtime',
+          label: 'Run Time',
           fill: true,
           lineTension: 0.5,
           backgroundColor: '#399cff',
@@ -47,7 +56,6 @@ class LineGraph extends Component<LineGraphProps> {
 
     return (
       <div id='line-graph' className='LineGraph'>
-        console.log('here lies queries', queries)
         <Line
           data={data}
           options={{
