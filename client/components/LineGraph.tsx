@@ -22,7 +22,7 @@ class LineGraph extends Component<LineGraphProps> {
   //     queryStatistics: execTimeArr,
   //   });
   // }
-  const execTime: any = 'Execution Time';
+  // const execTime: any = 'Execution Time';
   
   render() {
     const { queries } = this.props;
@@ -39,7 +39,7 @@ class LineGraph extends Component<LineGraphProps> {
           backgroundColor: '#399cff',
           borderColor: 'rgba(247,247,247,247)',
           borderWidth: 2,
-          data: [queries.execution],
+          // data: [queries.execution],
         },
       ],
     };
