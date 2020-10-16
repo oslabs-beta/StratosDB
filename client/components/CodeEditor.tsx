@@ -16,7 +16,7 @@ interface CodeEditorState {
 const CodeEditor: React.FC<CodeEditorState> = (props: CodeEditorState) => {
   // Codemirror module configuration options
   const options = {
-    lineNumbers: true,
+    lineNumbers: true, // DIV "CODEMIRROR-GUTTERS CODEMIRROR-LINENUMBERS"
     mode: 'sql',
     theme: 'blackboard',
     lineWrapping: true,
