@@ -24,7 +24,9 @@
     }
 
     #aws-modal {
-      z-index: 1000;
+      background-color: black;
+      display: flex;
+      flex-direction: column;
     }
   }
 

@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import Modal from "react-modal";
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
 
 interface SidebarState {
   url: string;
@@ -15,16 +15,21 @@ interface SidebarState {
 
 const customStyles = {
   content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    backgroundColor: '#2a2b47',
+    border: 'none',
+  },
+  overlay: {
+    backgroundColor: 'rgba(12, 12, 17, 0.75)',
   },
 };
 
-Modal.setAppElement("#root");
+Modal.setAppElement('#root');
 
 const Sidebar: React.FC<SidebarState> = (props: SidebarState) => {
   return (
@@ -64,6 +69,7 @@ const Sidebar: React.FC<SidebarState> = (props: SidebarState) => {
           onRequestClose={props.closeModal}
           style={customStyles}
           contentLabel="Cloud Modal"
+          // className="aws-modal-class"
         >
           {/* <h2 ref={_subtitle => (subtitle = _subtitle)}>Hello</h2> */}
           <button onClick={props.closeModal}>close</button>
