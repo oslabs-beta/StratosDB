@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 interface SidebarState {
   url: string;
   refresh: any;
+  connect: any;
 }
 
 const Sidebar: React.FC<SidebarState> = (props: SidebarState) => {
@@ -33,6 +34,7 @@ const Sidebar: React.FC<SidebarState> = (props: SidebarState) => {
           width="75"
           height="75"
           viewBox="0 0 24 24"
+          onClick={props.connect}
         >
           <path d="M12 3c-4.006 0-7.267 3.141-7.479 7.092-2.57.463-4.521 2.706-4.521 5.408 0 3.037 2.463 5.5 5.5 5.5h13c3.037 0 5.5-2.463 5.5-5.5 0-2.702-1.951-4.945-4.521-5.408-.212-3.951-3.473-7.092-7.479-7.092z" />
         </svg>

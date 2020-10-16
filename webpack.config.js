@@ -93,6 +93,7 @@ module.exports = {
       '/newSchema': 'http://localhost:3000',
       '/refresh': 'http://localhost:3000',
       '/aws': 'http://localhost:3000',
+      '/connect': 'http://localhost:3000',
     },
   },
   plugins: [

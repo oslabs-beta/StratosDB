@@ -29,6 +29,7 @@ class Container extends Component<{}, ContainerState> {
     this.querySubmit = this.querySubmit.bind(this);
     this.refresh = this.refresh.bind(this);
     this.testFunc = this.testFunc.bind(this);
+    this.connect = this.connect.bind(this);
   }
 
   state: ContainerState = {
@@ -108,6 +109,12 @@ class Container extends Component<{}, ContainerState> {
     });
   }
 
+  // cloud connection button
+  connect(event: React.MouseEvent<HTMLElement>) {
+    // REMEMBER TO CHANGE THIS INTO A POST REQUEST ONCE WE GET THE ROUTE WORKING
+    axios.get("/connect").then(() => console.log("Success")).catch(err => console.log("There has been an error: ", err))
+  }
+
   // possibly needs componenet did update
   refresh(event: React.ChangeEvent<HTMLSelectElement>) {
     event.preventDefault();
@@ -118,7 +125,7 @@ class Container extends Component<{}, ContainerState> {
     return (
       <div id='main-container'>
         <div id='left-panel'>
-          <Sidebar url={this.state.url} refresh={this.refresh} />
+          <Sidebar url={this.state.url} refresh={this.refresh} connect={this.connect}/>
         </div>
         <div id='right-panel'>
           <Announcement announcement={this.state.announcement} />
