@@ -18,14 +18,13 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
-    transform: 'translate(-50%, -50%)'
-  }
+    transform: 'translate(-50%, -50%)',
+  },
 };
 
 Modal.setAppElement('#root');
 
 const Sidebar: React.FC<SidebarState> = (props: SidebarState) => {
-
   return (
     <div id="sidebar">
       <div id="main-sidebar">
@@ -58,6 +57,7 @@ const Sidebar: React.FC<SidebarState> = (props: SidebarState) => {
           <path d="M12 3c-4.006 0-7.267 3.141-7.479 7.092-2.57.463-4.521 2.706-4.521 5.408 0 3.037 2.463 5.5 5.5 5.5h13c3.037 0 5.5-2.463 5.5-5.5 0-2.702-1.951-4.945-4.521-5.408-.212-3.951-3.473-7.092-7.479-7.092z" />
         </svg>
         <Modal
+          id="aws-modal"
           isOpen={props.modalIsOpen}
           // onAfterOpen={props.afterOpenModal}
           onRequestClose={props.closeModal}
@@ -68,11 +68,11 @@ const Sidebar: React.FC<SidebarState> = (props: SidebarState) => {
           <button onClick={props.closeModal}>close</button>
           <div>I am a modal</div>
           <form action="http://localhost:3000/connect" method="post">
-            <input placeholder="User"/>
-            <input placeholder="Host"/>
-            <input placeholder="Database"/>
-            <input placeholder="Password"/>
-            <input placeholder="Port"/>
+            <input placeholder="User" />
+            <input placeholder="Host" />
+            <input placeholder="Database" />
+            <input placeholder="Password" />
+            <input placeholder="Port" />
             <button type="submit">Connect to AWS!!</button>
           </form>
         </Modal>
