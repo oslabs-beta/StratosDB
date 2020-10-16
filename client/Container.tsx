@@ -171,6 +171,7 @@ class Container extends Component<{}, ContainerState> {
                 <LineGraph
                   queries={this.state.queries}
                   queryStatistics={this.state.queryStatistics}
+                  queryHistory={this.state.queryHistory}
                 />
               </div>
             </div>
