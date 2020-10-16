@@ -1,5 +1,6 @@
 import express, { query } from "express";
-const db = require("./server");
+// const db = require("./server");
+import db from "./server";
 
 /**
  * NOTE TO TEAM: CONTROLLER TO RESET/WIPE/DROP ALL TABLES FROM DB
