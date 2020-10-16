@@ -21,7 +21,20 @@
 
 <br>
 
-## Beta Version
+## Table of Contents
+
+- <a href="https://github.com/oslabs-beta/StratosDB#beta-stage">Beta Stage</a>
+- <a href="https://github.com/oslabs-beta/StratosDB#overview">Overview</a>
+- <a href="https://github.com/oslabs-beta/StratosDB#main-features">Main Features</a>
+- <a href="https://github.com/oslabs-beta/StratosDB#built-with">Built With</a>
+- <a href="https://github.com/oslabs-beta/StratosDB#core-team">Core Team</a>
+- <a href="https://github.com/oslabs-beta/StratosDB#license">License</a>
+
+## Overview
+
+<br>
+
+## Beta Stage
 
 Team StratosDB will strive to continuously release updates and additional features.
 
@@ -32,7 +45,17 @@ Team StratosDB will strive to continuously release updates and additional featur
 2. If you happen to come across any issues while tinkering with the application:
    - Please report the bug/issue located under the Issues Tab located in this repository
 
+## Built With
+
+- React
+- TypeScript
+- CodeMirror
+- AWS RDS
+  - PostgreSQL
+
 <br>
+
+## Core Team
 
 <div align="center">
 <table>
@@ -60,3 +83,9 @@ Team StratosDB will strive to continuously release updates and additional featur
 </tr>
 </table>
 </div>
+
+<br>
+
+## License
+
+This project is licensed under the MIT License
