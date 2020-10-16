@@ -17,6 +17,14 @@ interface ContainerState {
   schemaName: string;
   //sideBar
   url: string;
+  modalIsOpen: boolean;
+  // awsInfo: {
+  //   user: string,
+  //   host: string,
+  //   database: string,
+  //   password: string,
+  //   port: string,
+  // };
 }
 
 class Container extends Component<{}, ContainerState> {
@@ -28,8 +36,9 @@ class Container extends Component<{}, ContainerState> {
     this.queryChange = this.queryChange.bind(this);
     this.querySubmit = this.querySubmit.bind(this);
     this.refresh = this.refresh.bind(this);
-    this.testFunc = this.testFunc.bind(this);
     this.connect = this.connect.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   state: ContainerState = {
@@ -41,19 +50,14 @@ class Container extends Component<{}, ContainerState> {
     onClose: true,
     schemaName: '',
     url: '',
-  };
-
-  testFunc = () => {
-    const newQuery: any = {
-      queryString: 'hey',
-      queryData: [{ test: 'test' }],
-      queryStatistics: 'is',
-      querySchema: 'a',
-      queryLabel: 'test',
-    };
-    this.setState({
-      queries: newQuery,
-    });
+    modalIsOpen: false,
+    // awsInfo: {
+    //   user: "",
+    //   host: "",
+    //   database: "",
+    //   password: "",
+    //   port: "",
+    // },
   };
 
   componentDidMount() {
@@ -62,6 +66,7 @@ class Container extends Component<{}, ContainerState> {
     axios.get("/refresh").then((result) => console.log(result)).catch(err => console.error(err));
   }
 
+  // UPDATING SCHEMA STATE DURING TYPING
   schemaChange(event: string) {
     console.log('EVENT: ', event);
     this.setState({
@@ -69,6 +74,7 @@ class Container extends Component<{}, ContainerState> {
     });
   }
 
+  // SUBMITTING SCHEMA CODE TO BACKEND
   schemaSubmit(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
 
@@ -85,6 +91,7 @@ class Container extends Component<{}, ContainerState> {
     });
   }
 
+  // UPDATING QUERY STATE WHILE TYPING
   queryChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
     console.log('EVENT: ', event.target.value);
     this.setState({
@@ -92,6 +99,7 @@ class Container extends Component<{}, ContainerState> {
     });
   }
 
+  // SUBMITTING QUERY SEARCH TO BACKEND
   querySubmit(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
 
@@ -109,11 +117,33 @@ class Container extends Component<{}, ContainerState> {
     });
   }
 
-  // cloud connection button
+  // ESTABLISH CLOUD CONNECTION FUNCTION 
   connect(event: React.MouseEvent<HTMLElement>) {
     // REMEMBER TO CHANGE THIS INTO A POST REQUEST ONCE WE GET THE ROUTE WORKING
     axios.get("/connect").then(() => console.log("Success")).catch(err => console.log("There has been an error: ", err))
   }
+
+  // SHOW POPUP CLOUD MODAL
+  openModal: any = () => {
+    this.setState({modalIsOpen: true})
+  }
+
+  closeModal(){
+    this.setState({modalIsOpen: false})
+  }
+
+  // CHANGING AWSINFO STATE
+  // awsUserChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
+  //   console.log('EVENT: ', event.target.value);
+  //   this.setState({
+  //     awsInfo: {user: event.target.value}
+  //   });
+  // }
+
+  // afterOpenModal: any = () => {
+  //   // references are now sync'd and can be accessed.
+  //   subtitle.style.color = '#f00';
+  // }
 
   // possibly needs componenet did update
   refresh(event: React.ChangeEvent<HTMLSelectElement>) {
@@ -121,11 +151,20 @@ class Container extends Component<{}, ContainerState> {
     window.location.reload(false);
     console.log('refreshing');
   }
+
   render() {
     return (
       <div id='main-container'>
         <div id='left-panel'>
-          <Sidebar url={this.state.url} refresh={this.refresh} connect={this.connect}/>
+          <Sidebar 
+            url={this.state.url} 
+            refresh={this.refresh} 
+            connect={this.connect} 
+            modalIsOpen={this.state.modalIsOpen} 
+            openModal={this.openModal} 
+            closeModal={this.closeModal}
+            // awsInfo={this.state.awsInfo}
+          />
         </div>
         <div id='right-panel'>
           <Announcement announcement={this.state.announcement} />

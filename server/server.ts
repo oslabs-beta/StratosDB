@@ -77,21 +77,22 @@ app.get("/refresh", (req, res) => {
 });
 
 // CONNECTING TO AWS
-app.get("/connect", (req, res) => {
-  awsInfo = {
-    user: process.env.RDS_USER,
-    host: process.env.RDS_ENDPOINT,
-    database: process.env.RDS_DB_NAME,
-    password: process.env.RDS_PASSWORD,
-    port: process.env.RDS_PORT,
-  };
-  pool = new Pool(awsInfo);
-  db["query"] = (text: string, params?: any, callback?: any) => {
-      return pool.query(text, params, callback);
-    };
+app.post("/connect", (req, res) => {
+  console.log("Incoming form information: ", req.body)
+  // awsInfo = {
+  //   user: process.env.RDS_USER,
+  //   host: process.env.RDS_ENDPOINT,
+  //   database: process.env.RDS_DB_NAME,
+  //   password: process.env.RDS_PASSWORD,
+  //   port: process.env.RDS_PORT,
+  // };
+  // pool = new Pool(awsInfo);
+  // db["query"] = (text: string, params?: any, callback?: any) => {
+  //     return pool.query(text, params, callback);
+  //   };
   
-  console.log("refreshed: ", awsInfo)
-  res.status(200).send("DATABASE HAS A CLEAN SLATE");
+  // console.log("refreshed: ", awsInfo)
+  res.status(200).send("HOOPLAH MAGIC");
 });
 // PASSING AWS DATABASE INFORMATION INTO SERVER FROM STATE
 app.post("/aws", (req, res) => {
