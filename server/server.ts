@@ -66,11 +66,11 @@ const PORT = 3000;
 // WHEN REFRESHED, THE APP WILL WIPE ANY EXISTING TABLES IN THE DB
 app.get('/refresh', (req, res) => {
   awsInfo = {
-    user: process.env.RDS_USER,
-    host: process.env.RDS_ENDPOINT,
-    database: process.env.RDS_DB_NAME,
-    password: process.env.RDS_PASSWORD,
-    port: process.env.RDS_PORT,
+    user: "",
+    host: "",
+    database: "",
+    password: "",
+    port: "",
   };
   pool = new Pool(awsInfo);
   db['query'] = (text: string, params?: any, callback?: any) => {
@@ -81,6 +81,24 @@ app.get('/refresh', (req, res) => {
   res.status(200).send('DATABASE HAS A CLEAN SLATE');
 });
 
+// CONNECTING TO AWS
+app.post("/connect", (req, res) => {
+  console.log("Incoming form information: ", req.body)
+  awsInfo = {
+    user: req.body.user,
+    host: req.body.host,
+    database: req.body.database,
+    password: req.body.password,
+    port: req.body.port,
+  };
+  pool = new Pool(awsInfo);
+  db["query"] = (text: string, params?: any, callback?: any) => {
+      return pool.query(text, params, callback);
+    };
+  
+  console.log("HOOPLAH MAGIC: ", awsInfo, "We have connected!")
+  res.status(200);
+});
 // PASSING AWS DATABASE INFORMATION INTO SERVER FROM STATE
 app.post('/aws', (req, res) => {
   // assigning AWS info to awsInfo
