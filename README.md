@@ -41,7 +41,7 @@ Team StratosDB will strive to continuously release updates and additional featur
    - Please feel free to submit a PR
 
 2. If you happen to come across any issues while tinkering with the application:
-   - Please report the bug/issue located under the Issues Tab located in this repository
+   - Please report the bug/issue by submitting a ticket located in the Issues Tab within this repository
 
 <br>
 
