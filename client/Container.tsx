@@ -53,7 +53,7 @@ class Container extends Component<{}, ContainerState> {
     onClose: true,
     schemaName: '',
     url: '',
-    modalIsOpen: true,
+    modalIsOpen: false,
     awsInfo: {
       user: '',
       host: '',
@@ -125,7 +125,8 @@ class Container extends Component<{}, ContainerState> {
     console.log('state before axios', this.state);
     let newArr: any = this.state.queryStatistics;
     axios.post('/results', queryObj).then((data) => {
-      newArr = newArr.concat(data.data[0]['Execution Time']);
+      console.log('DATA.DATA ', data.data);
+      newArr = newArr.concat(data.data.queryStatistics[0]['Execution Time']);
       // console.log('newArr', newArr);
       console.log('explain data', data.data);
       this.setState({
