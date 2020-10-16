@@ -8,6 +8,7 @@ import axios from 'axios';
 interface ContainerState {
   queries: any;
   queryStatistics: any;
+  queryHistory: any;
   queryEntry: any;
   //Announcement
   announcement: string;
@@ -34,6 +35,7 @@ class Container extends Component<{}, ContainerState> {
   state: ContainerState = {
     queries: [],
     queryStatistics: [],
+    queryHistory: [],
     queryEntry: '',
     announcement: 'Welcome to StratosDB',
     schemaEntry: '',
@@ -96,6 +98,13 @@ class Container extends Component<{}, ContainerState> {
 
   querySubmit(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
+
+    let historyArr: any = this.state.queryHistory;
+    historyArr.push(this.state.queryEntry);
+    this.setState({
+      queryHistory: historyArr,
+    });
+    console.log('ummm', this.state);
 
     // console.log('state.queries before axios: ', this.state);
 
