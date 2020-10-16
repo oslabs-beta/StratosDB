@@ -90,6 +90,9 @@ module.exports = {
     },
     proxy: {
       '/results': 'http://localhost:3000',
+      '/newSchema': 'http://localhost:3000',
+      '/refresh': 'http://localhost:3000',
+      '/aws': 'http://localhost:3000',
     },
   },
   plugins: [

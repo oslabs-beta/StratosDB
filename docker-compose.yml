@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 services:
   bb:
     image: busybox
@@ -25,4 +25,4 @@ services:
       - default
 
 volumes:
-  database-data: # named volumes can be managed easier using docker-compose
+  database-data:

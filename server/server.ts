@@ -1,22 +1,95 @@
 import express from "express";
 import bodyParser from "body-parser";
 import path from "path";
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
 import { stratosController } from "./controllers";
-
-const app: express.Application = express();
-
-app.use(bodyParser.json());
+const { Pool } = require('pg');
 
 // INITIALIZE CONFIGURATION
 dotenv.config();
 
-const PORT = process.env.SERVER_PORT;
+const app: express.Application = express();
+
+// FOR PRODUCTION
+// INTERFACE FOR AWS INFORMATION
+// interface awsTypes {
+//   user: string;
+//   host: string;
+//   database: string;
+//   password: string;
+//   port: string;
+// };
+
+// OBJECT CONTAINING AWS INFO FROM THE FRONT END
+let awsInfo: awsTypes = {
+  user: "",
+  host: "",
+  database: "",
+  password: "",
+  port: "",
+};
+
+// FOR TESTING
+interface awsTypes {
+  user: any;
+  host: any;
+  database: any;
+  password: any;
+  port: any;
+};
+
+// let awsInfo: awsTypes = {
+//   user: process.env.RDS_USER,
+//   host: process.env.RDS_ENDPOINT,
+//   database: process.env.RDS_DB_NAME,
+//   password: process.env.RDS_PASSWORD,
+//   port: process.env.RDS_PORT,
+// }
+
+// SETTING AWS INFO AS THE POOL INFORMATION
+let pool: any;
+// const pool = new Pool({
+//   user: process.env.RDS_USER,
+//   host: process.env.RDS_ENDPOINT,
+//   database: process.env.RDS_DB_NAME,
+//   password: process.env.RDS_PASSWORD,
+//   port: process.env.RDS_PORT,
+// });
+
+// EXPORTING POOL QUERY METHOD
+let db: any;
+
+app.use(bodyParser.json());
+
+const PORT = 3000;
 
 // WHEN REFRESHED, THE APP WILL WIPE ANY EXISTING TABLES IN THE DB
-app.get("/", stratosController.reset, (req, res) => {
+app.get("/refresh", (req, res) => {
+  awsInfo = {
+    user: process.env.RDS_USER,
+    host: process.env.RDS_ENDPOINT,
+    database: process.env.RDS_DB_NAME,
+    password: process.env.RDS_PASSWORD,
+    port: process.env.RDS_PORT,
+  };
+  pool = new Pool(awsInfo);
+  db = {
+    query: (text: string, params?: any, callback?: any) => {
+      return pool.query(text, params, callback);
+    },
+  };
+  
+  console.log("refreshed: ", awsInfo)
   res.status(200).send("DATABASE HAS A CLEAN SLATE");
 });
+
+// PASSING AWS DATABASE INFORMATION INTO SERVER FROM STATE
+app.post("/aws", (req, res) => {
+  // assigning AWS info to awsInfo
+  awsInfo = req.body.awsInfo;
+  console.log("AWS info set: ", awsInfo);
+  res.status(200).send("AWS info has been set")
+})
 
 // FRONTEND BUTTON THAT WILL ALLOW USER TO DROP ALL TABLES FROM DB
 app.get("/reset", stratosController.reset, (req, res) => {
@@ -39,3 +112,5 @@ app.post("/results", stratosController.runTest, (req, res) => {
 app.listen(PORT, () => {
   console.log(`stratosDB server is running on port ${PORT}`);
 });
+
+export default db;
