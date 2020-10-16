@@ -57,7 +57,7 @@ let pool: any;
 // });
 
 // EXPORTING POOL QUERY METHOD
-let db: any;
+const db: any = {};
 
 app.use(bodyParser.json());
 
@@ -66,6 +66,19 @@ const PORT = 3000;
 // WHEN REFRESHED, THE APP WILL WIPE ANY EXISTING TABLES IN THE DB
 app.get("/refresh", (req, res) => {
   awsInfo = {
+    user: "",
+    host: "",
+    database: "",
+    password: "",
+    port: "",
+  };
+  console.log("refreshed: ", awsInfo)
+  res.status(200).send("DATABASE HAS A CLEAN SLATE");
+});
+
+// CONNECTING TO AWS
+app.get("/connect", (req, res) => {
+  awsInfo = {
     user: process.env.RDS_USER,
     host: process.env.RDS_ENDPOINT,
     database: process.env.RDS_DB_NAME,
@@ -73,16 +86,13 @@ app.get("/refresh", (req, res) => {
     port: process.env.RDS_PORT,
   };
   pool = new Pool(awsInfo);
-  db = {
-    query: (text: string, params?: any, callback?: any) => {
+  db["query"] = (text: string, params?: any, callback?: any) => {
       return pool.query(text, params, callback);
-    },
-  };
+    };
   
   console.log("refreshed: ", awsInfo)
   res.status(200).send("DATABASE HAS A CLEAN SLATE");
 });
-
 // PASSING AWS DATABASE INFORMATION INTO SERVER FROM STATE
 app.post("/aws", (req, res) => {
   // assigning AWS info to awsInfo
