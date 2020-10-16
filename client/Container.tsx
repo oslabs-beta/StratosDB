@@ -6,7 +6,7 @@ import LineGraph from "./components/LineGraph";
 import axios from "axios";
 
 interface ContainerState {
-  queries: {}[];
+  queries: any;
   queryStatistics: number[];
   queryEntry: any;
   //Announcement
@@ -62,6 +62,7 @@ class Container extends Component<{}, ContainerState> {
   };
 
   componentDidMount() {
+
     console.log("component mounted");
     console.log("before axios");
     axios
@@ -117,7 +118,10 @@ class Container extends Component<{}, ContainerState> {
     axios.post("/results", queryObj).then((data) => {
       console.log("explain data", data.data[0]);
       this.setState({ queries: data.data[0] });
-      console.log("state after axios: ", this.state);
+      console.log('state after axios: ', this.state);
+      console.log('exec time', this.state.queries['Execution Time']);
+      this.state.queryStatistics.push(this.state.queries['Execution Time']);
+      console.log('BOOM', this.state.queryStatistics);
     });
   }
 
