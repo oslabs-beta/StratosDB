@@ -91,8 +91,8 @@ app.post("/connect", (req, res) => {
   //     return pool.query(text, params, callback);
   //   };
   
-  // console.log("refreshed: ", awsInfo)
-  res.status(200).send("HOOPLAH MAGIC");
+  // console.log("HOOPLAH MAGIC: ", awsInfo)
+  res.status(200);
 });
 // PASSING AWS DATABASE INFORMATION INTO SERVER FROM STATE
 app.post("/aws", (req, res) => {
