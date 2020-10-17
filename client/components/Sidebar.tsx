@@ -1,5 +1,6 @@
 import React from 'react';
 import AwsModal from './AwsModal';
+import InfoModal from './InfoModal';
 
 interface SidebarState {
   url: string;
@@ -10,6 +11,9 @@ interface SidebarState {
   awsModalIsOpen: boolean;
   awsInfo: any;
   awsInfoChange: any;
+  infoOpenModal: any;
+  infoCloseModal: any;
+  infoModalIsOpen: boolean;
 }
 
 const Sidebar: React.FC<SidebarState> = (props: SidebarState) => {
@@ -57,9 +61,14 @@ const Sidebar: React.FC<SidebarState> = (props: SidebarState) => {
           width="75"
           height="75"
           viewBox="0 0 24 24"
+          onClick={props.infoOpenModal}
         >
           <path d="M12 24c6.627 0 12-5.373 12-12s-5.373-12-12-12-12 5.373-12 12 5.373 12 12 12zm1-6h-2v-8h2v8zm-1-12.25c.69 0 1.25.56 1.25 1.25s-.56 1.25-1.25 1.25-1.25-.56-1.25-1.25.56-1.25 1.25-1.25z" />
         </svg>
+        <InfoModal
+          modalIsOpen={props.infoModalIsOpen}
+          closeModal={props.infoCloseModal}
+        />
       </div>
       <div id="bottom-sidebar">
         <img

@@ -26,6 +26,7 @@ interface ContainerState {
     password: string;
     port: string;
   };
+  infoModalIsOpen: boolean;
 }
 
 class Container extends Component<{}, ContainerState> {
@@ -41,6 +42,8 @@ class Container extends Component<{}, ContainerState> {
     this.awsOpenModal = this.awsOpenModal.bind(this);
     this.awsCloseModal = this.awsCloseModal.bind(this);
     this.awsInfoChange = this.awsInfoChange.bind(this);
+    this.infoOpenModal = this.infoOpenModal.bind(this);
+    this.infoCloseModal = this.infoCloseModal.bind(this);
   }
 
   state: ContainerState = {
@@ -61,6 +64,7 @@ class Container extends Component<{}, ContainerState> {
       password: '',
       port: '',
     },
+    infoModalIsOpen: false,
   };
 
   componentDidMount() {
@@ -169,6 +173,15 @@ class Container extends Component<{}, ContainerState> {
     this.setState({ awsModalIsOpen: false });
   }
 
+  // SHOW POPUP INFO MODAL
+  infoOpenModal: any = () => {
+    this.setState({ infoModalIsOpen: true });
+  };
+
+  infoCloseModal() {
+    this.setState({ infoModalIsOpen: false });
+  }
+
   // CHANGING AWSINFO STATE
   awsInfoChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { id, value } = e.target;
@@ -197,6 +210,9 @@ class Container extends Component<{}, ContainerState> {
             awsCloseModal={this.awsCloseModal}
             awsInfo={this.state.awsInfo}
             awsInfoChange={this.awsInfoChange}
+            infoOpenModal={this.infoOpenModal}
+            infoCloseModal={this.infoCloseModal}
+            infoModalIsOpen={this.state.infoModalIsOpen}
           />
         </div>
         <div id="right-panel">
