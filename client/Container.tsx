@@ -20,7 +20,7 @@ interface ContainerState {
   schemaName: string;
   //sideBar
   url: string;
-  modalIsOpen: boolean;
+  awsModalIsOpen: boolean;
   awsInfo: {
     user: string;
     host: string;
@@ -28,6 +28,7 @@ interface ContainerState {
     password: string;
     port: string;
   };
+  infoModalIsOpen: boolean;
 }
 
 class Container extends Component<{}, ContainerState> {
@@ -40,9 +41,11 @@ class Container extends Component<{}, ContainerState> {
     this.querySubmit = this.querySubmit.bind(this);
     this.refresh = this.refresh.bind(this);
     this.connect = this.connect.bind(this);
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    this.awsOpenModal = this.awsOpenModal.bind(this);
+    this.awsCloseModal = this.awsCloseModal.bind(this);
     this.awsInfoChange = this.awsInfoChange.bind(this);
+    this.infoOpenModal = this.infoOpenModal.bind(this);
+    this.infoCloseModal = this.infoCloseModal.bind(this);
   }
 
   state: ContainerState = {
@@ -56,7 +59,7 @@ class Container extends Component<{}, ContainerState> {
     onClose: true,
     schemaName: '',
     url: '',
-    modalIsOpen: false,
+    awsModalIsOpen: false,
     awsInfo: {
       user: '',
       host: '',
@@ -64,6 +67,7 @@ class Container extends Component<{}, ContainerState> {
       password: '',
       port: '',
     },
+    infoModalIsOpen: false,
   };
 
   componentDidMount() {
@@ -160,16 +164,25 @@ class Container extends Component<{}, ContainerState> {
       .catch((err) => console.log('There has been an error: ', err));
 
     // CLOSING MODAL
-    this.setState({ modalIsOpen: false });
+    this.setState({ awsModalIsOpen: false });
   }
 
   // SHOW POPUP CLOUD MODAL
-  openModal: any = () => {
-    this.setState({ modalIsOpen: true });
+  awsOpenModal: any = () => {
+    this.setState({ awsModalIsOpen: true });
   };
 
-  closeModal() {
-    this.setState({ modalIsOpen: false });
+  awsCloseModal() {
+    this.setState({ awsModalIsOpen: false });
+  }
+
+  // SHOW POPUP INFO MODAL
+  infoOpenModal: any = () => {
+    this.setState({ infoModalIsOpen: true });
+  };
+
+  infoCloseModal() {
+    this.setState({ infoModalIsOpen: false });
   }
 
   // CHANGING AWSINFO STATE
@@ -195,11 +208,14 @@ class Container extends Component<{}, ContainerState> {
             url={this.state.url}
             refresh={this.refresh}
             connect={this.connect}
-            modalIsOpen={this.state.modalIsOpen}
-            openModal={this.openModal}
-            closeModal={this.closeModal}
+            awsModalIsOpen={this.state.awsModalIsOpen}
+            awsOpenModal={this.awsOpenModal}
+            awsCloseModal={this.awsCloseModal}
             awsInfo={this.state.awsInfo}
             awsInfoChange={this.awsInfoChange}
+            infoOpenModal={this.infoOpenModal}
+            infoCloseModal={this.infoCloseModal}
+            infoModalIsOpen={this.state.infoModalIsOpen}
           />
         </div>
         <div id="right-panel">
