@@ -4,6 +4,7 @@ import CodeEditor from './components/CodeEditor';
 import Sidebar from './components/Sidebar';
 import LineGraph from './components/LineGraph';
 import axios from 'axios';
+import Table from './components/Table';
 
 interface ContainerState {
   queries: any;
@@ -221,6 +222,7 @@ class Container extends Component<{}, ContainerState> {
                 </button>
               </div>
               <div id="visual-data">
+                <Table />
                 <LineGraph
                   queries={this.state.queries}
                   queryStatistics={this.state.queryStatistics}
