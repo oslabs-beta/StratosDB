@@ -1,1 +1,29 @@
 @import './variables';
+
+#info-modal {
+  color: $stratos-red;
+  font-family: $font-karla;
+  height: 80%;
+  width: 60%;
+
+  #info-composition {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+  }
+
+  .secondary-button {
+    margin: 10px 0 0 0;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    color: $stratos-red;
+    text-align: right;
+    font-size: 25px;
+    font-family: $font-alata;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
