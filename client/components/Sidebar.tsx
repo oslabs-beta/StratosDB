@@ -1,5 +1,5 @@
 import React from 'react';
-import AwsModal from './awsModal';
+import AwsModal from './AwsModal';
 
 interface SidebarState {
   url: string;
