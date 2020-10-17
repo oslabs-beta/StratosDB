@@ -24,6 +24,4 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-const UploadModal: React.FC<uploadModalState> = (props: uploadModalState) => {
-    
-}
+const UploadModal: React.FC<uploadModalState> = (props: uploadModalState) => {};
