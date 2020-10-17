@@ -188,14 +188,14 @@ class Container extends Component<{}, ContainerState> {
     this.setState({ infoModalIsOpen: false });
   }
 
-  fileUpload() {
+  fileUpload(event: React.MouseEvent<HTMLElement>) {
     console.log("upload has been clicked");
-    // const data = new FormData();
-    // data.append("file", this.state.selectedFile);
-    // axios
-    //   .post("/upload", data)
-    //   .then((res) => console.log(res.statusText))
-    //   .catch((err) => console.log("Error in file upload: ", err));
+    const data = new FormData();
+    data.append("file", this.state.selectedFile);
+    axios
+      .post("/upload", data)
+      .then((res) => console.log(res.statusText))
+      .catch((err) => console.log("Error in file upload: ", err));
   }
 
   // CHANGING AWSINFO STATE
