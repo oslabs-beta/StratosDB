@@ -30,6 +30,11 @@ interface ContainerState {
   };
   infoModalIsOpen: boolean;
   selectedFile: any;
+  uploadModalIsOpen: boolean;
+}
+
+interface HTMLInputEvent extends Event {
+  target: HTMLInputElement & EventTarget;
 }
 
 class Container extends Component<{}, ContainerState> {
@@ -48,6 +53,7 @@ class Container extends Component<{}, ContainerState> {
     this.infoOpenModal = this.infoOpenModal.bind(this);
     this.infoCloseModal = this.infoCloseModal.bind(this);
     this.fileUpload = this.fileUpload.bind(this);
+    this.fileUpdate = this.fileUpdate.bind(this);
   }
 
   state: ContainerState = {
@@ -56,13 +62,8 @@ class Container extends Component<{}, ContainerState> {
     queryHistory: [],
     queryEntry: "",
     queryTable: [],
-<<<<<<< HEAD
-    announcement: "Welcome to StratosDB",
+    announcement: "Welcome to StratosDB Beta",
     schemaEntry: "",
-=======
-    announcement: 'Welcome to StratosDB Beta',
-    schemaEntry: '',
->>>>>>> 5fd26dd4f1b46c11a874a06e5475cce265adefe2
     onClose: true,
     schemaName: "",
     url: "",
@@ -76,6 +77,7 @@ class Container extends Component<{}, ContainerState> {
     },
     infoModalIsOpen: false,
     selectedFile: null,
+    uploadModalIsOpen: false,
   };
 
   componentDidMount() {
@@ -138,15 +140,9 @@ class Container extends Component<{}, ContainerState> {
     // console.log('queryData', queryObj);
     console.log("state before axios", this.state);
     let newArr: any = this.state.queryStatistics;
-<<<<<<< HEAD
     axios.post("/results", queryObj).then((data) => {
       console.log("this is sparta", data);
       newArr = newArr.concat(data.data.queryStatistics[0]["Execution Time"]);
-=======
-    axios.post('/results', queryObj).then((data) => {
-      console.log('this is sparta', data);
-      newArr = newArr.concat(data.data.queryStatistics[0]['Execution Time']);
->>>>>>> 5fd26dd4f1b46c11a874a06e5475cce265adefe2
       // console.log('newArr', newArr);
       console.log("explain data", data.data);
       this.setState({
@@ -199,7 +195,23 @@ class Container extends Component<{}, ContainerState> {
     this.setState({ infoModalIsOpen: false });
   }
 
-  fileUpload(event: React.MouseEvent<HTMLElement>) {
+  uploadOpenModal: any = () => {
+    this.setState({ uploadModalIsOpen: true });
+  };
+
+  uploadCloseModal() {
+    this.setState({ uploadModalIsOpen: false });
+  }
+
+  // UPDATING STATE TO LOCATION OF FILE
+  fileUpdate(selectorFiles: FileList) {
+    this.setState({
+      selectedFile: selectorFiles,
+    });
+  }
+
+  // SENDING FILE TO BACKEND
+  fileUpload() {
     console.log("upload has been clicked");
     const data = new FormData();
     data.append("file", this.state.selectedFile);
@@ -242,6 +254,8 @@ class Container extends Component<{}, ContainerState> {
             infoModalIsOpen={this.state.infoModalIsOpen}
             fileSelected={this.state.selectedFile}
             fileUpload={this.fileUpload}
+            fileUpdate={this.fileUpdate}
+            uploadModalIsOpen={this.state.uploadModalIsOpen}
           />
         </div>
         <div id="right-panel">

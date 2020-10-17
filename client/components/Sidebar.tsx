@@ -16,6 +16,8 @@ interface SidebarState {
   infoModalIsOpen: boolean;
   fileUpload: any;
   fileSelected: any;
+  fileUpdate: any;
+  uploadModalIsOpen: boolean;
 }
 
 const Sidebar: React.FC<SidebarState> = (props: SidebarState) => {
