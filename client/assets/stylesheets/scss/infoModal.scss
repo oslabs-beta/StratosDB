@@ -1,0 +1,57 @@
+@import './variables';
+
+#info-modal {
+  font-family: $font-karla;
+  height: 80%;
+  width: 60%;
+  text-align: center;
+
+  img {
+    margin: 0 auto;
+  }
+
+  h1 {
+    color: $stratos-blue;
+  }
+
+  h2 {
+    color: $stratos-yellow;
+  }
+
+  h3 {
+    color: $stratos-green;
+  }
+
+  p {
+    color: #ffffff;
+  }
+
+  strong {
+    color: $stratos-red;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  #info-composition {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+  }
+
+  .secondary-button {
+    margin: 10px 0 0 0;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    color: $stratos-red;
+    text-align: right;
+    font-size: 25px;
+    font-family: $font-alata;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

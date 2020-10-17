@@ -4,12 +4,14 @@ import CodeEditor from './components/CodeEditor';
 import Sidebar from './components/Sidebar';
 import LineGraph from './components/LineGraph';
 import axios from 'axios';
+import Table from './components/Table';
 
 interface ContainerState {
   queries: any;
   queryStatistics: any;
   queryHistory: any;
   queryEntry: any;
+  queryTable: any;
   //Announcement
   announcement: string;
   //codeEditorState
@@ -18,7 +20,7 @@ interface ContainerState {
   schemaName: string;
   //sideBar
   url: string;
-  modalIsOpen: boolean;
+  awsModalIsOpen: boolean;
   awsInfo: {
     user: string;
     host: string;
@@ -26,6 +28,7 @@ interface ContainerState {
     password: string;
     port: string;
   };
+  infoModalIsOpen: boolean;
 }
 
 class Container extends Component<{}, ContainerState> {
@@ -38,9 +41,11 @@ class Container extends Component<{}, ContainerState> {
     this.querySubmit = this.querySubmit.bind(this);
     this.refresh = this.refresh.bind(this);
     this.connect = this.connect.bind(this);
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    this.awsOpenModal = this.awsOpenModal.bind(this);
+    this.awsCloseModal = this.awsCloseModal.bind(this);
     this.awsInfoChange = this.awsInfoChange.bind(this);
+    this.infoOpenModal = this.infoOpenModal.bind(this);
+    this.infoCloseModal = this.infoCloseModal.bind(this);
   }
 
   state: ContainerState = {
@@ -48,12 +53,13 @@ class Container extends Component<{}, ContainerState> {
     queryStatistics: [],
     queryHistory: [],
     queryEntry: '',
+    queryTable: [],
     announcement: 'Welcome to StratosDB',
     schemaEntry: '',
     onClose: true,
     schemaName: '',
     url: '',
-    modalIsOpen: false,
+    awsModalIsOpen: false,
     awsInfo: {
       user: '',
       host: '',
@@ -61,6 +67,7 @@ class Container extends Component<{}, ContainerState> {
       password: '',
       port: '',
     },
+    infoModalIsOpen: false,
   };
 
   componentDidMount() {
@@ -113,7 +120,6 @@ class Container extends Component<{}, ContainerState> {
     this.setState({
       queryHistory: historyArr,
     });
-    console.log('ummm', this.state);
 
     // console.log('state.queries before axios: ', this.state);
 
@@ -125,13 +131,14 @@ class Container extends Component<{}, ContainerState> {
     console.log('state before axios', this.state);
     let newArr: any = this.state.queryStatistics;
     axios.post('/results', queryObj).then((data) => {
-      console.log('DATA.DATA ', data.data);
+      console.log("this is sparta", data)
       newArr = newArr.concat(data.data.queryStatistics[0]['Execution Time']);
       // console.log('newArr', newArr);
       console.log('explain data', data.data);
       this.setState({
         // queries: data.data[0],
         queryStatistics: newArr,
+        queryTable: data.data.queryTable
       });
       console.log('state after axios: ', this.state);
       // this.setState({
@@ -157,16 +164,25 @@ class Container extends Component<{}, ContainerState> {
       .catch((err) => console.log('There has been an error: ', err));
 
     // CLOSING MODAL
-    this.setState({ modalIsOpen: false });
+    this.setState({ awsModalIsOpen: false });
   }
 
   // SHOW POPUP CLOUD MODAL
-  openModal: any = () => {
-    this.setState({ modalIsOpen: true });
+  awsOpenModal: any = () => {
+    this.setState({ awsModalIsOpen: true });
   };
 
-  closeModal() {
-    this.setState({ modalIsOpen: false });
+  awsCloseModal() {
+    this.setState({ awsModalIsOpen: false });
+  }
+
+  // SHOW POPUP INFO MODAL
+  infoOpenModal: any = () => {
+    this.setState({ infoModalIsOpen: true });
+  };
+
+  infoCloseModal() {
+    this.setState({ infoModalIsOpen: false });
   }
 
   // CHANGING AWSINFO STATE
@@ -192,11 +208,14 @@ class Container extends Component<{}, ContainerState> {
             url={this.state.url}
             refresh={this.refresh}
             connect={this.connect}
-            modalIsOpen={this.state.modalIsOpen}
-            openModal={this.openModal}
-            closeModal={this.closeModal}
+            awsModalIsOpen={this.state.awsModalIsOpen}
+            awsOpenModal={this.awsOpenModal}
+            awsCloseModal={this.awsCloseModal}
             awsInfo={this.state.awsInfo}
             awsInfoChange={this.awsInfoChange}
+            infoOpenModal={this.infoOpenModal}
+            infoCloseModal={this.infoCloseModal}
+            infoModalIsOpen={this.state.infoModalIsOpen}
           />
         </div>
         <div id="right-panel">
@@ -221,6 +240,7 @@ class Container extends Component<{}, ContainerState> {
                 </button>
               </div>
               <div id="visual-data">
+                <Table queryTable={this.state.queryTable}/>
                 <LineGraph
                   queries={this.state.queries}
                   queryStatistics={this.state.queryStatistics}
