@@ -18,7 +18,7 @@ interface ContainerState {
   schemaName: string;
   //sideBar
   url: string;
-  modalIsOpen: boolean;
+  awsModalIsOpen: boolean;
   awsInfo: {
     user: string;
     host: string;
@@ -38,8 +38,8 @@ class Container extends Component<{}, ContainerState> {
     this.querySubmit = this.querySubmit.bind(this);
     this.refresh = this.refresh.bind(this);
     this.connect = this.connect.bind(this);
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    this.awsOpenModal = this.awsOpenModal.bind(this);
+    this.awsCloseModal = this.awsCloseModal.bind(this);
     this.awsInfoChange = this.awsInfoChange.bind(this);
   }
 
@@ -53,7 +53,7 @@ class Container extends Component<{}, ContainerState> {
     onClose: true,
     schemaName: '',
     url: '',
-    modalIsOpen: false,
+    awsModalIsOpen: false,
     awsInfo: {
       user: '',
       host: '',
@@ -157,16 +157,16 @@ class Container extends Component<{}, ContainerState> {
       .catch((err) => console.log('There has been an error: ', err));
 
     // CLOSING MODAL
-    this.setState({ modalIsOpen: false });
+    this.setState({ awsModalIsOpen: false });
   }
 
   // SHOW POPUP CLOUD MODAL
-  openModal: any = () => {
-    this.setState({ modalIsOpen: true });
+  awsOpenModal: any = () => {
+    this.setState({ awsModalIsOpen: true });
   };
 
-  closeModal() {
-    this.setState({ modalIsOpen: false });
+  awsCloseModal() {
+    this.setState({ awsModalIsOpen: false });
   }
 
   // CHANGING AWSINFO STATE
@@ -192,9 +192,9 @@ class Container extends Component<{}, ContainerState> {
             url={this.state.url}
             refresh={this.refresh}
             connect={this.connect}
-            modalIsOpen={this.state.modalIsOpen}
-            openModal={this.openModal}
-            closeModal={this.closeModal}
+            awsModalIsOpen={this.state.awsModalIsOpen}
+            awsOpenModal={this.awsOpenModal}
+            awsCloseModal={this.awsCloseModal}
             awsInfo={this.state.awsInfo}
             awsInfoChange={this.awsInfoChange}
           />
