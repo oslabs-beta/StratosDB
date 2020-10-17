@@ -56,8 +56,13 @@ class Container extends Component<{}, ContainerState> {
     queryHistory: [],
     queryEntry: "",
     queryTable: [],
+<<<<<<< HEAD
     announcement: "Welcome to StratosDB",
     schemaEntry: "",
+=======
+    announcement: 'Welcome to StratosDB Beta',
+    schemaEntry: '',
+>>>>>>> 5fd26dd4f1b46c11a874a06e5475cce265adefe2
     onClose: true,
     schemaName: "",
     url: "",
@@ -133,9 +138,15 @@ class Container extends Component<{}, ContainerState> {
     // console.log('queryData', queryObj);
     console.log("state before axios", this.state);
     let newArr: any = this.state.queryStatistics;
+<<<<<<< HEAD
     axios.post("/results", queryObj).then((data) => {
       console.log("this is sparta", data);
       newArr = newArr.concat(data.data.queryStatistics[0]["Execution Time"]);
+=======
+    axios.post('/results', queryObj).then((data) => {
+      console.log('this is sparta', data);
+      newArr = newArr.concat(data.data.queryStatistics[0]['Execution Time']);
+>>>>>>> 5fd26dd4f1b46c11a874a06e5475cce265adefe2
       // console.log('newArr', newArr);
       console.log("explain data", data.data);
       this.setState({
