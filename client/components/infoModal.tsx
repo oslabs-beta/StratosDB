@@ -41,7 +41,7 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           <img
             src="./../client/assets/images/stratosdb_logo_white.png"
             alt=""
-            width="200px"
+            width="250px"
           />
           <br />
           <h2>GETTING STARTED</h2>
