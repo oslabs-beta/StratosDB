@@ -1,10 +1,10 @@
-import React, { Component, SyntheticEvent } from 'react';
-import Announcement from './components/Announcement';
-import CodeEditor from './components/CodeEditor';
-import Sidebar from './components/Sidebar';
-import LineGraph from './components/LineGraph';
-import axios from 'axios';
-import Table from './components/Table';
+import React, { Component, SyntheticEvent } from "react";
+import Announcement from "./components/Announcement";
+import CodeEditor from "./components/CodeEditor";
+import Sidebar from "./components/Sidebar";
+import LineGraph from "./components/LineGraph";
+import axios from "axios";
+import Table from "./components/Table";
 
 interface ContainerState {
   queries: any;
@@ -29,6 +29,7 @@ interface ContainerState {
     port: string;
   };
   infoModalIsOpen: boolean;
+  selectedFile: any;
 }
 
 class Container extends Component<{}, ContainerState> {
@@ -46,42 +47,44 @@ class Container extends Component<{}, ContainerState> {
     this.awsInfoChange = this.awsInfoChange.bind(this);
     this.infoOpenModal = this.infoOpenModal.bind(this);
     this.infoCloseModal = this.infoCloseModal.bind(this);
+    this.fileUpload = this.fileUpload.bind(this);
   }
 
   state: ContainerState = {
     queries: [],
     queryStatistics: [],
     queryHistory: [],
-    queryEntry: '',
+    queryEntry: "",
     queryTable: [],
-    announcement: 'Welcome to StratosDB',
-    schemaEntry: '',
+    announcement: "Welcome to StratosDB",
+    schemaEntry: "",
     onClose: true,
-    schemaName: '',
-    url: '',
+    schemaName: "",
+    url: "",
     awsModalIsOpen: false,
     awsInfo: {
-      user: '',
-      host: '',
-      database: '',
-      password: '',
-      port: '',
+      user: "",
+      host: "",
+      database: "",
+      password: "",
+      port: "",
     },
     infoModalIsOpen: false,
+    selectedFile: null,
   };
 
   componentDidMount() {
-    console.log('component mounted');
-    console.log('before axios');
+    console.log("component mounted");
+    console.log("before axios");
     axios
-      .get('/refresh')
+      .get("/refresh")
       .then((result) => console.log(result))
       .catch((err) => console.error(err));
   }
 
   // UPDATING SCHEMA STATE DURING TYPING
   schemaChange(event: string) {
-    console.log('EVENT: ', event);
+    console.log("EVENT: ", event);
     this.setState({
       schemaEntry: event,
     });
@@ -91,22 +94,22 @@ class Container extends Component<{}, ContainerState> {
   schemaSubmit(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
 
-    console.log('state.queries before axios: ', this.state);
+    console.log("state.queries before axios: ", this.state);
 
     const schemaObj: any = {
       schemaEntry: this.state.schemaEntry,
     };
-    console.log('queryData', schemaObj);
-    axios.post('/newSchema', schemaObj).then((data) => {
-      console.log('explain data', data.data[0]);
+    console.log("queryData", schemaObj);
+    axios.post("/newSchema", schemaObj).then((data) => {
+      console.log("explain data", data.data[0]);
       this.setState({ queries: data.data[0] });
-      console.log('state after axios: ', this.state);
+      console.log("state after axios: ", this.state);
     });
   }
 
   // UPDATING QUERY STATE WHILE TYPING
   queryChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
-    console.log('EVENT: ', event.target.value);
+    console.log("EVENT: ", event.target.value);
     this.setState({
       queryEntry: event.target.value,
     });
@@ -128,19 +131,19 @@ class Container extends Component<{}, ContainerState> {
       queryEntry: this.state.queryEntry,
     };
     // console.log('queryData', queryObj);
-    console.log('state before axios', this.state);
+    console.log("state before axios", this.state);
     let newArr: any = this.state.queryStatistics;
-    axios.post('/results', queryObj).then((data) => {
-      console.log("this is sparta", data)
-      newArr = newArr.concat(data.data.queryStatistics[0]['Execution Time']);
+    axios.post("/results", queryObj).then((data) => {
+      console.log("this is sparta", data);
+      newArr = newArr.concat(data.data.queryStatistics[0]["Execution Time"]);
       // console.log('newArr', newArr);
-      console.log('explain data', data.data);
+      console.log("explain data", data.data);
       this.setState({
         // queries: data.data[0],
         queryStatistics: newArr,
-        queryTable: data.data.queryTable
+        queryTable: data.data.queryTable,
       });
-      console.log('state after axios: ', this.state);
+      console.log("state after axios: ", this.state);
       // this.setState({
       //   queryStatistics: [this.state.queries['Execution Time']],
       // });
@@ -153,15 +156,15 @@ class Container extends Component<{}, ContainerState> {
   // ESTABLISH CLOUD CONNECTION FUNCTION
   connect(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
-    console.log('in connect');
+    console.log("in connect");
     // ADD THE PROPERTIES IN THE FORM INTO STATE BY USING SETSTATE
-    console.log('state aws info: ', this.state.awsInfo);
+    console.log("state aws info: ", this.state.awsInfo);
     let info = this.state.awsInfo;
     // REMEMBER TO CHANGE THIS INTO A POST REQUEST ONCE WE GET THE ROUTE WORKING
     axios
-      .post('/connect', info)
-      .then(() => console.log('Success'))
-      .catch((err) => console.log('There has been an error: ', err));
+      .post("/connect", info)
+      .then(() => console.log("Success"))
+      .catch((err) => console.log("There has been an error: ", err));
 
     // CLOSING MODAL
     this.setState({ awsModalIsOpen: false });
@@ -185,6 +188,16 @@ class Container extends Component<{}, ContainerState> {
     this.setState({ infoModalIsOpen: false });
   }
 
+  fileUpload() {
+    console.log("upload has been clicked");
+    // const data = new FormData();
+    // data.append("file", this.state.selectedFile);
+    // axios
+    //   .post("/upload", data)
+    //   .then((res) => console.log(res.statusText))
+    //   .catch((err) => console.log("Error in file upload: ", err));
+  }
+
   // CHANGING AWSINFO STATE
   awsInfoChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { id, value } = e.target;
@@ -197,7 +210,7 @@ class Container extends Component<{}, ContainerState> {
   refresh(event: React.ChangeEvent<HTMLSelectElement>) {
     event.preventDefault();
     window.location.reload(false);
-    console.log('refreshing');
+    console.log("refreshing");
   }
 
   render() {
@@ -216,6 +229,8 @@ class Container extends Component<{}, ContainerState> {
             infoOpenModal={this.infoOpenModal}
             infoCloseModal={this.infoCloseModal}
             infoModalIsOpen={this.state.infoModalIsOpen}
+            fileSelected={this.state.selectedFile}
+            fileUpload={this.fileUpload}
           />
         </div>
         <div id="right-panel">
@@ -240,7 +255,7 @@ class Container extends Component<{}, ContainerState> {
                 </button>
               </div>
               <div id="visual-data">
-                <Table queryTable={this.state.queryTable}/>
+                <Table queryTable={this.state.queryTable} />
                 <LineGraph
                   queries={this.state.queries}
                   queryStatistics={this.state.queryStatistics}
