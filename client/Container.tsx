@@ -54,6 +54,8 @@ class Container extends Component<{}, ContainerState> {
     this.infoCloseModal = this.infoCloseModal.bind(this);
     this.fileUpload = this.fileUpload.bind(this);
     this.fileUpdate = this.fileUpdate.bind(this);
+    this.uploadOpenModal = this.uploadOpenModal.bind(this);
+    this.uploadCloseModal = this.uploadCloseModal.bind(this);
   }
 
   state: ContainerState = {
@@ -256,6 +258,8 @@ class Container extends Component<{}, ContainerState> {
             fileUpload={this.fileUpload}
             fileUpdate={this.fileUpdate}
             uploadModalIsOpen={this.state.uploadModalIsOpen}
+            uploadOpenModal={this.uploadOpenModal}
+            uploadCloseModal={this.uploadCloseModal}
           />
         </div>
         <div id="right-panel">

@@ -18,6 +18,8 @@ interface SidebarState {
   fileSelected: any;
   fileUpdate: any;
   uploadModalIsOpen: boolean;
+  uploadOpenModal: any;
+  uploadCloseModal: any;
 }
 
 const Sidebar: React.FC<SidebarState> = (props: SidebarState) => {
@@ -39,7 +41,7 @@ const Sidebar: React.FC<SidebarState> = (props: SidebarState) => {
           viewBox="0 0 24 24"
           fillRule="evenodd"
           clipRule="evenodd"
-          onClick={props.fileUpload}
+          onClick={props.uploadOpenModal}
         >
           <path d="M7 2c1.695 1.942 2.371 3 4 3h13v17h-24v-20h7zm6 11v-3h-2v3h-3v2h3v3h2v-3h3v-2h-3z" />
         </svg>
