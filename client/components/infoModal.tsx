@@ -38,7 +38,12 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           <button className="secondary-button" onClick={props.closeModal}>
             <strong>x</strong>
           </button>
-          <h1>WELCOME TO STRATOSDB</h1>
+          <img
+            src="./../client/assets/images/stratosdb_logo_white.png"
+            alt=""
+            width="200px"
+          />
+          <br />
           <h2>GETTING STARTED</h2>
           <h3>STEP ONE</h3>
           <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
@@ -63,7 +68,7 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
             was created, use <strong>postgres</strong>
           </p>
           <h2>OVERVIEW</h2>
-          <h3>IMPORTING .SQL & .TAR FILES</h3>
+          <h3>IMPORTING .SQL and .TAR FILES</h3>
           <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
           <h3>SCHEMA CODE EDITOR</h3>
           <p>Click on the Cloud Icon (located on the Left Sidebar)</p>

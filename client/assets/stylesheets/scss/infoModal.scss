@@ -1,10 +1,38 @@
 @import './variables';
 
 #info-modal {
-  color: $stratos-red;
   font-family: $font-karla;
   height: 80%;
   width: 60%;
+  text-align: center;
+
+  img {
+    margin: 0 auto;
+  }
+
+  h1 {
+    color: $stratos-blue;
+  }
+
+  h2 {
+    color: $stratos-yellow;
+  }
+
+  h3 {
+    color: $stratos-green;
+  }
+
+  p {
+    color: #ffffff;
+  }
+
+  strong {
+    color: $stratos-red;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   #info-composition {
     display: flex;
