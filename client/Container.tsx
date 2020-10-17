@@ -11,6 +11,7 @@ interface ContainerState {
   queryStatistics: any;
   queryHistory: any;
   queryEntry: any;
+  queryTable: any;
   //Announcement
   announcement: string;
   //codeEditorState
@@ -49,6 +50,7 @@ class Container extends Component<{}, ContainerState> {
     queryStatistics: [],
     queryHistory: [],
     queryEntry: '',
+    queryTable: [],
     announcement: 'Welcome to StratosDB',
     schemaEntry: '',
     onClose: true,
@@ -114,7 +116,6 @@ class Container extends Component<{}, ContainerState> {
     this.setState({
       queryHistory: historyArr,
     });
-    console.log('ummm', this.state);
 
     // console.log('state.queries before axios: ', this.state);
 
@@ -126,13 +127,14 @@ class Container extends Component<{}, ContainerState> {
     console.log('state before axios', this.state);
     let newArr: any = this.state.queryStatistics;
     axios.post('/results', queryObj).then((data) => {
-      console.log('DATA.DATA ', data.data);
+      console.log("this is sparta", data)
       newArr = newArr.concat(data.data.queryStatistics[0]['Execution Time']);
       // console.log('newArr', newArr);
       console.log('explain data', data.data);
       this.setState({
         // queries: data.data[0],
         queryStatistics: newArr,
+        queryTable: data.data.queryTable
       });
       console.log('state after axios: ', this.state);
       // this.setState({
@@ -222,7 +224,7 @@ class Container extends Component<{}, ContainerState> {
                 </button>
               </div>
               <div id="visual-data">
-                <Table />
+                <Table queryTable={this.state.queryTable}/>
                 <LineGraph
                   queries={this.state.queries}
                   queryStatistics={this.state.queryStatistics}

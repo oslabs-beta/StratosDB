@@ -1,23 +1,29 @@
 import React, { Component } from 'react'
 
-interface TableState {
-  resultTable1 : [];
+interface TableProps {
+  queryTable : [];
   
 }
 
-class Table extends Component<{}, TableState> {
-
+class Table extends Component<TableProps> {
+  constructor(props: TableProps) {
+    super(props)
+  }
+  
   render() {
+    const { queryTable } = this.props
+    console.log("this is from table", this.props.queryTable)
     return (
       <div id="table">
-    
+       <div>
+         
+         </div>
+{/*     
 <table>
   <tr>
     <th>_id</th>
     <th>item</th> 
     <th>description</th>
-    <th>date</th>
-    <th>status</th>
   </tr>
   <tr>
     <td>Jill</td>
@@ -34,7 +40,7 @@ class Table extends Component<{}, TableState> {
     <td>Doe</td>
     <td>80</td>
   </tr>
-</table>
+</table> */}
       </div>
     )
   }
