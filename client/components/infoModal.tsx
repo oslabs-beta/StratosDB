@@ -40,8 +40,8 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
         <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
         <h3>STEP TWO</h3>
         <p>
-          Enter your AWS RDS Information to connect to your cloud hosted
-          database
+          Enter your AWS RDS Information and press <strong>Connect</strong> to
+          establish a link to your cloud hosted database
         </p>
         <p>
           <strong>User:</strong> Database Username
@@ -55,11 +55,15 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
         <p>
           * Sourced from AWS RDS Database Instance Dashboard
           <br />
-          ** Different from AWS RDS DB Instance Name (If Database was left blank
-          when the AWS RDS Datbase Instance was created, use{' '}
-          <strong>postgres</strong> )
+          ** If Database name was left blank when the AWS RDS Datbase Instance
+          was created, use <strong>postgres</strong>
         </p>
-        <h3>STEP THREE</h3>
+        <h2>OVERVIEW</h2>
+        <h3>IMPORTING .SQL & .TAR FILES</h3>
+        <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
+        <h3>SCHEMA CODE EDITOR</h3>
+        <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
+        <h3>QUERY TEXT EDITOR</h3>
         <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
         <button className="secondary-button" onClick={props.closeModal}>
           Close
