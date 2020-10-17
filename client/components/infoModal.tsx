@@ -34,8 +34,33 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
         style={customStyles}
         contentLabel="Info Modal"
       >
-        <p>CONNECT TO YOUR AWS RDS</p>
-
+        <h1>WELCOME TO STRATOSDB</h1>
+        <h2>GETTING STARTED</h2>
+        <h3>STEP ONE</h3>
+        <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
+        <h3>STEP TWO</h3>
+        <p>
+          Enter your AWS RDS Information to connect to your cloud hosted
+          database
+        </p>
+        <p>
+          <strong>User:</strong> Database Username
+          <br />
+          <strong>Host:</strong> AWS RDS Endpoint Link *
+          <br />
+          <strong>Database:</strong> Database name **
+          <br />
+          <strong>Password:</strong> Database Password
+        </p>
+        <p>
+          * Sourced from AWS RDS Database Instance Dashboard
+          <br />
+          ** Different from AWS RDS DB Instance Name (If Database was left blank
+          when the AWS RDS Datbase Instance was created, use{' '}
+          <strong>postgres</strong> )
+        </p>
+        <h3>STEP THREE</h3>
+        <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
         <button className="secondary-button" onClick={props.closeModal}>
           Close
         </button>

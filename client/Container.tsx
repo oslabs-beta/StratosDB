@@ -64,7 +64,7 @@ class Container extends Component<{}, ContainerState> {
       password: '',
       port: '',
     },
-    infoModalIsOpen: false,
+    infoModalIsOpen: true,
   };
 
   componentDidMount() {
