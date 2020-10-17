@@ -17,7 +17,7 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    backgroundColor: '#2a2b47',
+    backgroundColor: '#151524',
     border: 'none',
   },
   overlay: {
@@ -37,7 +37,11 @@ const AwsModal: React.FC<awsModalState> = (props: awsModalState) => {
         style={customStyles}
         contentLabel="Cloud Modal"
       >
-        <p>CONNECT TO YOUR AWS RDS</p>
+        <img
+          src="./../client/assets/images/aws-logo.png"
+          alt=""
+          width="250px"
+        />
         <form id="aws-modal-form">
           <input
             type="user"

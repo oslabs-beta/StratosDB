@@ -14,7 +14,7 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    backgroundColor: '#2a2b47',
+    backgroundColor: '#151524',
     border: 'none',
   },
   overlay: {
@@ -41,16 +41,22 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           <img
             src="./../client/assets/images/stratosdb_logo_white.png"
             alt=""
-            width="200px"
+            width="40%"
           />
           <br />
-          <h2>GETTING STARTED</h2>
-          <h3>STEP ONE</h3>
-          <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
-          <h3>STEP TWO</h3>
+          <br />
+          <h1>S E T U P</h1>
+          <p>1. Click on the Cloud Icon (located on the Left Sidebar)</p>
+          <br />
+          <img
+            src="./../client/assets/images/info-modal-cloud-icon.png"
+            alt=""
+            width="60%"
+          />
+          <br />
+          <br />
           <p>
-            Enter your AWS RDS Information and press <strong>Connect</strong> to
-            establish a link to your cloud hosted database
+            2. Enter your AWS RDS Information and press <strong>Connect</strong>
           </p>
           <p>
             <strong>User:</strong> Database Username
@@ -61,18 +67,25 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
             <br />
             <strong>Password:</strong> Database Password
           </p>
+          <br />
+          <img
+            src="./../client/assets/images/info-modal-cloud-modal.png"
+            alt=""
+            width="60%"
+          />
+          <br />
           <p>
             * Sourced from AWS RDS Database Instance Dashboard
             <br />
             ** If Database name was left blank when the AWS RDS Datbase Instance
             was created, use <strong>postgres</strong>
           </p>
-          <h2>OVERVIEW</h2>
-          <h3>IMPORTING .SQL and .TAR FILES</h3>
+          <h1>O V E R V I E W</h1>
+          <h2>IMPORTING .SQL and .TAR FILES</h2>
           <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
-          <h3>SCHEMA CODE EDITOR</h3>
+          <h2>SCHEMA CODE EDITOR</h2>
           <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
-          <h3>QUERY TEXT EDITOR</h3>
+          <h2>QUERY TEXT EDITOR</h2>
           <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
         </div>
       </Modal>
