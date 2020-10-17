@@ -9,8 +9,8 @@
     "resetContainer": "docker container stop postgres-1 && docker container prune && docker container ls -a",
     "build": "NODE_ENV=production webpack",
     "dev": "cross-env NODE_ENV=development concurrently \"nodemon server/server.ts\" \"webpack-dev-server --open --hot\"",
-		"compile": "tsc",
-		"test": "jest"
+    "compile": "tsc",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -84,12 +84,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
-    "@babel/plugin-proposal-class-properties": "^7.12.1",
-    "@babel/plugin-transform-async-to-generator": "^7.12.1",
-    "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
-    "@babel/runtime": "^7.12.1",
     "@tsconfig/node12": "^1.0.7",
     "@types/express": "^4.17.8",
     "@types/node": "^14.11.2",
