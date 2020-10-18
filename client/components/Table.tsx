@@ -46,7 +46,6 @@ const Table: React.FC<TableProps> = (props: TableProps) => {
 
   return (
     <div id="table">
-      <p>hello</p>
       <table id="result-table">
         <tbody>
           <tr id="result-table-header">{tableHeaderCreator()}</tr>
