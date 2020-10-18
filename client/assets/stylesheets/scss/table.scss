@@ -1,7 +1,11 @@
 @import './variables';
 
-#queries-results-panel {
-  #table-container {
-    height: 80%;
+#table-container {
+  height: 80%;
+
+  #result-table {
+    width: 100%;
+    color: #ffffff;
+    border: 2px solid $stratos-blue;
   }
 }

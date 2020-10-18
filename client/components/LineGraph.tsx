@@ -43,7 +43,7 @@ class LineGraph extends Component<LineGraphProps> {
           data={data}
           options={{
             title: {
-              display: true,
+              display: false,
               text: 'QUERY REQUEST VS RUNTIME (ms)',
               fontSize: 16,
               fontColor: '#ffffff',

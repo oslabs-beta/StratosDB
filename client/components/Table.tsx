@@ -44,16 +44,20 @@ const Table: React.FC<TableProps> = (props: TableProps) => {
     }
   };
 
-  return (
-    <div id="table-container">
-      <table id="result-table">
-        <tbody>
-          <tr id="result-table-header">{tableHeaderCreator()}</tr>
-          {tableBodyCreator()}
-        </tbody>
-      </table>
-    </div>
-  );
+  if (queryTable.length === 0) {
+    return <div id="table-container"></div>;
+  } else {
+    return (
+      <div id="table-container">
+        <table id="result-table">
+          <tbody>
+            <tr id="result-table-header">{tableHeaderCreator()}</tr>
+            {tableBodyCreator()}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
 };
 
 export default Table;
