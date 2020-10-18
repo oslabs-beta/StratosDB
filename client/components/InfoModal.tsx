@@ -120,7 +120,31 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           <h2>VISUAL LINE GRAPH</h2>
           <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
           <br />
-          <h1>T R O U B L E S H O O T</h1>
+          <h1>B E T A</h1>
+          <p>
+            StratosDB is currently still in Beta and our team will strive to
+            continuously release updates and additional features.
+          </p>
+          <p>1. If you would like to contribute to this open source project:</p>
+          <a href="https://github.com/oslabs-beta/StratosDB/pulls">
+            Please feel free to submit a PR
+          </a>
+          <p>
+            2. If you happen to come across any issues while tinkering with the
+            application:
+          </p>
+          <a href="https://github.com/oslabs-beta/StratosDB/issues">
+            Please report the bug/issue by submitting a ticket on our Github
+            Repository
+          </a>
+          <br />
+          <h1>T H A N K S !</h1>
+          <p>StratosDB</p>
+          <a href="">stratosdb.io</a>
+          <a href="">Github</a>
+          <a href="">Twitter</a>
+          <br />
+          <br />
         </div>
       </Modal>
     </div>
