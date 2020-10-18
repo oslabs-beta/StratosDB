@@ -1,20 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 interface TableProps {
   queryTable: [];
-  // tableHeader: any;
 }
 
 const Table: React.FC<TableProps> = (props: TableProps) => {
   // QUERYTABLE: ARRAY OF OBJECTS (OUR RETURNED QUERY)
   const queryTable: any = props.queryTable;
-  // const headerResults: any = props.tableHeader;
-  // console.log(headerResults);
 
   // TABLE HEADER: ARRAY OF COLUMN NAMES
   const tableHeader: any =
     queryTable.length === 0 ? null : Object.keys(queryTable[0]);
 
+  // FUNCTION THAT WILL RETURN OUR TABLE HEADER WITH OUR COLUMN NAMES
   const tableHeaderCreator = () => {
     // IF TABLEHEADER HAS ONE ELEMENT OR MORE
     if (tableHeader) {
@@ -24,7 +22,9 @@ const Table: React.FC<TableProps> = (props: TableProps) => {
     }
   };
 
+  // FUNCTION THAT WILL RETURN OUR TABLE BODY ROWS
   const tableBodyCreator = () => {
+    // FUNCTION THAT WILL RETURN OUR TABLE BODY DATA CELLS
     const iteratorFunc = (array: any) => {
       return array.map((values: any, index: number) => {
         return <td key={index}>{values}</td>;
