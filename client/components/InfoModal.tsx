@@ -85,7 +85,12 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
           <br />
           <h2>SCHEMA CODE EDITOR</h2>
-          <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
+          <p>
+            Use the Schema Code Editor to input any psql command queries (EG.{' '}
+            <strong>CREATE TABLE</strong>, <strong>INSERT INTO</strong>,{' '}
+            <strong>DROP TABLE</strong>) to create/read/update/delete tables
+            and/or data entries from your tethered AWS RDS database
+          </p>
           <br />
           <img
             src="./../client/assets/images/info-modal-code-editor.png"
@@ -94,13 +99,28 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           />
           <br />
           <h2>QUERY TEXT EDITOR</h2>
-          <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
+          <p>
+            Enter your <strong>SELECT</strong> psql commands into the provided
+            text editor and press <strong>Submit Query</strong> to initiate the
+            performance analysis on your existing schema design
+          </p>
+          <p>
+            EG. SELECT * FROM <em>TABLE_NAME</em>;
+          </p>
           <br />
           <img
             src="./../client/assets/images/info-modal-query-text-area.png"
             alt=""
             width="60%"
           />
+          <br />
+          <h2>RETURN TABLE</h2>
+          <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
+          <br />
+          <h2>VISUAL LINE GRAPH</h2>
+          <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
+          <br />
+          <h1>T R O U B L E S H O O T</h1>
         </div>
       </Modal>
     </div>
