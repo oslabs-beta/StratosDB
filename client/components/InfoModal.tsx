@@ -83,10 +83,74 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           <h1>O V E R V I E W</h1>
           <h2>IMPORTING .SQL and .TAR FILES</h2>
           <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
+          <br />
           <h2>SCHEMA CODE EDITOR</h2>
-          <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
+          <p>
+            Use the Schema Code Editor to input any psql command queries (EG.{' '}
+            <strong>CREATE TABLE</strong>, <strong>INSERT INTO</strong>,{' '}
+            <strong>DROP TABLE</strong>) to create/read/update/delete tables
+            and/or data entries from your tethered AWS RDS database
+          </p>
+          <br />
+          <img
+            src="./../client/assets/images/info-modal-code-editor.png"
+            alt=""
+            width="60%"
+          />
+          <br />
           <h2>QUERY TEXT EDITOR</h2>
+          <p>
+            Enter your <strong>SELECT</strong> psql commands into the provided
+            text editor and press <strong>Submit Query</strong> to initiate the
+            performance analysis on your existing schema design
+          </p>
+          <p>
+            EG. SELECT * FROM <em>TABLE_NAME</em>;
+          </p>
+          <br />
+          <img
+            src="./../client/assets/images/info-modal-query-text-area.png"
+            alt=""
+            width="60%"
+          />
+          <br />
+          <h2>RETURN TABLE</h2>
           <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
+          <br />
+          <h2>VISUAL LINE GRAPH</h2>
+          <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
+          <br />
+          <h1>B E T A</h1>
+          <p>
+            StratosDB is currently still in Beta and our team will strive to
+            continuously release updates and additional features.
+          </p>
+          <p>1. If you would like to contribute to this open source project:</p>
+          <a href="https://github.com/oslabs-beta/StratosDB/pulls">
+            Please feel free to submit a PR
+          </a>
+          <p>
+            2. If you happen to come across any issues while tinkering with the
+            application:
+          </p>
+          <a href="https://github.com/oslabs-beta/StratosDB/issues">
+            Please report the bug/issue by submitting a ticket on our Github
+            Repository
+          </a>
+          <br />
+          <h1>T H A N K S !</h1>
+          <img
+            src="./../client/assets/images/stratosdb_logo_white.png"
+            alt=""
+            width="20%"
+          />
+          <br />
+          <span>
+            <a href="">Website</a> | <a href="">Github</a> |{' '}
+            <a href="">Twitter</a>
+          </span>
+          <br />
+          <br />
         </div>
       </Modal>
     </div>
