@@ -4,7 +4,6 @@ import { stratosController } from "./controllers";
 const { Pool } = require("pg");
 const app: express.Application = express();
 const multer = require("multer");
-const cors = require("cors");
 
 /**
  * TYPESCRTIPT INTERFACE DECLARACTIONS
@@ -40,28 +39,29 @@ let pool: any;
 const db: any = {};
 
 app.use(bodyParser.json());
-app.use(cors());
 
-const storage = multer.diskStorage({
-  destination: function (req: any, file: any, cb: any) {
-    cb(null, "public");
+// SET STORAGE
+let storage = multer.diskStorage({
+  destination: (req: any, file: any, cb: any) => {
+    cb(null, "./uploads");
   },
-  filename: function (req: any, file: any, cb: any) {
-    cb(null, Date.now() + "-" + file.originalName);
+  filename: (req: any, file: any, cb: any) => {
+    cb(null, Date.now() + "-" + file.originalname);
   },
 });
 
-const upload = multer({ storage: storage }).single("file");
+let upload = multer({ storage: storage });
+let type = upload.single("myFile");
 
-app.post("/upload", (req: any, res: any) => {
-  upload(req, res, (err: any) => {
-    if (err instanceof multer.MulterError) {
-      return res.status(500).json(err);
-    } else if (err) {
-      return res.status(500).json(err);
-    }
-  });
-  return res.status(200).send(req.file);
+app.post("/upload", type, (req, res, next) => {
+  console.log("upload has been called");
+  const file = req.body;
+  if (!file) {
+    const error = new Error("Please upload a file");
+    res.status(400);
+    return next();
+  }
+  res.send(file);
 });
 
 /**

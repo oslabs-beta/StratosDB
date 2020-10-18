@@ -38,7 +38,9 @@ const UploadModal: React.FC<uploadModalState> = (props: uploadModalState) => {
         contentLabel="Upload Modal"
       >
         <p>Import .sql or .tar files!</p>
-        <input type="file" onChange={(e) => props.fileUpdate} />
+        <form action="/upload" method="post" encType="multipart/form-data">
+          <input type="file" name="myFile" onChange={props.fileUpdate} />
+        </form>
         <button type="button" onClick={props.fileUpload}>
           Import File!
         </button>

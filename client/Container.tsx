@@ -78,7 +78,7 @@ class Container extends Component<{}, ContainerState> {
       port: "",
     },
     infoModalIsOpen: false,
-    selectedFile: null,
+    selectedFile: "hello",
     uploadModalIsOpen: false,
   };
 
@@ -206,17 +206,17 @@ class Container extends Component<{}, ContainerState> {
   }
 
   // UPDATING STATE TO LOCATION OF FILE
-  fileUpdate(selectorFiles: FileList) {
-    this.setState({
-      selectedFile: selectorFiles,
-    });
+  fileUpdate(event: any) {
+    const newFile = event.target.files[0];
+    this.setState({ selectedFile: newFile });
   }
 
   // SENDING FILE TO BACKEND
   fileUpload() {
     console.log("upload has been clicked");
     const data = new FormData();
-    data.append("file", this.state.selectedFile);
+    console.log("selected file: ", this.state.selectedFile);
+    data.append("myFile", this.state.selectedFile);
     axios
       .post("/upload", data)
       .then((res) => console.log(res.statusText))
