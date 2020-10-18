@@ -51,6 +51,15 @@ class LineGraph extends Component<LineGraphProps> {
             legend: {
               display: false,
             },
+            scales: {
+              xAxes: [
+                {
+                  ticks: {
+                    display: false,
+                  },
+                },
+              ],
+            },
           }}
         />
       </div>
