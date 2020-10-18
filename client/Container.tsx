@@ -254,7 +254,7 @@ class Container extends Component<{}, ContainerState> {
             infoOpenModal={this.infoOpenModal}
             infoCloseModal={this.infoCloseModal}
             infoModalIsOpen={this.state.infoModalIsOpen}
-            fileSelected={this.state.selectedFile}
+            selectedFile={this.state.selectedFile}
             fileUpload={this.fileUpload}
             fileUpdate={this.fileUpdate}
             uploadModalIsOpen={this.state.uploadModalIsOpen}

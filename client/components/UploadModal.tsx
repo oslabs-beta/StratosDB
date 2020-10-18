@@ -28,7 +28,23 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 const UploadModal: React.FC<uploadModalState> = (props: uploadModalState) => {
-  return <div>Hello</div>;
+  return (
+    <div>
+      <Modal
+        id="upload-Modal"
+        isOpen={props.modalIsOpen}
+        onRequestClose={props.closeModal}
+        style={customStyles}
+        contentLabel="Upload Modal"
+      >
+        <p>Import .sql or .tar files!</p>
+        <input type="file" onChange={(e) => props.fileUpdate} />
+        <button type="button" onClick={props.fileUpload}>
+          Import File!
+        </button>
+      </Modal>
+    </div>
+  );
 };
 
 export default UploadModal;
