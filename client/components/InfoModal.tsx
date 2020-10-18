@@ -117,8 +117,20 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           <h2>RETURN TABLE</h2>
           <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
           <br />
+          <img
+            src="./../client/assets/images/info-modal-returned-table.png"
+            alt=""
+            width="60%"
+          />
+          <br />
           <h2>VISUAL LINE GRAPH</h2>
           <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
+          <br />
+          <img
+            src="./../client/assets/images/info-modal-line-graph.png"
+            alt=""
+            width="60%"
+          />
           <br />
           <h1>B E T A</h1>
           <p>

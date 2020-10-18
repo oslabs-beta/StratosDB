@@ -3,6 +3,11 @@
 #table-container {
   max-height: 80%;
   margin: 0 0 10px 0;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   #result-table {
     width: 100%;
