@@ -1,11 +1,22 @@
 @import './variables';
 
 #table-container {
-  height: 80%;
+  max-height: 80%;
+  margin: 0 0 10px 0;
 
   #result-table {
     width: 100%;
     color: #ffffff;
-    border: 2px solid $stratos-blue;
+
+    th {
+      background-color: $stratos-red;
+      padding: 5px;
+    }
+
+    td {
+      background-color: #0d1122;
+      text-align: center;
+      padding: 5px;
+    }
   }
 }
