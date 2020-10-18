@@ -48,6 +48,7 @@ class Container extends Component<{}, ContainerState> {
     this.infoOpenModal = this.infoOpenModal.bind(this);
     this.infoCloseModal = this.infoCloseModal.bind(this);
     this.fileUpload = this.fileUpload.bind(this);
+    this.tableHeader = this.tableHeader.bind(this);
   }
 
   state: ContainerState = {
@@ -213,10 +214,18 @@ class Container extends Component<{}, ContainerState> {
     console.log('refreshing');
   }
 
+  tableHeader: any = () => {
+    const keyHeaders: any = Object.keys(this.state.queryTable[0]);
+    console.log('this is', keyHeaders);
+    const newArr: [] = keyHeaders.map((el: any, index: any) => {
+      return <th key={index}>{el}</th>;
+    });
+    return newArr;
+  };
   render() {
     return (
-      <div id="main-container">
-        <div id="left-panel">
+      <div id='main-container'>
+        <div id='left-panel'>
           <Sidebar
             url={this.state.url}
             refresh={this.refresh}
@@ -233,9 +242,9 @@ class Container extends Component<{}, ContainerState> {
             fileUpload={this.fileUpload}
           />
         </div>
-        <div id="right-panel">
+        <div id='right-panel'>
           <Announcement announcement={this.state.announcement} />
-          <div id="main-feature">
+          <div id='main-feature'>
             <CodeEditor
               schemaEntry={this.state.schemaEntry}
               data={this.state.queries}
@@ -244,18 +253,21 @@ class Container extends Component<{}, ContainerState> {
               schemaChange={this.schemaChange}
               schemaSubmit={this.schemaSubmit}
             />
-            <div id="queries-results-panel">
-              <div id="query-request">
+            <div id='queries-results-panel'>
+              <div id='query-request'>
                 <textarea
-                  id="query-input"
+                  id='query-input'
                   onChange={this.queryChange}
                 ></textarea>
-                <button id="query-submit" onClick={this.querySubmit}>
+                <button id='query-submit' onClick={this.querySubmit}>
                   Submit Query
                 </button>
               </div>
-              <div id="visual-data">
-                <Table queryTable={this.state.queryTable} />
+              <div id='visual-data'>
+                <Table
+                  queryTable={this.state.queryTable}
+                  tableHeader={this.tableHeader}
+                />
                 <LineGraph
                   queries={this.state.queries}
                   queryStatistics={this.state.queryStatistics}
