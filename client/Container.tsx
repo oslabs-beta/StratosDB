@@ -243,14 +243,12 @@ class Container extends Component<{}, ContainerState> {
                   Submit Query
                 </button>
               </div>
-              <div id="visual-data">
-                <Table queryTable={this.state.queryTable} />
-                <LineGraph
-                  queries={this.state.queries}
-                  queryStatistics={this.state.queryStatistics}
-                  queryHistory={this.state.queryHistory}
-                />
-              </div>
+              <Table queryTable={this.state.queryTable} />
+              <LineGraph
+                queries={this.state.queries}
+                queryStatistics={this.state.queryStatistics}
+                queryHistory={this.state.queryHistory}
+              />
             </div>
           </div>
         </div>
