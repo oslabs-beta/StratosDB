@@ -24,4 +24,10 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-const UploadModal: React.FC<uploadModalState> = (props: uploadModalState) => {};
+const UploadModal: React.FC<uploadModalState> = (props: uploadModalState) => {
+  return (
+    <div>
+      <p>HAD TO PUT SOMETHING HERE BECAUSE OF TYPESCRIPT ERROR</p>
+    </div>
+  );
+};
