@@ -1,10 +1,10 @@
-import React, { Component, SyntheticEvent } from "react";
-import Announcement from "./components/Announcement";
-import CodeEditor from "./components/CodeEditor";
-import Sidebar from "./components/Sidebar";
-import LineGraph from "./components/LineGraph";
-import axios from "axios";
-import Table from "./components/Table";
+import React, { Component, SyntheticEvent } from 'react';
+import Announcement from './components/Announcement';
+import CodeEditor from './components/CodeEditor';
+import Sidebar from './components/Sidebar';
+import LineGraph from './components/LineGraph';
+import axios from 'axios';
+import Table from './components/Table';
 
 interface ContainerState {
   queries: any;
@@ -62,38 +62,38 @@ class Container extends Component<{}, ContainerState> {
     queries: [],
     queryStatistics: [],
     queryHistory: [],
-    queryEntry: "",
+    queryEntry: '',
     queryTable: [],
-    announcement: "Welcome to StratosDB Beta",
-    schemaEntry: "",
+    announcement: 'Welcome to StratosDB Beta',
+    schemaEntry: '',
     onClose: true,
-    schemaName: "",
-    url: "",
+    schemaName: '',
+    url: '',
     awsModalIsOpen: false,
     awsInfo: {
-      user: "",
-      host: "",
-      database: "",
-      password: "",
-      port: "",
+      user: '',
+      host: '',
+      database: '',
+      password: '',
+      port: '',
     },
     infoModalIsOpen: false,
-    selectedFile: "hello",
+    selectedFile: 'hello',
     uploadModalIsOpen: false,
   };
 
   componentDidMount() {
-    console.log("component mounted");
-    console.log("before axios");
+    console.log('component mounted');
+    console.log('before axios');
     axios
-      .get("/refresh")
+      .get('/refresh')
       .then((result) => console.log(result))
       .catch((err) => console.error(err));
   }
 
   // UPDATING SCHEMA STATE DURING TYPING
   schemaChange(event: string) {
-    console.log("EVENT: ", event);
+    console.log('EVENT: ', event);
     this.setState({
       schemaEntry: event,
     });
@@ -103,22 +103,22 @@ class Container extends Component<{}, ContainerState> {
   schemaSubmit(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
 
-    console.log("state.queries before axios: ", this.state);
+    console.log('state.queries before axios: ', this.state);
 
     const schemaObj: any = {
       schemaEntry: this.state.schemaEntry,
     };
-    console.log("queryData", schemaObj);
-    axios.post("/newSchema", schemaObj).then((data) => {
-      console.log("explain data", data.data[0]);
+    console.log('queryData', schemaObj);
+    axios.post('/newSchema', schemaObj).then((data) => {
+      console.log('explain data', data.data[0]);
       this.setState({ queries: data.data[0] });
-      console.log("state after axios: ", this.state);
+      console.log('state after axios: ', this.state);
     });
   }
 
   // UPDATING QUERY STATE WHILE TYPING
   queryChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
-    console.log("EVENT: ", event.target.value);
+    console.log('EVENT: ', event.target.value);
     this.setState({
       queryEntry: event.target.value,
     });
@@ -140,19 +140,19 @@ class Container extends Component<{}, ContainerState> {
       queryEntry: this.state.queryEntry,
     };
     // console.log('queryData', queryObj);
-    console.log("state before axios", this.state);
+    console.log('state before axios', this.state);
     let newArr: any = this.state.queryStatistics;
-    axios.post("/results", queryObj).then((data) => {
-      console.log("this is sparta", data);
-      newArr = newArr.concat(data.data.queryStatistics[0]["Execution Time"]);
+    axios.post('/results', queryObj).then((data) => {
+      console.log('this is sparta', data);
+      newArr = newArr.concat(data.data.queryStatistics[0]['Execution Time']);
       // console.log('newArr', newArr);
-      console.log("explain data", data.data);
+      console.log('explain data', data.data);
       this.setState({
         // queries: data.data[0],
         queryStatistics: newArr,
         queryTable: data.data.queryTable,
       });
-      console.log("state after axios: ", this.state);
+      console.log('state after axios: ', this.state);
       // this.setState({
       //   queryStatistics: [this.state.queries['Execution Time']],
       // });
@@ -165,15 +165,15 @@ class Container extends Component<{}, ContainerState> {
   // ESTABLISH CLOUD CONNECTION FUNCTION
   connect(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
-    console.log("in connect");
+    console.log('in connect');
     // ADD THE PROPERTIES IN THE FORM INTO STATE BY USING SETSTATE
-    console.log("state aws info: ", this.state.awsInfo);
+    console.log('state aws info: ', this.state.awsInfo);
     let info = this.state.awsInfo;
     // REMEMBER TO CHANGE THIS INTO A POST REQUEST ONCE WE GET THE ROUTE WORKING
     axios
-      .post("/connect", info)
-      .then(() => console.log("Success"))
-      .catch((err) => console.log("There has been an error: ", err));
+      .post('/connect', info)
+      .then(() => console.log('Success'))
+      .catch((err) => console.log('There has been an error: ', err));
 
     // CLOSING MODAL
     this.setState({ awsModalIsOpen: false });
@@ -208,19 +208,39 @@ class Container extends Component<{}, ContainerState> {
   // UPDATING STATE TO LOCATION OF FILE
   fileUpdate(event: any) {
     const newFile = event.target.files[0];
+    console.log('newFiles: ', newFile);
     this.setState({ selectedFile: newFile });
+    // READ FILE
+    const reader = new FileReader();
+    reader.onload = (event: any) => {
+      console.log('entered file update > reader onload');
+      const newText = event.target.result;
+      console.log(newText);
+      // const file = event.target.result;
+      const lines = newText.split(/\r\n|\n/);
+      this.setState({
+        schemaEntry: newText,
+      });
+    };
+
+    reader.onerror = (event: any) => {
+      console.log(event.target.error.name);
+    };
+
+    reader.readAsText(newFile);
   }
 
   // SENDING FILE TO BACKEND
   fileUpload() {
-    console.log("upload has been clicked");
-    const data = new FormData();
-    console.log("selected file: ", this.state.selectedFile);
-    data.append("myFile", this.state.selectedFile);
-    axios
-      .post("/upload", data)
-      .then((res) => console.log(res.statusText))
-      .catch((err) => console.log("Error in file upload: ", err));
+    console.log('upload has been clicked');
+    console.log('state text: ', this.state.schemaEntry);
+    // const data = new FormData();
+    // console.log('selected file: ', this.state.selectedFile);
+    // data.append('myFile', this.state.selectedFile);
+    // axios
+    //   .post('/upload', data)
+    //   .then((res) => console.log('upload status: ', res.statusText))
+    //   .catch((err) => console.log('Error in file upload: ', err));
   }
 
   // CHANGING AWSINFO STATE
@@ -235,13 +255,13 @@ class Container extends Component<{}, ContainerState> {
   refresh(event: React.ChangeEvent<HTMLSelectElement>) {
     event.preventDefault();
     window.location.reload(false);
-    console.log("refreshing");
+    console.log('refreshing');
   }
 
   render() {
     return (
-      <div id="main-container">
-        <div id="left-panel">
+      <div id='main-container'>
+        <div id='left-panel'>
           <Sidebar
             url={this.state.url}
             refresh={this.refresh}
@@ -262,9 +282,9 @@ class Container extends Component<{}, ContainerState> {
             uploadCloseModal={this.uploadCloseModal}
           />
         </div>
-        <div id="right-panel">
+        <div id='right-panel'>
           <Announcement announcement={this.state.announcement} />
-          <div id="main-feature">
+          <div id='main-feature'>
             <CodeEditor
               schemaEntry={this.state.schemaEntry}
               data={this.state.queries}
@@ -273,17 +293,17 @@ class Container extends Component<{}, ContainerState> {
               schemaChange={this.schemaChange}
               schemaSubmit={this.schemaSubmit}
             />
-            <div id="queries-results-panel">
-              <div id="query-request">
+            <div id='queries-results-panel'>
+              <div id='query-request'>
                 <textarea
-                  id="query-input"
+                  id='query-input'
                   onChange={this.queryChange}
                 ></textarea>
-                <button id="query-submit" onClick={this.querySubmit}>
+                <button id='query-submit' onClick={this.querySubmit}>
                   Submit Query
                 </button>
               </div>
-              <div id="visual-data">
+              <div id='visual-data'>
                 <Table queryTable={this.state.queryTable} />
                 <LineGraph
                   queries={this.state.queries}
