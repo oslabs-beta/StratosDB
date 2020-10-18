@@ -10,6 +10,15 @@
     margin: 0 auto;
   }
 
+  span {
+    color: $stratos-blue;
+  }
+
+  a {
+    color: $stratos-blue;
+    text-decoration: none;
+  }
+
   h1 {
     color: $stratos-yellow;
     font-family: $font-kanit;
@@ -17,6 +26,12 @@
   }
 
   h2 {
+    color: $stratos-blue;
+    font-family: $font-kanit;
+    font-size: 18pt;
+  }
+
+  h3 {
     color: $stratos-blue;
     font-family: $font-kanit;
     font-size: 18pt;

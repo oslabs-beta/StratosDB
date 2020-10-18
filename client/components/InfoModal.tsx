@@ -139,10 +139,16 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           </a>
           <br />
           <h1>T H A N K S !</h1>
-          <p>StratosDB</p>
-          <a href="">stratosdb.io</a>
-          <a href="">Github</a>
-          <a href="">Twitter</a>
+          <img
+            src="./../client/assets/images/stratosdb_logo_white.png"
+            alt=""
+            width="20%"
+          />
+          <br />
+          <span>
+            <a href="">Website</a> | <a href="">Github</a> |{' '}
+            <a href="">Twitter</a>
+          </span>
           <br />
           <br />
         </div>
