@@ -34,7 +34,12 @@ const Table: React.FC<TableProps> = (props: TableProps) => {
     if (tableHeader) {
       return queryTable.map((obj: any, index: number) => {
         const target = Object.values(obj);
-        return <tr key={index}>{iteratorFunc(target)}</tr>;
+        // INVOKES OUR ITERATORFUNC FUNCTION THAT WILL GENERATE OUR TABLE DATA CELLS
+        return (
+          <tr className="result-table-body" key={index}>
+            {iteratorFunc(target)}
+          </tr>
+        );
       });
     }
   };
@@ -42,9 +47,9 @@ const Table: React.FC<TableProps> = (props: TableProps) => {
   return (
     <div id="table">
       <p>hello</p>
-      <table>
+      <table id="result-table">
         <tbody>
-          <tr>{tableHeaderCreator()}</tr>
+          <tr id="result-table-header">{tableHeaderCreator()}</tr>
           {tableBodyCreator()}
         </tbody>
       </table>
