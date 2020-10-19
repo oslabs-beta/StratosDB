@@ -1,1 +1,22 @@
 @import './variables';
+
+#upload-modal {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+
+  .primary-button {
+    margin: 10px 0 0;
+    height: 30px;
+    background-color: $stratos-yellow;
+    border: none;
+  }
+
+  .secondary-button {
+    margin: 10px 0 0 0;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid $stratos-yellow;
+    color: $stratos-yellow;
+  }
+}

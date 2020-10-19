@@ -31,20 +31,26 @@ const UploadModal: React.FC<uploadModalState> = (props: uploadModalState) => {
   return (
     <div>
       <Modal
-        id='upload-Modal'
+        id="upload-modal"
         isOpen={props.modalIsOpen}
         onRequestClose={props.closeModal}
         style={customStyles}
-        contentLabel='Upload Modal'
+        contentLabel="Upload Modal"
       >
         <p>Import .sql or .tar files!</p>
-        <form action='/upload' method='post' encType='multipart/form-data'>
-          <input type='file' name='myFile' onChange={props.fileUpdate} />
+        <form action="/upload" method="post" encType="multipart/form-data">
+          <input type="file" name="myFile" onChange={props.fileUpdate} />
         </form>
-        <button type='button' onClick={props.fileUpload}>
+        <button
+          className="primary-button"
+          type="button"
+          onClick={props.fileUpload}
+        >
           Import File!
         </button>
-        <button onClick={props.closeModal}>Cancel</button>
+        <button className="secondary-button" onClick={props.closeModal}>
+          Cancel
+        </button>
       </Modal>
     </div>
   );
