@@ -209,13 +209,17 @@ class Container extends Component<{}, ContainerState> {
 
   // UPDATING STATE TO LOCATION OF FILE
   fileUpdate(event: any) {
+    // PULL NEW FILE TARGET
     const newFile = event.target.files[0];
+    // SET NEW FILE TO STATE
     this.setState({ selectedFile: newFile });
     // READ FILE
     const reader = new FileReader();
     reader.onload = (event: any) => {
       console.log('entered file update > reader onload');
+      // PULL TEXT FROM EVENT.TARGET
       const newText = event.target.result;
+      // PARSE THROUGH ANY REGEX ISSUES
       const lines = newText.split(/\r\n|\n/);
       // SETTING STATE TO PERSIST INJECTED CODE
       this.setState({
@@ -223,24 +227,31 @@ class Container extends Component<{}, ContainerState> {
       });
     };
 
+    // ERROR HANDLER FOR FILEREADER
     reader.onerror = (event: any) => {
       console.log(event.target.error.name);
     };
 
+    // FILEREADER FUNCTION ON NEWFILE
     reader.readAsText(newFile);
   }
 
   // SENDING FILE TO BACKEND
   fileUpload() {
     console.log('upload has been clicked');
-    console.log('state text: ', this.state.injectedCode);
+
+    // SETTING UPDATING SCHEMAENTRY STATE WITH NEW INJECTED CODE
     const newCode = this.state.injectedCode;
     this.setState({
       schemaEntry: newCode,
     });
+
+    // SETTING FILE META DATA AS FORM DATA TO SEND TO SERVER
     const data = new FormData();
     console.log('selected file: ', this.state.selectedFile);
+    // APPENDING FILE TO DATA
     data.append('myFile', this.state.selectedFile);
+    // SENDING FILE TO SERVER FOR PROCESSING AND UPLOADING
     axios
       .post('/upload', data)
       .then((res) => console.log('upload status: ', res.statusText))
