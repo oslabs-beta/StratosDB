@@ -8,7 +8,7 @@
   h1 {
     font-family: $font-kanit;
     font-size: 36pt;
-    color: $stratos-yellow;
+    color: $stratos-blue;
     line-height: 0.75rem;
     margin: 20px auto 0 auto;
   }
@@ -19,18 +19,17 @@
   }
 
   #upload-form {
+    margin: 0 auto 20px auto;
+
     .choose-file-button {
       color: $stratos-yellow;
     }
 
     .choose-file-button::-webkit-file-upload-button {
-      visibility: hidden;
-    }
-
-    .choose-file-button::before {
-      content: 'Choose File';
-      display: inline-block;
       background: $stratos-yellow;
+      border: none;
+      padding: 5px 10px;
+      margin: 0 10px 0 0;
     }
   }
 
