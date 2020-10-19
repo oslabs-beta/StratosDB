@@ -89,7 +89,6 @@ Team StratosDB will strive to continuously release updates and additional featur
 <img
 	src="./client/assets/images/info-modal-upload-icon.png"
 />
-	<br />
 	<img
 		src="./client/assets/images/info-modal-upload-modal.png"
 	/>
@@ -124,8 +123,7 @@ EG. SELECT \* FROM <em>TABLE_NAME</em>;
 
 ### RETURN TABLE
 
-A scrollable table will render based on the <strong>SELECT</strong>{' '}
-query you have entered in the <strong>Query Text Editor</strong>
+A scrollable table will render based on the <strong>SELECT</strong> query you have entered in the <strong>Query Text Editor</strong>
 
 <center>
 <img
@@ -136,8 +134,7 @@ query you have entered in the <strong>Query Text Editor</strong>
 ### VISUAL LINE GRAPH
 
 A visual line graph representation will render the performance time
-(milliseconds) for each successfully performed{' '}
-<strong>SELECT</strong> query \*\*
+(milliseconds) for each successfully performed <strong>SELECT</strong> query \*\*
 
 <center>
 	<img
@@ -145,7 +142,7 @@ A visual line graph representation will render the performance time
 	/>
 </center>
 
-\*\* You can hover each point in the line graph to view the query
+\*\* You can hover over each point in the line graph to view the query
 that was ran and the performance time (ms)
 
 <br>
