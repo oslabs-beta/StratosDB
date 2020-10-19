@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { UnControlled as CodeMirror } from 'react-codemirror2';
 // import CodeMirror from 'react-codemirror';
 import 'codemirror/lib/codemirror.css';
