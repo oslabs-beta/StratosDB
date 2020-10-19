@@ -81,12 +81,12 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
             was created, use <strong>postgres</strong>
           </p>
           <h1>O V E R V I E W</h1>
-          <h2>IMPORTING .SQL and .TAR FILES</h2>
+          <h2>IMPORTING .SQL AND .TXT FILES</h2>
           <p>
             1. Click on the Import Icon (located on the Left Sidebar)
             <br />
             <br />
-            2. Choose the .SQL or .TAR file you would like to import
+            2. Choose the .SQL or .TXT file you would like to import
             <br />
             <br />
             3. Select <strong>Import</strong> to populate your file's code base

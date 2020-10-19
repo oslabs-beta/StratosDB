@@ -38,7 +38,7 @@ const UploadModal: React.FC<uploadModalState> = (props: uploadModalState) => {
         contentLabel="Upload Modal"
       >
         <h1>I M P O R T</h1>
-        <p>.SQR AND .TAR FORMAT ONLY</p>
+        <p>.SQL AND .TXT FORMAT ONLY</p>
         <form
           id="upload-form"
           action="/upload"
