@@ -37,8 +37,14 @@ const UploadModal: React.FC<uploadModalState> = (props: uploadModalState) => {
         style={customStyles}
         contentLabel="Upload Modal"
       >
-        <p>Import .sql or .tar files!</p>
-        <form action="/upload" method="post" encType="multipart/form-data">
+        <h1>UPLOAD YOUR SCHEMA DESIGN</h1>
+        <p>.SQR AND .TAR FORMAT ONLY</p>
+        <form
+          id="upload-form"
+          action="/upload"
+          method="post"
+          encType="multipart/form-data"
+        >
           <input type="file" name="myFile" onChange={props.fileUpdate} />
         </form>
         <button
