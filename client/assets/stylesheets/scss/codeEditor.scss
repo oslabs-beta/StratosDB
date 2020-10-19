@@ -1,27 +1,28 @@
 @import './variables';
 
 #code-editor {
+  height: 100%;
   width: 40%;
   display: flex;
   flex-direction: column;
 
   .code-mirror-container {
-    height: 100%;
+    height: 94%;
   }
 
   .react-codemirror2 {
-    height: 90%;
+    height: 94%;
   }
 
   .CodeMirror {
-    height: 80vh;
+    height: 94%;
     z-index: 0;
   }
 
   #buttons-section {
     display: flex;
     justify-content: space-around;
-    margin: -25px 0 10px 0;
+    margin: -50px 0 -100px 0;
   }
 
   #cancel-button {
