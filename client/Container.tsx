@@ -79,7 +79,7 @@ class Container extends Component<{}, ContainerState> {
       password: '',
       port: '',
     },
-    infoModalIsOpen: true,
+    infoModalIsOpen: false,
     selectedFile: 'hello',
     uploadModalIsOpen: false,
     injectedCode: '',
