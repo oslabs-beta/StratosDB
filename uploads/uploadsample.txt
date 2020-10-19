@@ -1,0 +1,4 @@
+Imported files will be uploaded here.
+
+Files will be named with in the format:
+    "<Date.now string> - <original file name>"
