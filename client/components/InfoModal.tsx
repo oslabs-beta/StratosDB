@@ -115,10 +115,34 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           />
           <br />
           <h2>RETURN TABLE</h2>
-          <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
+          <p>
+            A scrollable table will render based on the <strong>SELECT</strong>{' '}
+            query you have entered in the <strong>Query Text Editor</strong>
+          </p>
+          <br />
+          <img
+            src="./../client/assets/images/info-modal-returned-table.png"
+            alt=""
+            width="60%"
+          />
           <br />
           <h2>VISUAL LINE GRAPH</h2>
-          <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
+          <p>
+            A visual line graph representation will render the performance time
+            (milliseconds) for each successfully performed{' '}
+            <strong>SELECT</strong> query ***
+          </p>
+          <br />
+          <img
+            src="./../client/assets/images/info-modal-line-graph.png"
+            alt=""
+            width="60%"
+          />
+          <br />
+          <p>
+            *** You can hover each point in the line graph to view the query
+            that was ran and the performance time (ms)
+          </p>
           <br />
           <h1>B E T A</h1>
           <p>

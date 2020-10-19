@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import CodeMirror from 'react-codemirror';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/mode/sql/sql';

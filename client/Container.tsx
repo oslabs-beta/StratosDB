@@ -1,4 +1,4 @@
-import React, { Component, SyntheticEvent } from 'react';
+import React, { Component } from 'react';
 import Announcement from './components/Announcement';
 import CodeEditor from './components/CodeEditor';
 import Sidebar from './components/Sidebar';
@@ -48,7 +48,6 @@ class Container extends Component<{}, ContainerState> {
     this.infoOpenModal = this.infoOpenModal.bind(this);
     this.infoCloseModal = this.infoCloseModal.bind(this);
     this.fileUpload = this.fileUpload.bind(this);
-    this.tableHeader = this.tableHeader.bind(this);
   }
 
   state: ContainerState = {
@@ -125,32 +124,21 @@ class Container extends Component<{}, ContainerState> {
       queryHistory: historyArr,
     });
 
-    // console.log('state.queries before axios: ', this.state);
-
     // DIFFERENT OBJECT FOR QUERY ENTRY
     const queryObj: any = {
       queryEntry: this.state.queryEntry,
     };
-    // console.log('queryData', queryObj);
     console.log('state before axios', this.state);
     let newArr: any = this.state.queryStatistics;
     axios.post('/results', queryObj).then((data) => {
       console.log('this is sparta', data);
       newArr = newArr.concat(data.data.queryStatistics[0]['Execution Time']);
-      // console.log('newArr', newArr);
       console.log('explain data', data.data);
       this.setState({
-        // queries: data.data[0],
         queryStatistics: newArr,
         queryTable: data.data.queryTable,
       });
       console.log('state after axios: ', this.state);
-      // this.setState({
-      //   queryStatistics: [this.state.queries['Execution Time']],
-      // });
-      // this.state.queryStatistics.push(this.state.queries['Execution Time']);
-      // console.log('state after push: ', this.state);
-      // console.log('BOOM', this.state.queryStatistics);
     });
   }
 
@@ -214,18 +202,10 @@ class Container extends Component<{}, ContainerState> {
     console.log('refreshing');
   }
 
-  tableHeader: any = () => {
-    const keyHeaders: any = Object.keys(this.state.queryTable[0]);
-    console.log('this is', keyHeaders);
-    const newArr: [] = keyHeaders.map((el: any, index: any) => {
-      return <th key={index}>{el}</th>;
-    });
-    return newArr;
-  };
   render() {
     return (
-      <div id='main-container'>
-        <div id='left-panel'>
+      <div id="main-container">
+        <div id="left-panel">
           <Sidebar
             url={this.state.url}
             refresh={this.refresh}
@@ -242,9 +222,9 @@ class Container extends Component<{}, ContainerState> {
             fileUpload={this.fileUpload}
           />
         </div>
-        <div id='right-panel'>
+        <div id="right-panel">
           <Announcement announcement={this.state.announcement} />
-          <div id='main-feature'>
+          <div id="main-feature">
             <CodeEditor
               schemaEntry={this.state.schemaEntry}
               data={this.state.queries}
@@ -253,27 +233,22 @@ class Container extends Component<{}, ContainerState> {
               schemaChange={this.schemaChange}
               schemaSubmit={this.schemaSubmit}
             />
-            <div id='queries-results-panel'>
-              <div id='query-request'>
+            <div id="queries-results-panel">
+              <div id="query-request">
                 <textarea
-                  id='query-input'
+                  id="query-input"
                   onChange={this.queryChange}
                 ></textarea>
-                <button id='query-submit' onClick={this.querySubmit}>
+                <button id="query-submit" onClick={this.querySubmit}>
                   Submit Query
                 </button>
               </div>
-              <div id='visual-data'>
-                <Table
-                  queryTable={this.state.queryTable}
-                  tableHeader={this.tableHeader}
-                />
-                <LineGraph
-                  queries={this.state.queries}
-                  queryStatistics={this.state.queryStatistics}
-                  queryHistory={this.state.queryHistory}
-                />
-              </div>
+              <Table queryTable={this.state.queryTable} />
+              <LineGraph
+                queries={this.state.queries}
+                queryStatistics={this.state.queryStatistics}
+                queryHistory={this.state.queryHistory}
+              />
             </div>
           </div>
         </div>

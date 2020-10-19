@@ -12,19 +12,6 @@ class LineGraph extends Component<LineGraphProps> {
     super(props);
   }
 
-  // componentDidUpdate() {
-  //   // const labelData = () => {};
-  //   const execTimeArr: number[] = [];
-  //   const runtimeData = (results: any) => {
-  //     const newData: any = this.props.queries[execTime];
-  //     execTimeArr.push(newData);
-  //   };
-  //   this.setState({
-  //     queryStatistics: execTimeArr,
-  //   });
-  // }
-  // const execTime: any = 'Execution Time';
-
   render() {
     const { queries, queryStatistics, queryHistory } = this.props;
     const labelData = () => {
@@ -35,11 +22,7 @@ class LineGraph extends Component<LineGraphProps> {
       return newArr;
     };
 
-    // const labelData = () => queryStatistics.map((query, i) => i);
-    // const runtimeData = () => queryStatistics.map((query) => queries);
-
     const data = {
-      // labels: () => queryStatistics.map((query, i) => i),
       labels: labelData(),
       datasets: [
         {
@@ -55,18 +38,27 @@ class LineGraph extends Component<LineGraphProps> {
     };
 
     return (
-      <div id='line-graph' className='LineGraph'>
+      <div id="line-graph" className="LineGraph">
         <Line
           data={data}
           options={{
             title: {
-              display: true,
+              display: false,
               text: 'QUERY REQUEST VS RUNTIME (ms)',
               fontSize: 16,
               fontColor: '#ffffff',
             },
             legend: {
               display: false,
+            },
+            scales: {
+              xAxes: [
+                {
+                  ticks: {
+                    display: false,
+                  },
+                },
+              ],
             },
           }}
         />

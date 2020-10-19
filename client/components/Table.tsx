@@ -1,24 +1,63 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 interface TableProps {
   queryTable: [];
-  tableHeader: any;
 }
 
 const Table: React.FC<TableProps> = (props: TableProps) => {
+  // QUERYTABLE: ARRAY OF OBJECTS (OUR RETURNED QUERY)
   const queryTable: any = props.queryTable;
-  const headerResults: any = props.tableHeader;
-  // console.log(headerResults);
-  return (
-    <div id='table'>
-      <p>hello</p>
-      <table>
-        <tr>
-          <thead>{headerResults}</thead>
-        </tr>
-      </table>
-    </div>
-  );
+
+  // TABLE HEADER: ARRAY OF COLUMN NAMES
+  const tableHeader: any =
+    queryTable.length === 0 ? null : Object.keys(queryTable[0]);
+
+  // FUNCTION THAT WILL RETURN OUR TABLE HEADER WITH OUR COLUMN NAMES
+  const tableHeaderCreator = () => {
+    // IF TABLEHEADER HAS ONE ELEMENT OR MORE
+    if (tableHeader) {
+      return tableHeader.map((el: any, index: number) => {
+        return <th key={index}>{el}</th>;
+      });
+    }
+  };
+
+  // FUNCTION THAT WILL RETURN OUR TABLE BODY ROWS
+  const tableBodyCreator = () => {
+    // FUNCTION THAT WILL RETURN OUR TABLE BODY DATA CELLS
+    const iteratorFunc = (array: any) => {
+      return array.map((values: any, index: number) => {
+        return <td key={index}>{values}</td>;
+      });
+    };
+    // IF TABLEHEADER HAS ONE ELEMENT OR MORE
+    if (tableHeader) {
+      return queryTable.map((obj: any, index: number) => {
+        const target = Object.values(obj);
+        // INVOKES OUR ITERATORFUNC FUNCTION THAT WILL GENERATE OUR TABLE DATA CELLS
+        return (
+          <tr className="result-table-body" key={index}>
+            {iteratorFunc(target)}
+          </tr>
+        );
+      });
+    }
+  };
+
+  if (queryTable.length === 0) {
+    return <div id="table-container"></div>;
+  } else {
+    return (
+      <div id="table-container">
+        <table id="result-table">
+          <tbody>
+            <tr id="result-table-header">{tableHeaderCreator()}</tr>
+            {tableBodyCreator()}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
 };
 
 export default Table;
