@@ -5,12 +5,16 @@
   display: flex;
   flex-direction: column;
 
-  .ReactCodeMirror {
-    height: 93%;
+  .code-mirror-container {
+    height: 100%;
+  }
+
+  .react-codemirror2 {
+    height: 90%;
   }
 
   .CodeMirror {
-    height: 93%;
+    height: 80vh;
     z-index: 0;
   }
 

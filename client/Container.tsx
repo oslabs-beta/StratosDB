@@ -81,7 +81,7 @@ class Container extends Component<{}, ContainerState> {
     },
     infoModalIsOpen: false,
     selectedFile: 'hello',
-    uploadModalIsOpen: true,
+    uploadModalIsOpen: false,
     injectedCode: '',
   };
 
