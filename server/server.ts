@@ -47,7 +47,7 @@ let storage = multer.diskStorage({
     cb(null, './uploads');
   },
   filename: (req: any, file: any, cb: any) => {
-    cb(null, file.originalname);
+    cb(null, Date.now() + '-' + file.originalname);
   },
 });
 
@@ -56,15 +56,6 @@ let type = upload.single('myFile');
 
 app.post('/upload', type, (req, res, next) => {
   console.log('upload has been called');
-  // if (storage.filename) {
-  //   console.log('in upload if');
-  //   const path = storage.filename;
-  //   const pathName = path.toString();
-  //   console.log(pathName);
-  // }
-  fs.readFile('../uploads/postgres_create.sql', (err: any, data: any) => {
-    console.log('data: ', data);
-  });
   const file = req.body.file;
   console.log('file: ', file);
   if (!file) {

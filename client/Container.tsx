@@ -238,13 +238,13 @@ class Container extends Component<{}, ContainerState> {
     this.setState({
       schemaEntry: newCode,
     });
-    // const data = new FormData();
-    // console.log('selected file: ', this.state.selectedFile);
-    // data.append('myFile', this.state.selectedFile);
-    // axios
-    //   .post('/upload', data)
-    //   .then((res) => console.log('upload status: ', res.statusText))
-    //   .catch((err) => console.log('Error in file upload: ', err));
+    const data = new FormData();
+    console.log('selected file: ', this.state.selectedFile);
+    data.append('myFile', this.state.selectedFile);
+    axios
+      .post('/upload', data)
+      .then((res) => console.log('upload status: ', res.statusText))
+      .catch((err) => console.log('Error in file upload: ', err));
   }
 
   // CHANGING AWSINFO STATE
