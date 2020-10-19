@@ -75,6 +75,8 @@ Team StratosDB will strive to continuously release updates and additional featur
 
 \*\* If Database name was left blank when the AWS RDS Datbase Instance was created, use <strong>postgres</strong>
 
+<br>
+
 ## Main Features
 
 ### IMPORTING .SQL AND .TXT FILES
