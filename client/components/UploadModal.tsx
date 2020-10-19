@@ -44,6 +44,7 @@ const UploadModal: React.FC<uploadModalState> = (props: uploadModalState) => {
         <button type='button' onClick={props.fileUpload}>
           Import File!
         </button>
+        <button onClick={props.closeModal}>Cancel</button>
       </Modal>
     </div>
   );

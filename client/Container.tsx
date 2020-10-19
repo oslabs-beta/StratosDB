@@ -244,6 +244,7 @@ class Container extends Component<{}, ContainerState> {
     const newCode = this.state.injectedCode;
     this.setState({
       schemaEntry: newCode,
+      uploadModalIsOpen: false,
     });
 
     // SETTING FILE META DATA AS FORM DATA TO SEND TO SERVER
