@@ -96,9 +96,7 @@ Team StratosDB will strive to continuously release updates and additional featur
 
 ### SCHEMA CODE EDITOR
 
-Use the Schema Code Editor to input any psql command queries (EG.{' '}
-<strong>CREATE TABLE</strong>, <strong>INSERT INTO</strong>,{' '}
-<strong>DROP TABLE</strong>) to create/read/update/delete tables
+Use the Schema Code Editor to input any psql command queries (EG. <strong>CREATE TABLE</strong>, <strong>INSERT INTO</strong>, <strong>DROP TABLE</strong>) to create/read/update/delete tables
 and/or data entries from your tethered AWS RDS database
 
 <center>
