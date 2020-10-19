@@ -1,0 +1,50 @@
+@import './variables';
+
+#upload-modal {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+
+  h1 {
+    font-family: $font-kanit;
+    font-size: 36pt;
+    color: $stratos-blue;
+    line-height: 0.75rem;
+    margin: 20px auto 0 auto;
+  }
+
+  p {
+    color: #ffffff;
+    margin: 20px auto 30px auto;
+  }
+
+  #upload-form {
+    margin: 0 auto 20px auto;
+
+    .choose-file-button {
+      color: $stratos-yellow;
+    }
+
+    .choose-file-button::-webkit-file-upload-button {
+      background: $stratos-yellow;
+      border: none;
+      padding: 5px 10px;
+      margin: 0 10px 0 0;
+    }
+  }
+
+  .primary-button {
+    margin: 10px 0 0;
+    height: 30px;
+    background-color: $stratos-green;
+    border: none;
+  }
+
+  .secondary-button {
+    margin: 10px 0 0 0;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid $stratos-green;
+    color: $stratos-green;
+  }
+}
