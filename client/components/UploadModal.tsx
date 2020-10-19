@@ -4,6 +4,9 @@ import Modal from 'react-modal';
 interface uploadModalState {
   modalIsOpen: boolean;
   closeModal: any;
+  fileUpdate: any;
+  fileUpload: any;
+  selectedFile: any;
 }
 
 const customStyles = {
@@ -27,7 +30,24 @@ Modal.setAppElement('#root');
 const UploadModal: React.FC<uploadModalState> = (props: uploadModalState) => {
   return (
     <div>
-      <p>HAD TO PUT SOMETHING HERE BECAUSE OF TYPESCRIPT ERROR</p>
+      <Modal
+        id='upload-Modal'
+        isOpen={props.modalIsOpen}
+        onRequestClose={props.closeModal}
+        style={customStyles}
+        contentLabel='Upload Modal'
+      >
+        <p>Import .sql or .tar files!</p>
+        <form action='/upload' method='post' encType='multipart/form-data'>
+          <input type='file' name='myFile' onChange={props.fileUpdate} />
+        </form>
+        <button type='button' onClick={props.fileUpload}>
+          Import File!
+        </button>
+        <button onClick={props.closeModal}>Cancel</button>
+      </Modal>
     </div>
   );
 };
+
+export default UploadModal;

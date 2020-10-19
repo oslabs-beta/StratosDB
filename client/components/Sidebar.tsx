@@ -1,6 +1,7 @@
 import React from "react";
 import AwsModal from "./AwsModal";
 import InfoModal from "./InfoModal";
+import UploadModal from "./UploadModal";
 
 interface SidebarState {
   url: string;
@@ -15,7 +16,11 @@ interface SidebarState {
   infoCloseModal: any;
   infoModalIsOpen: boolean;
   fileUpload: any;
-  fileSelected: any;
+  fileUpdate: any;
+  selectedFile: any;
+  uploadModalIsOpen: boolean;
+  uploadOpenModal: any;
+  uploadCloseModal: any;
 }
 
 const Sidebar: React.FC<SidebarState> = (props: SidebarState) => {
@@ -37,10 +42,17 @@ const Sidebar: React.FC<SidebarState> = (props: SidebarState) => {
           viewBox="0 0 24 24"
           fillRule="evenodd"
           clipRule="evenodd"
-          onClick={props.fileUpload}
+          onClick={props.uploadOpenModal}
         >
           <path d="M7 2c1.695 1.942 2.371 3 4 3h13v17h-24v-20h7zm6 11v-3h-2v3h-3v2h3v3h2v-3h3v-2h-3z" />
         </svg>
+        <UploadModal
+          modalIsOpen={props.uploadModalIsOpen}
+          closeModal={props.uploadCloseModal}
+          fileUpdate={props.fileUpdate}
+          fileUpload={props.fileUpload}
+          selectedFile={props.selectedFile}
+        />
         <svg
           id="cloud-button"
           xmlns="http://www.w3.org/2000/svg"
