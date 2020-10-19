@@ -37,7 +37,7 @@ const UploadModal: React.FC<uploadModalState> = (props: uploadModalState) => {
         style={customStyles}
         contentLabel="Upload Modal"
       >
-        <h1>UPLOAD YOUR SCHEMA DESIGN</h1>
+        <h1>I M P O R T</h1>
         <p>.SQR AND .TAR FORMAT ONLY</p>
         <form
           id="upload-form"
@@ -45,7 +45,12 @@ const UploadModal: React.FC<uploadModalState> = (props: uploadModalState) => {
           method="post"
           encType="multipart/form-data"
         >
-          <input type="file" name="myFile" onChange={props.fileUpdate} />
+          <input
+            className="choose-file-button"
+            type="file"
+            name="myFile"
+            onChange={props.fileUpdate}
+          />
         </form>
         <button
           className="primary-button"
