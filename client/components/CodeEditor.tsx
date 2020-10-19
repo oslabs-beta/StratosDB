@@ -13,6 +13,7 @@ interface CodeEditorState {
   schemaChange: any;
   schemaSubmit: any;
   injectedCode: string;
+  emptyInject: any;
 }
 
 const CodeEditor: React.FC<CodeEditorState> = (props: CodeEditorState) => {
@@ -49,6 +50,7 @@ const CodeEditor: React.FC<CodeEditorState> = (props: CodeEditorState) => {
       <div id='buttons-section'>
         <svg
           id='cancel-button'
+          onClick={props.emptyInject}
           xmlns='http://www.w3.org/2000/svg'
           width='75'
           height='75'

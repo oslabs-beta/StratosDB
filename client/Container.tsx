@@ -57,6 +57,7 @@ class Container extends Component<{}, ContainerState> {
     this.fileUpdate = this.fileUpdate.bind(this);
     this.uploadOpenModal = this.uploadOpenModal.bind(this);
     this.uploadCloseModal = this.uploadCloseModal.bind(this);
+    this.emptyInject = this.emptyInject.bind(this);
   }
 
   state: ContainerState = {
@@ -259,6 +260,14 @@ class Container extends Component<{}, ContainerState> {
       .catch((err) => console.log('Error in file upload: ', err));
   }
 
+  // EMPTY CODE EDITOR TEXT ON X BUTTON CLICK
+  emptyInject() {
+    console.log('X button has been clicked');
+    this.setState({
+      injectedCode: '',
+    });
+  }
+
   // CHANGING AWSINFO STATE
   awsInfoChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { id, value } = e.target;
@@ -309,6 +318,7 @@ class Container extends Component<{}, ContainerState> {
               schemaChange={this.schemaChange}
               schemaSubmit={this.schemaSubmit}
               injectedCode={this.state.injectedCode}
+              emptyInject={this.emptyInject}
             />
             <div id='queries-results-panel'>
               <div id='query-request'>
