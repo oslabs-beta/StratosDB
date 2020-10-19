@@ -82,7 +82,28 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           </p>
           <h1>O V E R V I E W</h1>
           <h2>IMPORTING .SQL and .TAR FILES</h2>
-          <p>Click on the Cloud Icon (located on the Left Sidebar)</p>
+          <p>
+            1. Click on the Import Icon (located on the Left Sidebar)
+            <br />
+            <br />
+            2. Choose the .SQL or .TAR file you would like to import
+            <br />
+            <br />
+            3. Select <strong>Import</strong> to populate your file's code base
+            into the application's built-in code editor.
+          </p>
+          <br />
+          <img
+            src="./../client/assets/images/info-modal-upload-icon.png"
+            alt=""
+            width="60%"
+          />
+          <br />
+          <img
+            src="./../client/assets/images/info-modal-upload-modal.png"
+            alt=""
+            width="60%"
+          />
           <br />
           <h2>SCHEMA CODE EDITOR</h2>
           <p>
