@@ -24,7 +24,7 @@
 ## Table of Contents
 
 - <a href="https://github.com/oslabs-beta/StratosDB#beta-stage">Beta Stage</a>
-- <a href="https://github.com/oslabs-beta/StratosDB#overview">Overview</a>
+- <a href="https://github.com/oslabs-beta/StratosDB#getting-started">Getting Started</a>
 - <a href="https://github.com/oslabs-beta/StratosDB#main-features">Main Features</a>
 - <a href="https://github.com/oslabs-beta/StratosDB#built-with">Built With</a>
 - <a href="https://github.com/oslabs-beta/StratosDB#core-team">Core Team</a>
@@ -45,11 +45,7 @@ Team StratosDB will strive to continuously release updates and additional featur
 
 <br>
 
-## Overview
-
-<br>
-
-## Setup
+## Getting Started
 
 1. Click on the Cloud Icon (located on the Left Sidebar)
 <center>
