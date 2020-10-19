@@ -49,7 +49,116 @@ Team StratosDB will strive to continuously release updates and additional featur
 
 <br>
 
+## Setup
+
+1. Click on the Cloud Icon (located on the Left Sidebar)
+<center>
+<img
+src="./client/assets/images/info-modal-cloud-icon.png"
+alt=""
+/>
+</center>
+
+2. Enter your AWS RDS Information and press <strong>Connect</strong>
+
+   <strong>User:</strong> Database Username
+   <br />
+   <strong>Host:</strong> AWS RDS Endpoint Link \*
+   <br />
+   <strong>Database:</strong> Database name \*\*
+   <br />
+   <strong>Password:</strong> Database Password
+
+    <center>
+     <img
+    		src="./client/assets/images/info-modal-cloud-modal.png"
+    		alt=""
+    	/>
+    </center>
+
+   \* Sourced from AWS RDS Database Instance Dashboard
+
+   \*\* If Database name was left blank when the AWS RDS Datbase Instance was created, use <strong>postgres</strong>
+
 ## Main Features
+
+### IMPORTING .SQL AND .TXT FILES
+
+1.  Click on the Import Icon (located on the Left Sidebar)
+2.  Choose the .SQL or .TXT file you would like to import
+3.  Select <strong>Import</strong> to populate your file's code base into the application's built-in code editor.
+
+    <center>
+    <img
+    	src="./client/assets/images/info-modal-upload-icon.png"
+    />
+    	<br />
+    	<br />
+    	<img
+    		src="./client/assets/images/info-modal-upload-modal.png"
+    	/>
+    </center>
+
+          <br />
+          <h2>SCHEMA CODE EDITOR</h2>
+          <p>
+            Use the Schema Code Editor to input any psql command queries (EG.{' '}
+            <strong>CREATE TABLE</strong>, <strong>INSERT INTO</strong>,{' '}
+            <strong>DROP TABLE</strong>) to create/read/update/delete tables
+            and/or data entries from your tethered AWS RDS database
+          </p>
+          <br />
+          <img
+            src="./../client/assets/images/info-modal-code-editor.png"
+            alt=""
+            width="60%"
+          />
+          <br />
+          <h2>QUERY TEXT EDITOR</h2>
+          <p>
+            Enter your <strong>SELECT</strong> psql commands into the provided
+            text editor and press <strong>Submit Query</strong> to initiate the
+            performance analysis on your existing schema design
+          </p>
+          <p>
+            EG. SELECT * FROM <em>TABLE_NAME</em>;
+          </p>
+          <br />
+          <img
+            src="./../client/assets/images/info-modal-query-text-area.png"
+            alt=""
+            width="60%"
+          />
+          <br />
+          <h2>RETURN TABLE</h2>
+          <p>
+            A scrollable table will render based on the <strong>SELECT</strong>{' '}
+            query you have entered in the <strong>Query Text Editor</strong>
+          </p>
+          <br />
+          <img
+            src="./../client/assets/images/info-modal-returned-table.png"
+            alt=""
+            width="60%"
+          />
+          <br />
+          <h2>VISUAL LINE GRAPH</h2>
+          <p>
+            A visual line graph representation will render the performance time
+            (milliseconds) for each successfully performed{' '}
+            <strong>SELECT</strong> query ***
+          </p>
+          <br />
+          <img
+            src="./../client/assets/images/info-modal-line-graph.png"
+            alt=""
+            width="60%"
+          />
+          <br />
+          <p>
+            *** You can hover each point in the line graph to view the query
+            that was ran and the performance time (ms)
+          </p>
 
 <br>
 
