@@ -24,7 +24,7 @@
 ## Table of Contents
 
 - <a href="https://github.com/oslabs-beta/StratosDB#beta-stage">Beta Stage</a>
-- <a href="https://github.com/oslabs-beta/StratosDB#overview">Overview</a>
+- <a href="https://github.com/oslabs-beta/StratosDB#getting-started">Getting Started</a>
 - <a href="https://github.com/oslabs-beta/StratosDB#main-features">Main Features</a>
 - <a href="https://github.com/oslabs-beta/StratosDB#built-with">Built With</a>
 - <a href="https://github.com/oslabs-beta/StratosDB#core-team">Core Team</a>
@@ -45,11 +45,108 @@ Team StratosDB will strive to continuously release updates and additional featur
 
 <br>
 
-## Overview
+## Getting Started
+
+1. Click on the Cloud Icon (located on the Left Sidebar)
+<center>
+	<img
+		src="./client/assets/images/info-modal-cloud-icon.png"
+	/>
+</center>
+
+2. Enter your AWS RDS Information and press <strong>Connect</strong>
+
+   <strong>User:</strong> Database Username
+   <br />
+   <strong>Host:</strong> AWS RDS Endpoint Link \*
+   <br />
+   <strong>Database:</strong> Database name \*\*
+   <br />
+   <strong>Password:</strong> Database Password
+
+<center>
+	<img
+		src="./client/assets/images/info-modal-cloud-modal.png"
+		alt=""
+	/>
+</center>
+
+\* Sourced from AWS RDS Database Instance Dashboard
+
+\*\* If Database name was left blank when the AWS RDS Datbase Instance was created, use <strong>postgres</strong>
 
 <br>
 
 ## Main Features
+
+### IMPORTING .SQL AND .TXT FILES
+
+1.  Click on the Import Icon (located on the Left Sidebar)
+2.  Choose the .SQL or .TXT file you would like to import
+3.  Select <strong>Import</strong> to populate your file's code base into the application's built-in code editor.
+
+<center>
+<img
+	src="./client/assets/images/info-modal-upload-icon.png"
+/>
+	<br />
+	<img
+		src="./client/assets/images/info-modal-upload-modal.png"
+	/>
+</center>
+
+### SCHEMA CODE EDITOR
+
+Use the Schema Code Editor to input any psql command queries (EG.{' '}
+<strong>CREATE TABLE</strong>, <strong>INSERT INTO</strong>,{' '}
+<strong>DROP TABLE</strong>) to create/read/update/delete tables
+and/or data entries from your tethered AWS RDS database
+
+<center>
+	<img
+		src="./client/assets/images/info-modal-code-editor.png"
+	/>
+</center>
+
+### QUERY TEXT EDITOR
+
+Enter your <strong>SELECT</strong> psql commands into the provided
+text editor and press <strong>Submit Query</strong> to initiate the
+performance analysis on your existing schema design
+
+EG. SELECT \* FROM <em>TABLE_NAME</em>;
+
+<center>
+<img
+	src="./client/assets/images/info-modal-query-text-area.png"
+/>
+</center>
+
+### RETURN TABLE
+
+A scrollable table will render based on the <strong>SELECT</strong>{' '}
+query you have entered in the <strong>Query Text Editor</strong>
+
+<center>
+<img
+	src="./client/assets/images/info-modal-returned-table.png"
+/>
+</center>
+
+### VISUAL LINE GRAPH
+
+A visual line graph representation will render the performance time
+(milliseconds) for each successfully performed{' '}
+<strong>SELECT</strong> query \*\*
+
+<center>
+	<img
+		src="./client/assets/images/info-modal-line-graph.png"
+	/>
+</center>
+
+\*\* You can hover each point in the line graph to view the query
+that was ran and the performance time (ms)
 
 <br>
 
@@ -58,6 +155,9 @@ Team StratosDB will strive to continuously release updates and additional featur
 - React
 - TypeScript
 - CodeMirror
+- React-ChartJS-2
+- Node.JS
+  - Express
 - AWS RDS
   - PostgreSQL
 
