@@ -31,6 +31,7 @@ interface ContainerState {
   infoModalIsOpen: boolean;
   selectedFile: any;
   uploadModalIsOpen: boolean;
+  injectedCode: string;
 }
 
 interface HTMLInputEvent extends Event {
@@ -80,6 +81,7 @@ class Container extends Component<{}, ContainerState> {
     infoModalIsOpen: false,
     selectedFile: 'hello',
     uploadModalIsOpen: false,
+    injectedCode: '',
   };
 
   componentDidMount() {
@@ -208,18 +210,16 @@ class Container extends Component<{}, ContainerState> {
   // UPDATING STATE TO LOCATION OF FILE
   fileUpdate(event: any) {
     const newFile = event.target.files[0];
-    console.log('newFiles: ', newFile);
     this.setState({ selectedFile: newFile });
     // READ FILE
     const reader = new FileReader();
     reader.onload = (event: any) => {
       console.log('entered file update > reader onload');
       const newText = event.target.result;
-      console.log(newText);
-      // const file = event.target.result;
       const lines = newText.split(/\r\n|\n/);
+      // SETTING STATE TO PERSIST INJECTED CODE
       this.setState({
-        schemaEntry: newText,
+        injectedCode: lines.join('\n'),
       });
     };
 
@@ -233,7 +233,11 @@ class Container extends Component<{}, ContainerState> {
   // SENDING FILE TO BACKEND
   fileUpload() {
     console.log('upload has been clicked');
-    console.log('state text: ', this.state.schemaEntry);
+    console.log('state text: ', this.state.injectedCode);
+    const newCode = this.state.injectedCode;
+    this.setState({
+      schemaEntry: newCode,
+    });
     // const data = new FormData();
     // console.log('selected file: ', this.state.selectedFile);
     // data.append('myFile', this.state.selectedFile);
@@ -292,6 +296,7 @@ class Container extends Component<{}, ContainerState> {
               schemaName={this.state.schemaName}
               schemaChange={this.schemaChange}
               schemaSubmit={this.schemaSubmit}
+              injectedCode={this.state.injectedCode}
             />
             <div id='queries-results-panel'>
               <div id='query-request'>
