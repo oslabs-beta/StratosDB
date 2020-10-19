@@ -10,16 +10,31 @@
     margin: 0 auto;
   }
 
-  h1 {
+  span {
     color: $stratos-blue;
   }
 
-  h2 {
+  a {
+    color: $stratos-blue;
+    text-decoration: none;
+  }
+
+  h1 {
     color: $stratos-yellow;
+    font-family: $font-kanit;
+    font-size: 32pt;
+  }
+
+  h2 {
+    color: $stratos-blue;
+    font-family: $font-kanit;
+    font-size: 18pt;
   }
 
   h3 {
-    color: $stratos-green;
+    color: $stratos-blue;
+    font-family: $font-kanit;
+    font-size: 18pt;
   }
 
   p {
@@ -28,6 +43,10 @@
 
   strong {
     color: $stratos-red;
+  }
+
+  em {
+    color: $stratos-green;
   }
 
   &::-webkit-scrollbar {

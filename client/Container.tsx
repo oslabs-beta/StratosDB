@@ -1,4 +1,4 @@
-import React, { Component, SyntheticEvent } from 'react';
+import React, { Component } from 'react';
 import Announcement from './components/Announcement';
 import CodeEditor from './components/CodeEditor';
 import Sidebar from './components/Sidebar';
@@ -29,6 +29,13 @@ interface ContainerState {
     port: string;
   };
   infoModalIsOpen: boolean;
+  selectedFile: any;
+  uploadModalIsOpen: boolean;
+  injectedCode: string;
+}
+
+interface HTMLInputEvent extends Event {
+  target: HTMLInputElement & EventTarget;
 }
 
 class Container extends Component<{}, ContainerState> {
@@ -46,6 +53,11 @@ class Container extends Component<{}, ContainerState> {
     this.awsInfoChange = this.awsInfoChange.bind(this);
     this.infoOpenModal = this.infoOpenModal.bind(this);
     this.infoCloseModal = this.infoCloseModal.bind(this);
+    this.fileUpload = this.fileUpload.bind(this);
+    this.fileUpdate = this.fileUpdate.bind(this);
+    this.uploadOpenModal = this.uploadOpenModal.bind(this);
+    this.uploadCloseModal = this.uploadCloseModal.bind(this);
+    this.emptyInject = this.emptyInject.bind(this);
   }
 
   state: ContainerState = {
@@ -54,7 +66,7 @@ class Container extends Component<{}, ContainerState> {
     queryHistory: [],
     queryEntry: '',
     queryTable: [],
-    announcement: 'Welcome to StratosDB',
+    announcement: 'Welcome to StratosDB Beta',
     schemaEntry: '',
     onClose: true,
     schemaName: '',
@@ -68,6 +80,9 @@ class Container extends Component<{}, ContainerState> {
       port: '',
     },
     infoModalIsOpen: false,
+    selectedFile: 'hello',
+    uploadModalIsOpen: false,
+    injectedCode: '',
   };
 
   componentDidMount() {
@@ -121,32 +136,21 @@ class Container extends Component<{}, ContainerState> {
       queryHistory: historyArr,
     });
 
-    // console.log('state.queries before axios: ', this.state);
-
     // DIFFERENT OBJECT FOR QUERY ENTRY
     const queryObj: any = {
       queryEntry: this.state.queryEntry,
     };
-    // console.log('queryData', queryObj);
     console.log('state before axios', this.state);
     let newArr: any = this.state.queryStatistics;
     axios.post('/results', queryObj).then((data) => {
-      console.log("this is sparta", data)
+      console.log('this is sparta', data);
       newArr = newArr.concat(data.data.queryStatistics[0]['Execution Time']);
-      // console.log('newArr', newArr);
       console.log('explain data', data.data);
       this.setState({
-        // queries: data.data[0],
         queryStatistics: newArr,
-        queryTable: data.data.queryTable
+        queryTable: data.data.queryTable,
       });
       console.log('state after axios: ', this.state);
-      // this.setState({
-      //   queryStatistics: [this.state.queries['Execution Time']],
-      // });
-      // this.state.queryStatistics.push(this.state.queries['Execution Time']);
-      // console.log('state after push: ', this.state);
-      // console.log('BOOM', this.state.queryStatistics);
     });
   }
 
@@ -185,6 +189,74 @@ class Container extends Component<{}, ContainerState> {
     this.setState({ infoModalIsOpen: false });
   }
 
+  uploadOpenModal: any = () => {
+    this.setState({ uploadModalIsOpen: true });
+  };
+
+  uploadCloseModal() {
+    this.setState({ uploadModalIsOpen: false });
+  }
+
+  // UPDATING STATE TO LOCATION OF FILE
+  fileUpdate(event: any) {
+    // PULL NEW FILE TARGET
+    const newFile = event.target.files[0];
+    // SET NEW FILE TO STATE
+    this.setState({ selectedFile: newFile });
+    // READ FILE
+    const reader = new FileReader();
+    reader.onload = (event: any) => {
+      console.log('entered file update > reader onload');
+      // PULL TEXT FROM EVENT.TARGET
+      const newText = event.target.result;
+      // PARSE THROUGH ANY REGEX ISSUES
+      const lines = newText.split(/\r\n|\n/);
+      // SETTING STATE TO PERSIST INJECTED CODE
+      this.setState({
+        injectedCode: lines.join('\n'),
+      });
+    };
+
+    // ERROR HANDLER FOR FILEREADER
+    reader.onerror = (event: any) => {
+      console.log(event.target.error.name);
+    };
+
+    // FILEREADER FUNCTION ON NEWFILE
+    reader.readAsText(newFile);
+  }
+
+  // SENDING FILE TO BACKEND
+  fileUpload() {
+    console.log('upload has been clicked');
+
+    // SETTING UPDATING SCHEMAENTRY STATE WITH NEW INJECTED CODE
+    const newCode = this.state.injectedCode;
+    this.setState({
+      schemaEntry: newCode,
+      uploadModalIsOpen: false,
+    });
+
+    // SETTING FILE META DATA AS FORM DATA TO SEND TO SERVER
+    const data = new FormData();
+    console.log('selected file: ', this.state.selectedFile);
+    // APPENDING FILE TO DATA
+    data.append('myFile', this.state.selectedFile);
+    // SENDING FILE TO SERVER FOR PROCESSING AND UPLOADING
+    axios
+      .post('/upload', data)
+      .then((res) => console.log('upload status: ', res.statusText))
+      .catch((err) => console.log('Error in file upload: ', err));
+  }
+
+  // EMPTY CODE EDITOR TEXT ON X BUTTON CLICK
+  emptyInject() {
+    console.log('X button has been clicked');
+    this.setState({
+      injectedCode: '',
+    });
+  }
+
   // CHANGING AWSINFO STATE
   awsInfoChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { id, value } = e.target;
@@ -202,8 +274,8 @@ class Container extends Component<{}, ContainerState> {
 
   render() {
     return (
-      <div id="main-container">
-        <div id="left-panel">
+      <div id='main-container'>
+        <div id='left-panel'>
           <Sidebar
             url={this.state.url}
             refresh={this.refresh}
@@ -216,11 +288,17 @@ class Container extends Component<{}, ContainerState> {
             infoOpenModal={this.infoOpenModal}
             infoCloseModal={this.infoCloseModal}
             infoModalIsOpen={this.state.infoModalIsOpen}
+            selectedFile={this.state.selectedFile}
+            fileUpload={this.fileUpload}
+            fileUpdate={this.fileUpdate}
+            uploadModalIsOpen={this.state.uploadModalIsOpen}
+            uploadOpenModal={this.uploadOpenModal}
+            uploadCloseModal={this.uploadCloseModal}
           />
         </div>
-        <div id="right-panel">
+        <div id='right-panel'>
           <Announcement announcement={this.state.announcement} />
-          <div id="main-feature">
+          <div id='main-feature'>
             <CodeEditor
               schemaEntry={this.state.schemaEntry}
               data={this.state.queries}
@@ -228,25 +306,25 @@ class Container extends Component<{}, ContainerState> {
               schemaName={this.state.schemaName}
               schemaChange={this.schemaChange}
               schemaSubmit={this.schemaSubmit}
+              injectedCode={this.state.injectedCode}
+              emptyInject={this.emptyInject}
             />
-            <div id="queries-results-panel">
-              <div id="query-request">
+            <div id='queries-results-panel'>
+              <div id='query-request'>
                 <textarea
-                  id="query-input"
+                  id='query-input'
                   onChange={this.queryChange}
                 ></textarea>
-                <button id="query-submit" onClick={this.querySubmit}>
+                <button id='query-submit' onClick={this.querySubmit}>
                   Submit Query
                 </button>
               </div>
-              <div id="visual-data">
-                <Table queryTable={this.state.queryTable}/>
-                <LineGraph
-                  queries={this.state.queries}
-                  queryStatistics={this.state.queryStatistics}
-                  queryHistory={this.state.queryHistory}
-                />
-              </div>
+              <Table queryTable={this.state.queryTable} />
+              <LineGraph
+                queries={this.state.queries}
+                queryStatistics={this.state.queryStatistics}
+                queryHistory={this.state.queryHistory}
+              />
             </div>
           </div>
         </div>

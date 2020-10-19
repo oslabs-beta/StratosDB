@@ -3,6 +3,8 @@ import bodyParser from 'body-parser';
 import { stratosController } from './controllers';
 const { Pool } = require('pg');
 const app: express.Application = express();
+const multer = require('multer');
+const fs = require('fs');
 
 /**
  * TYPESCRTIPT INTERFACE DECLARACTIONS
@@ -38,6 +40,35 @@ let pool: any;
 const db: any = {};
 
 app.use(bodyParser.json());
+
+// SET STORAGE FOR NEW FILE IN LOCATION UPLOADS
+let storage = multer.diskStorage({
+  destination: (req: any, file: any, cb: any) => {
+    cb(null, './uploads');
+  },
+  filename: (req: any, file: any, cb: any) => {
+    cb(null, Date.now() + '-' + file.originalname);
+  },
+});
+
+// DECLARING FILE UPLOAD
+let upload = multer({ storage: storage });
+let type = upload.single('myFile');
+
+// SERVER SIDE HANDLING OF FILE UPLOAD
+// NOT SURE IF THIS PART ACTUALLY WORKS
+app.post('/upload', type, (req, res, next) => {
+  console.log('upload has been called');
+  const file = req.body.file;
+  console.log('file: ', file);
+  // CHECKING IF FILE HAS ERRORS
+  if (!file) {
+    const error = new Error('Please upload a file');
+    res.status(400);
+    return next();
+  }
+  res.send(file);
+});
 
 /**
  * APP.GET REQUEST (/REFRESH): WHEN REFRESHED, THE APP WILL RESET AWS CONNECTION INFO TO EMPTY VALUES

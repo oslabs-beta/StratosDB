@@ -1,49 +1,63 @@
-import React, { Component } from 'react'
+import React from 'react';
 
 interface TableProps {
-  queryTable : [];
-  
+  queryTable: [];
 }
 
-class Table extends Component<TableProps> {
-  constructor(props: TableProps) {
-    super(props)
-  }
-  
-  render() {
-    const { queryTable } = this.props
-    console.log("this is from table", this.props.queryTable)
+const Table: React.FC<TableProps> = (props: TableProps) => {
+  // QUERYTABLE: ARRAY OF OBJECTS (OUR RETURNED QUERY)
+  const queryTable: any = props.queryTable;
+
+  // TABLE HEADER: ARRAY OF COLUMN NAMES
+  const tableHeader: any =
+    queryTable.length === 0 ? null : Object.keys(queryTable[0]);
+
+  // FUNCTION THAT WILL RETURN OUR TABLE HEADER WITH OUR COLUMN NAMES
+  const tableHeaderCreator = () => {
+    // IF TABLEHEADER HAS ONE ELEMENT OR MORE
+    if (tableHeader) {
+      return tableHeader.map((el: any, index: number) => {
+        return <th key={index}>{el}</th>;
+      });
+    }
+  };
+
+  // FUNCTION THAT WILL RETURN OUR TABLE BODY ROWS
+  const tableBodyCreator = () => {
+    // FUNCTION THAT WILL RETURN OUR TABLE BODY DATA CELLS
+    const iteratorFunc = (array: any) => {
+      return array.map((values: any, index: number) => {
+        return <td key={index}>{values}</td>;
+      });
+    };
+    // IF TABLEHEADER HAS ONE ELEMENT OR MORE
+    if (tableHeader) {
+      return queryTable.map((obj: any, index: number) => {
+        const target = Object.values(obj);
+        // INVOKES OUR ITERATORFUNC FUNCTION THAT WILL GENERATE OUR TABLE DATA CELLS
+        return (
+          <tr className="result-table-body" key={index}>
+            {iteratorFunc(target)}
+          </tr>
+        );
+      });
+    }
+  };
+
+  if (queryTable.length === 0) {
+    return <div id="table-container"></div>;
+  } else {
     return (
-      <div id="table">
-       <div>
-         
-         </div>
-{/*     
-<table>
-  <tr>
-    <th>_id</th>
-    <th>item</th> 
-    <th>description</th>
-  </tr>
-  <tr>
-    <td>Jill</td>
-    <td>Smith</td>
-    <td>50</td>
-  </tr>
-  <tr>
-    <td>Eve</td>
-    <td>Jackson</td>
-    <td>94</td>
-  </tr>
-  <tr>
-    <td>John</td>
-    <td>Doe</td>
-    <td>80</td>
-  </tr>
-</table> */}
+      <div id="table-container">
+        <table id="result-table">
+          <tbody>
+            <tr id="result-table-header">{tableHeaderCreator()}</tr>
+            {tableBodyCreator()}
+          </tbody>
+        </table>
       </div>
-    )
+    );
   }
-}
+};
 
 export default Table;

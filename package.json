@@ -9,7 +9,8 @@
     "resetContainer": "docker container stop postgres-1 && docker container prune && docker container ls -a",
     "build": "NODE_ENV=production webpack",
     "dev": "cross-env NODE_ENV=development concurrently \"nodemon server/server.ts\" \"webpack-dev-server --open --hot\"",
-    "compile": "tsc"
+    "compile": "tsc",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,24 @@
       "assets",
       "stylesheets",
       ".env"
+    ]
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.json"
+      }
+    },
+    "testMatch": [
+      "*/__tests__/*.+(ts|tsx|js)"
     ]
   },
   "keywords": [],
@@ -60,6 +79,8 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
     "@skidding/react-codemirror": "^1.0.2",
+    "@types/jest": "^26.0.14",
+    "@types/mocha": "^8.0.3",
     "@types/react-codemirror": "^1.0.3",
     "@types/react-modal": "^3.10.6",
     "@types/react-redux": "^7.1.9",
@@ -68,13 +89,16 @@
     "body-parser": "^1.19.0",
     "chart.js": "^2.9.3",
     "codemirror": "^5.58.1",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "multer": "^1.4.2",
     "node": "^14.13.0",
     "pg": "^8.3.3",
     "postcss": "^8.1.1",
     "react": "^16.13.1",
     "react-chartjs-2": "^2.10.0",
     "react-codemirror": "^1.0.0",
+    "react-codemirror2": "^7.2.1",
     "react-dom": "^16.13.1",
     "react-modal": "^3.11.2",
     "react-redux": "^7.2.1",
@@ -95,13 +119,17 @@
     "concurrently": "^5.3.0",
     "cross-env": "^7.0.2",
     "css-loader": "^4.3.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
     "file-loader": "^6.1.0",
     "html-webpack-plugin": "^4.5.0",
+    "jest": "^26.5.3",
     "nodemon": "^2.0.4",
     "postcss-loader": "^4.0.3",
     "react-hot-loader": "^4.13.0",
     "sass-loader": "^10.0.2",
     "style-loader": "^1.2.1",
+    "supertest": "^5.0.0",
     "ts-loader": "^8.0.4",
     "ts-node": "^9.0.0",
     "url-loader": "^4.1.0",
