@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import { Line, defaults } from 'react-chartjs-2';
 
+// Line graph props (prop drilled from Container component)
 interface LineGraphProps {
   queries: {}[];
   queryStatistics: number[];
   queryHistory: any;
 }
 
-class LineGraph extends Component<LineGraphProps> {
+// Linegraph class component
+class LineGraph extends Component<any, LineGraphProps> {
   constructor(props: LineGraphProps) {
     super(props);
   }
 
   render() {
+    // destructured queries, queryStatistics, and queryHistory from props
     const { queries, queryStatistics, queryHistory } = this.props;
+    // function to create array of labels for X axis of Line graph
     const labelData = () => {
       let newArr = [];
       for (let i = 0; i < queryHistory.length; i++) {
@@ -38,7 +42,7 @@ class LineGraph extends Component<LineGraphProps> {
     };
 
     return (
-      <div id="line-graph" className="LineGraph">
+      <div id='line-graph' className='LineGraph'>
         <Line
           data={data}
           options={{
