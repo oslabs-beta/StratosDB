@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 
+// initial AWS Modal State types
 interface awsModalState {
   connect: any;
   modalIsOpen: boolean;
@@ -9,6 +10,7 @@ interface awsModalState {
   awsInfoChange: any;
 }
 
+// Modal custom styles
 const customStyles = {
   content: {
     top: '50%',
@@ -27,62 +29,64 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
+// Functional Component, AWS Modal
+// Modal toggles on when Cloud Icon is clicked
 const AwsModal: React.FC<awsModalState> = (props: awsModalState) => {
   return (
     <div>
       <Modal
-        id="aws-modal"
+        id='aws-modal'
         isOpen={props.modalIsOpen}
         onRequestClose={props.closeModal}
         style={customStyles}
-        contentLabel="Cloud Modal"
+        contentLabel='Cloud Modal'
       >
         <img
-          src="./../client/assets/images/aws-logo.png"
-          alt=""
-          width="250px"
+          src='./../client/assets/images/aws-logo.png'
+          alt=''
+          width='250px'
         />
-        <form id="aws-modal-form">
+        <form id='aws-modal-form'>
           <input
-            type="user"
-            id="user"
-            placeholder="User"
+            type='user'
+            id='user'
+            placeholder='User'
             value={props.awsInfo.user}
             onChange={props.awsInfoChange}
           />
           <input
-            type="host"
-            id="host"
-            placeholder="Host"
+            type='host'
+            id='host'
+            placeholder='Host'
             value={props.awsInfo.host}
             onChange={props.awsInfoChange}
           />
           <input
-            type="database"
-            id="database"
-            placeholder="Database"
+            type='database'
+            id='database'
+            placeholder='Database'
             value={props.awsInfo.database}
             onChange={props.awsInfoChange}
           />
           <input
-            type="password"
-            id="password"
-            placeholder="Password"
+            type='password'
+            id='password'
+            placeholder='Password'
             value={props.awsInfo.password}
             onChange={props.awsInfoChange}
           />
           <input
-            type="port"
-            id="port"
-            placeholder="Port"
+            type='port'
+            id='port'
+            placeholder='Port'
             value={props.awsInfo.port}
             onChange={props.awsInfoChange}
           />
-          <button className="primary-button" onClick={props.connect}>
+          <button className='primary-button' onClick={props.connect}>
             Connect
           </button>
         </form>
-        <button className="secondary-button" onClick={props.closeModal}>
+        <button className='secondary-button' onClick={props.closeModal}>
           Cancel
         </button>
       </Modal>
