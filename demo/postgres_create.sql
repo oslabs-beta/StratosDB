@@ -62,7 +62,7 @@ INSERT INTO public.owners VALUES (5, 'ns@gmail.com', 'Nicholas', 'Shay', 'hellow
 
 INSERT INTO public.dogs VALUES (1, 'Pancake', 'Pembroke Welsh Corgi', 6, 1);
 INSERT INTO public.dogs VALUES (2, 'Honey', 'Pembroke Welsh Corgi', 1, 1);
-INSERT INTO public.dogs VALUES (3, 'Oreo', 'NEED TO CONFIRM', 4, 2);
+INSERT INTO public.dogs VALUES (3, 'Oreo', 'Dalmatian', 17, 2);
 INSERT INTO public.dogs VALUES (4, 'Rex', 'Belgian Malinois', 5, 1);
 INSERT INTO public.dogs VALUES (5, 'Duke', 'Pembroke Welsh Corgi', 7, 5);
 

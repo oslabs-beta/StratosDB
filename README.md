@@ -63,12 +63,12 @@ Team StratosDB will strive to continuously release updates and additional featur
 
 3.  Run the following script to open StratosDB on http://localhost:8080:
 
-        npm run dev
+        npm run beta
 
 4.  Once StratosDB is opened on http://localhost:8080, click on the Cloud Icon (located on the Left Sidebar)
 <center>
 	<img
-		src="./client/assets/images/info-modal-cloud-icon.png"
+		src="./client/assets/images/info-modal-cloud-icon.jpg"
 	/>
 </center>
 
@@ -84,7 +84,7 @@ Team StratosDB will strive to continuously release updates and additional featur
 
 <center>
 	<img
-		src="./client/assets/images/info-modal-cloud-modal.png"
+		src="./client/assets/images/info-modal-cloud-modal.jpg"
 		alt=""
 	/>
 </center>
@@ -105,10 +105,10 @@ Team StratosDB will strive to continuously release updates and additional featur
 
 <center>
 <img
-	src="./client/assets/images/info-modal-upload-icon.png"
+	src="./client/assets/images/info-modal-upload-icon.jpg"
 />
 	<img
-		src="./client/assets/images/info-modal-upload-modal.png"
+		src="./client/assets/images/info-modal-upload-modal.jpg"
 	/>
 </center>
 
@@ -119,7 +119,7 @@ and/or data entries from your tethered AWS RDS database
 
 <center>
 	<img
-		src="./client/assets/images/info-modal-code-editor.png"
+		src="./client/assets/images/info-modal-code-editor.jpg"
 	/>
 </center>
 
@@ -133,7 +133,7 @@ EG. SELECT \* FROM <em>TABLE_NAME</em>;
 
 <center>
 <img
-	src="./client/assets/images/info-modal-query-text-area.png"
+	src="./client/assets/images/info-modal-query-text-area.jpg"
 />
 </center>
 
@@ -143,7 +143,7 @@ A scrollable table will render based on the <strong>SELECT</strong> query you ha
 
 <center>
 <img
-	src="./client/assets/images/info-modal-returned-table.png"
+	src="./client/assets/images/info-modal-returned-table.jpg"
 />
 </center>
 
@@ -154,7 +154,7 @@ A visual line graph representation will render the performance time
 
 <center>
 	<img
-		src="./client/assets/images/info-modal-line-graph.png"
+		src="./client/assets/images/info-modal-line-graph.jpg"
 	/>
 </center>
 

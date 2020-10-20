@@ -1,7 +1,7 @@
-import React from "react";
-import AwsModal from "./AwsModal";
-import InfoModal from "./InfoModal";
-import UploadModal from "./UploadModal";
+import React from 'react';
+import AwsModal from './AwsModal';
+import InfoModal from './InfoModal';
+import UploadModal from './UploadModal';
 
 interface SidebarState {
   url: string;
@@ -87,7 +87,7 @@ const Sidebar: React.FC<SidebarState> = (props: SidebarState) => {
       </div>
       <div id="bottom-sidebar">
         <img
-          src="./../client/assets/images/stratosdb_footer_banner.png"
+          src="./../client/assets/images/stratosdb_footer_banner.jpg"
           alt="footer"
           id="stratos-footer"
           width="125px"
