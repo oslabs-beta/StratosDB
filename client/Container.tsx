@@ -50,18 +50,29 @@ class Container extends Component<{}, ContainerState> {
     this.queryChange = this.queryChange.bind(this);
     // queryChange function is used to track the inputted values and update queryEntry in state
     this.querySubmit = this.querySubmit.bind(this);
-    // querySubmit
+    // querySubmit function is used to send the inputted information to the server
     this.refresh = this.refresh.bind(this);
+    // refresh function is used to refresh the entire application
     this.connect = this.connect.bind(this);
+    // connect function is used to extablish a cloud connection
     this.awsOpenModal = this.awsOpenModal.bind(this);
+    // awsOpenModal function is used to open the modal
     this.awsCloseModal = this.awsCloseModal.bind(this);
+    //awsCloseModal function is used to close the modal
     this.awsInfoChange = this.awsInfoChange.bind(this);
+    // awsInfoChange function is used to change the aws state
     this.infoOpenModal = this.infoOpenModal.bind(this);
+    // infoOpenModal function is used to change state of modal
     this.infoCloseModal = this.infoCloseModal.bind(this);
+    // infoCloseModal function is used to change state of modal
     this.fileUpload = this.fileUpload.bind(this);
+    // fileUpload function is used to send file to the backend
     this.fileUpdate = this.fileUpdate.bind(this);
+    // fileUpdate function is used to update state to location of file
     this.uploadOpenModal = this.uploadOpenModal.bind(this);
+    // uploadOpenModal function is used to change state to true
     this.uploadCloseModal = this.uploadCloseModal.bind(this);
+    // uploadCloseModal function is used to change state to flase
     this.emptyInject = this.emptyInject.bind(this);
   }
 
