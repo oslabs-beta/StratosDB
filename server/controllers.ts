@@ -36,8 +36,10 @@ export const stratosController: controllers = {
   ) => {
     // DESTRUCTURING SCHEMAENTRY FROM REQ.BODY
     const { schemaEntry } = req.body;
+    console.log('CONTROLLER > SCHEMAENTRY: ', schemaEntry);
     db.query(schemaEntry)
       .then((result: any) => {
+        console.log('DB.QUERY > SCHEMA SUCCESSFULLY SENT');
         return next();
       })
       .catch((error: string) => {
