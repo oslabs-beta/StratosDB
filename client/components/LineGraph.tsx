@@ -7,7 +7,7 @@ interface LineGraphProps {
   queryHistory: any;
 }
 
-class LineGraph extends Component<LineGraphProps> {
+class LineGraph extends Component<any, LineGraphProps> {
   constructor(props: LineGraphProps) {
     super(props);
   }
@@ -38,7 +38,7 @@ class LineGraph extends Component<LineGraphProps> {
     };
 
     return (
-      <div id="line-graph" className="LineGraph">
+      <div id='line-graph' className='LineGraph'>
         <Line
           data={data}
           options={{
