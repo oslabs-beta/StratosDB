@@ -1,10 +1,10 @@
 import React from 'react';
 import { UnControlled as CodeMirror } from 'react-codemirror2';
-// import CodeMirror from 'react-codemirror';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/mode/sql/sql';
 import 'codemirror/theme/blackboard.css';
 
+// initial Code Editor State types
 interface CodeEditorState {
   schemaEntry: string;
   data: object;
@@ -16,6 +16,7 @@ interface CodeEditorState {
   emptyInject: any;
 }
 
+// Functional component, Code Editor
 const CodeEditor: React.FC<CodeEditorState> = (props: CodeEditorState) => {
   // Codemirror module configuration options
   const options = {
@@ -28,6 +29,8 @@ const CodeEditor: React.FC<CodeEditorState> = (props: CodeEditorState) => {
     tabSize: 2,
   };
 
+  // check if injectedCode in state is not empty
+  // if user imports file, injectedCode will not be empty
   const injectCheck = () => {
     if (props.injectedCode) {
       return (
