@@ -96,9 +96,7 @@ Team StratosDB will strive to continuously release updates and additional featur
 
 ### SCHEMA CODE EDITOR
 
-Use the Schema Code Editor to input any psql command queries (EG.{' '}
-<strong>CREATE TABLE</strong>, <strong>INSERT INTO</strong>,{' '}
-<strong>DROP TABLE</strong>) to create/read/update/delete tables
+Use the Schema Code Editor to input any psql command queries (EG. <strong>CREATE TABLE</strong>, <strong>INSERT INTO</strong>, <strong>DROP TABLE</strong>) to create/read/update/delete tables
 and/or data entries from your tethered AWS RDS database
 
 <center>
@@ -162,25 +160,25 @@ that was ran and the performance time (ms)
 
 ## Core Team
 
-<div align="center">
+<div>
 <table>
 <tr>
-<td align="center">
+<td>
 <a href="https://github.com/joalk"><img src="./client/assets/images/joalk.png" width="120px"/></a>
 <br>
 <a href="https://github.com/joalk">Joal Kim</a>
 </td>
-<td align="center">
+<td >
 <a href="https://github.com/sophiapak"><img src="./client/assets/images/sophiapak.png" width="120px"/></a>
 <br>
 <a href="https://github.com/sophiapak">Sophia Pak</a>
 </td>
-<td align="center">
+<td>
 <a href="https://github.com/tysong24"><img src="./client/assets/images/tysong24.png" width="120px"/></a>
 <br>
 <a href="https://github.com/tysong24">Tommy Song</a>
 </td>
-<td align="center">
+<td>
 <a href="https://github.com/morgan562"><img src="./client/assets/images/morgan562.png" width="120px"/></a>
 <br>
 <a href="https://github.com/morgan562">Tyler Morgan</a>
