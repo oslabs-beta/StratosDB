@@ -45,24 +45,42 @@ Team StratosDB will strive to continuously release updates and additional featur
 
 <br>
 
+## Overview
+
+<br>
+
 ## Getting Started
 
-1. Click on the Cloud Icon (located on the Left Sidebar)
+1.  Clone StratosDB to your local machine and point to the StratosDB directory:
+
+        git clone https://github.com/oslabs-beta/StratosDB.git
+
+        cd StratosDB
+
+2.  Install all required dependencies with the following script:
+
+        npm install
+
+3.  Run the following script to open StratosDB on http://localhost:8080:
+
+        npm run dev
+
+4.  Once StratosDB is opened on http://localhost:8080, click on the Cloud Icon (located on the Left Sidebar)
 <center>
 	<img
 		src="./client/assets/images/info-modal-cloud-icon.png"
 	/>
 </center>
 
-2. Enter your AWS RDS Information and press <strong>Connect</strong>
+5.  Enter your AWS RDS Information and press <strong>Connect</strong>
 
-   <strong>User:</strong> Database Username
-   <br />
-   <strong>Host:</strong> AWS RDS Endpoint Link \*
-   <br />
-   <strong>Database:</strong> Database name \*\*
-   <br />
-   <strong>Password:</strong> Database Password
+    <strong>User:</strong> Database Username
+    <br />
+    <strong>Host:</strong> AWS RDS Endpoint Link \*
+    <br />
+    <strong>Database:</strong> Database name \*\*
+    <br />
+    <strong>Password:</strong> Database Password
 
 <center>
 	<img
