@@ -26,7 +26,7 @@ CREATE TABLE public.dogs (
 	"name" varchar NOT NULL,
 	"breed" varchar NOT NULL,
 	"age" int NOT NULL,
-	"user_id" int NOT NULL,
+	"owner_id" int NOT NULL,
 	CONSTRAINT "dogs_pk" PRIMARY KEY ("_id")
 	) WITH (
 	OIDS=FALSE
@@ -35,18 +35,17 @@ CREATE TABLE public.dogs (
 CREATE TABLE public.cats (
 	"_id" serial NOT NULL,
 	"name" varchar NOT NULL,
-	"description" varchar NOT NULL,
 	"breed" varchar NOT NULL,
 	"age" int NOT NULL,
-	"user_id" bigint NOT NULL,
+	"owner_id" bigint NOT NULL,
 		CONSTRAINT "cats_pk" PRIMARY KEY ("_id")
 	) WITH (
 	OIDS=FALSE
 );
 
 ALTER TABLE public.owners ADD FOREIGN KEY ("address_id") REFERENCES public.address("_id");
-ALTER TABLE public.cats ADD FOREIGN KEY ("owners_id") REFERENCES public.owners("_id");
-ALTER TABLE public.dogs ADD FOREIGN KEY ("owners_id") REFERENCES public.owners("_id");
+ALTER TABLE public.cats ADD FOREIGN KEY ("owner_id") REFERENCES public.owners("_id");
+ALTER TABLE public.dogs ADD FOREIGN KEY ("owner_id") REFERENCES public.owners("_id");
 
 INSERT INTO public.address VALUES (1, 92663, '123 daisy lane', 'oc', 'california');
 INSERT INTO public.address VALUES (2, 92663, '123 orchid lane', 'los angeles', 'california');
@@ -62,7 +61,7 @@ INSERT INTO public.owners VALUES (5, 'ns@gmail.com', 'Nicholas', 'Shay', 'hellow
 
 INSERT INTO public.dogs VALUES (1, 'Pancake', 'Pembroke Welsh Corgi', 6, 1);
 INSERT INTO public.dogs VALUES (2, 'Honey', 'Pembroke Welsh Corgi', 1, 1);
-INSERT INTO public.dogs VALUES (3, 'Oreo', 'Dalmatian', 17, 2);
+INSERT INTO public.dogs VALUES (3, 'Oreo', 'NEED TO CONFIRM', 4, 2);
 INSERT INTO public.dogs VALUES (4, 'Rex', 'Belgian Malinois', 5, 1);
 INSERT INTO public.dogs VALUES (5, 'Duke', 'Pembroke Welsh Corgi', 7, 5);
 

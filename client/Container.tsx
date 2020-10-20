@@ -109,7 +109,7 @@ class Container extends Component<{}, ContainerState> {
     console.log('state.queries before axios: ', this.state);
 
     const schemaObj: any = {
-      schemaEntry: this.state.schemaEntry,
+      schemaEntry: this.state.injectedCode,
     };
     console.log('queryData', schemaObj);
     axios.post('/newSchema', schemaObj).then((data) => {
@@ -199,6 +199,10 @@ class Container extends Component<{}, ContainerState> {
 
   // UPDATING STATE TO LOCATION OF FILE
   fileUpdate(event: any) {
+    this.setState({
+      injectedCode: '',
+    });
+    console.log('state: ', this.state.schemaEntry);
     // PULL NEW FILE TARGET
     const newFile = event.target.files[0];
     // SET NEW FILE TO STATE
@@ -231,9 +235,8 @@ class Container extends Component<{}, ContainerState> {
     console.log('upload has been clicked');
 
     // SETTING UPDATING SCHEMAENTRY STATE WITH NEW INJECTED CODE
-    const newCode = this.state.injectedCode;
+
     this.setState({
-      schemaEntry: newCode,
       uploadModalIsOpen: false,
     });
 
