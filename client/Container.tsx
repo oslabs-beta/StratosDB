@@ -109,7 +109,7 @@ class Container extends Component<{}, ContainerState> {
     console.log('state.queries before axios: ', this.state);
 
     const schemaObj: any = {
-      schemaEntry: this.state.schemaEntry,
+      schemaEntry: this.state.injectedCode,
     };
     console.log('queryData', schemaObj);
     axios.post('/newSchema', schemaObj).then((data) => {
@@ -277,8 +277,8 @@ class Container extends Component<{}, ContainerState> {
 
   render() {
     return (
-      <div id='main-container'>
-        <div id='left-panel'>
+      <div id="main-container">
+        <div id="left-panel">
           <Sidebar
             url={this.state.url}
             refresh={this.refresh}
@@ -299,9 +299,9 @@ class Container extends Component<{}, ContainerState> {
             uploadCloseModal={this.uploadCloseModal}
           />
         </div>
-        <div id='right-panel'>
+        <div id="right-panel">
           <Announcement announcement={this.state.announcement} />
-          <div id='main-feature'>
+          <div id="main-feature">
             <CodeEditor
               schemaEntry={this.state.schemaEntry}
               data={this.state.queries}
@@ -312,13 +312,13 @@ class Container extends Component<{}, ContainerState> {
               injectedCode={this.state.injectedCode}
               emptyInject={this.emptyInject}
             />
-            <div id='queries-results-panel'>
-              <div id='query-request'>
+            <div id="queries-results-panel">
+              <div id="query-request">
                 <textarea
-                  id='query-input'
+                  id="query-input"
                   onChange={this.queryChange}
                 ></textarea>
-                <button id='query-submit' onClick={this.querySubmit}>
+                <button id="query-submit" onClick={this.querySubmit}>
                   Submit Query
                 </button>
               </div>
