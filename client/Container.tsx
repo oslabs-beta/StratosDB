@@ -38,14 +38,19 @@ interface HTMLInputEvent extends Event {
   target: HTMLInputElement & EventTarget;
 }
 
+// class Componenet, Container
 class Container extends Component<{}, ContainerState> {
   constructor(props: {}) {
     super(props);
 
     this.schemaChange = this.schemaChange.bind(this);
+    // schemaChange function is used to update schemaEntry inside of state
     this.schemaSubmit = this.schemaSubmit.bind(this);
+    //schemaSubmit function is used to submit the schema inputted in the code editor
     this.queryChange = this.queryChange.bind(this);
+    // queryChange function is used to track the inputted values and update queryEntry in state
     this.querySubmit = this.querySubmit.bind(this);
+    // querySubmit
     this.refresh = this.refresh.bind(this);
     this.connect = this.connect.bind(this);
     this.awsOpenModal = this.awsOpenModal.bind(this);
@@ -277,8 +282,8 @@ class Container extends Component<{}, ContainerState> {
 
   render() {
     return (
-      <div id="main-container">
-        <div id="left-panel">
+      <div id='main-container'>
+        <div id='left-panel'>
           <Sidebar
             url={this.state.url}
             refresh={this.refresh}
@@ -299,9 +304,9 @@ class Container extends Component<{}, ContainerState> {
             uploadCloseModal={this.uploadCloseModal}
           />
         </div>
-        <div id="right-panel">
+        <div id='right-panel'>
           <Announcement announcement={this.state.announcement} />
-          <div id="main-feature">
+          <div id='main-feature'>
             <CodeEditor
               schemaEntry={this.state.schemaEntry}
               data={this.state.queries}
@@ -312,13 +317,13 @@ class Container extends Component<{}, ContainerState> {
               injectedCode={this.state.injectedCode}
               emptyInject={this.emptyInject}
             />
-            <div id="queries-results-panel">
-              <div id="query-request">
+            <div id='queries-results-panel'>
+              <div id='query-request'>
                 <textarea
-                  id="query-input"
+                  id='query-input'
                   onChange={this.queryChange}
                 ></textarea>
-                <button id="query-submit" onClick={this.querySubmit}>
+                <button id='query-submit' onClick={this.querySubmit}>
                   Submit Query
                 </button>
               </div>
