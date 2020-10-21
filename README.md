@@ -171,6 +171,22 @@ A visual line graph representation will render the performance time
 \*\* You can hover over each point in the line graph to view the query
 that was ran and its corresponding the performance time (ms)
 
+### Information Modal
+
+A dedicated modal (located on the Left Sidebar) guides our first time users through our application's features in detail and provides more information about StratosDB
+
+<center>
+	<img
+		src="./client/assets/images/info-modal-info-icon.jpg"
+	/>
+</center>
+
+<center>
+	<img
+		src="./client/assets/images/info-modal-info-modal.jpg"
+	/>
+</center>
+
 <br>
 
 ## Built With
