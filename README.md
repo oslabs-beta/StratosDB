@@ -6,12 +6,15 @@
 
 <br>
 
+<a href="https://stratosdb.io">stratosDB.io</a>
+
 <br>
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/oslabs-beta/StratosDB)
 ![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)
 ![Contributions Welcome](https://img.shields.io/badge/Contributions-welcome-blue.svg)
 [![Github stars](https://img.shields.io/github/stars/oslabs-beta/StratosDB?style=social)](https://github.com/oslabs-beta/StratosDB)
+[![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fteamstratosdb)](https://twitter.com/TeamStratosDB)
 
 <br>
 

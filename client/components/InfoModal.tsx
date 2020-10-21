@@ -32,20 +32,20 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
   return (
     <div>
       <Modal
-        id='info-modal'
+        id="info-modal"
         isOpen={props.modalIsOpen}
         onRequestClose={props.closeModal}
         style={customStyles}
-        contentLabel='Info Modal'
+        contentLabel="Info Modal"
       >
-        <div id='info-composition'>
-          <button className='secondary-button' onClick={props.closeModal}>
+        <div id="info-composition">
+          <button className="secondary-button" onClick={props.closeModal}>
             <strong>x</strong>
           </button>
           <img
-            src='./../client/assets/images/stratosdb_logo_white.png'
-            alt=''
-            width='40%'
+            src="./../client/assets/images/stratosdb_logo_white.png"
+            alt=""
+            width="40%"
           />
           <br />
           <br />
@@ -53,9 +53,9 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           <p>1. Click on the Cloud Icon (located on the Left Sidebar)</p>
           <br />
           <img
-            src='./../client/assets/images/info-modal-cloud-icon.png'
-            alt=''
-            width='60%'
+            src="./../client/assets/images/info-modal-cloud-icon.png"
+            alt=""
+            width="60%"
           />
           <br />
           <br />
@@ -73,9 +73,9 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           </p>
           <br />
           <img
-            src='./../client/assets/images/info-modal-cloud-modal.png'
-            alt=''
-            width='60%'
+            src="./../client/assets/images/info-modal-cloud-modal.png"
+            alt=""
+            width="60%"
           />
           <br />
           <p>
@@ -98,15 +98,15 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           </p>
           <br />
           <img
-            src='./../client/assets/images/info-modal-upload-icon.png'
-            alt=''
-            width='60%'
+            src="./../client/assets/images/info-modal-upload-icon.png"
+            alt=""
+            width="60%"
           />
           <br />
           <img
-            src='./../client/assets/images/info-modal-upload-modal.png'
-            alt=''
-            width='60%'
+            src="./../client/assets/images/info-modal-upload-modal.png"
+            alt=""
+            width="60%"
           />
           <br />
           <h2>SCHEMA CODE EDITOR</h2>
@@ -118,9 +118,9 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           </p>
           <br />
           <img
-            src='./../client/assets/images/info-modal-code-editor.png'
-            alt=''
-            width='60%'
+            src="./../client/assets/images/info-modal-code-editor.png"
+            alt=""
+            width="60%"
           />
           <br />
           <h2>QUERY TEXT EDITOR</h2>
@@ -134,9 +134,9 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           </p>
           <br />
           <img
-            src='./../client/assets/images/info-modal-query-text-area.png'
-            alt=''
-            width='60%'
+            src="./../client/assets/images/info-modal-query-text-area.png"
+            alt=""
+            width="60%"
           />
           <br />
           <h2>RETURN TABLE</h2>
@@ -146,9 +146,9 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           </p>
           <br />
           <img
-            src='./../client/assets/images/info-modal-returned-table.png'
-            alt=''
-            width='60%'
+            src="./../client/assets/images/info-modal-returned-table.png"
+            alt=""
+            width="60%"
           />
           <br />
           <h2>VISUAL LINE GRAPH</h2>
@@ -159,9 +159,9 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           </p>
           <br />
           <img
-            src='./../client/assets/images/info-modal-line-graph.png'
-            alt=''
-            width='60%'
+            src="./../client/assets/images/info-modal-line-graph.png"
+            alt=""
+            width="60%"
           />
           <br />
           <p>
@@ -175,28 +175,29 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
             continuously release updates and additional features.
           </p>
           <p>1. If you would like to contribute to this open source project:</p>
-          <a href='https://github.com/oslabs-beta/StratosDB/pulls'>
+          <a href="https://github.com/oslabs-beta/StratosDB/pulls">
             Please feel free to submit a PR
           </a>
           <p>
             2. If you happen to come across any issues while tinkering with the
             application:
           </p>
-          <a href='https://github.com/oslabs-beta/StratosDB/issues'>
+          <a href="https://github.com/oslabs-beta/StratosDB/issues">
             Please report the bug/issue by submitting a ticket on our Github
             Repository
           </a>
           <br />
           <h1>T H A N K S !</h1>
           <img
-            src='./../client/assets/images/stratosdb_logo_white.png'
-            alt=''
-            width='20%'
+            src="./../client/assets/images/stratosdb_logo_white.png"
+            alt=""
+            width="20%"
           />
           <br />
           <span>
-            <a href=''>Website</a> | <a href=''>Github</a> |{' '}
-            <a href=''>Twitter</a>
+            <a href="https://stratosdb.io">Website</a> |{' '}
+            <a href="https://github.com/oslabs-beta/StratosDB">Github</a> |{' '}
+            <a href="https://twitter.com/TeamStratosDB/">Twitter</a>
           </span>
           <br />
           <br />
