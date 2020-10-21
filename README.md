@@ -6,16 +6,19 @@
 
 <br>
 
+<a href="https://stratosdb.io">stratosDB.io</a>
+
 <br>
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/oslabs-beta/StratosDB)
 ![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)
 ![Contributions Welcome](https://img.shields.io/badge/Contributions-welcome-blue.svg)
 [![Github stars](https://img.shields.io/github/stars/oslabs-beta/StratosDB?style=social)](https://github.com/oslabs-beta/StratosDB)
+[![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fteamstratosdb)](https://twitter.com/TeamStratosDB)
 
 <br>
 
-<p><b>stratosDB: </b>A Cloud SQL database performance tester and deployment tool</p>
+<p><b>stratosDB: </b>An all-in-one tool for Cloud SQL</p>
 
 </div>
 
@@ -24,6 +27,7 @@
 ## Table of Contents
 
 - <a href="https://github.com/oslabs-beta/StratosDB#beta-stage">Beta Stage</a>
+- <a href="https://github.com/oslabs-beta/StratosDB#overview">Overview</a>
 - <a href="https://github.com/oslabs-beta/StratosDB#getting-started">Getting Started</a>
 - <a href="https://github.com/oslabs-beta/StratosDB#main-features">Main Features</a>
 - <a href="https://github.com/oslabs-beta/StratosDB#built-with">Built With</a>
@@ -38,14 +42,20 @@ Team StratosDB will strive to continuously release updates and additional featur
 
 1. If you would like to contribute to this project:
 
-   - Please feel free to submit a PR
+   - Please feel free to <a href="https://github.com/oslabs-beta/StratosDB/pulls">submit a PR</a>
 
 2. If you happen to come across any issues while tinkering with the application:
-   - Please report the bug/issue by submitting a ticket located in the Issues Tab within this repository
+   - Please <a href="https://github.com/oslabs-beta/StratosDB/issues">report the bug/issue</a> by submitting a ticket located in the Issues Tab within this repository
 
 <br>
 
 ## Overview
+
+With the current trajectory of technological improvements, businesses and applications are moving towards a “serverless” architecture. With cloud computing becoming more reliable, it just makes more sense for businesses to take the “pay as you go and avoid upfront costs” approach.
+
+Although cloud computing and serverless architecture has all these great qualities, not everything is rainbows and sunshine! Cloud services are still pretty new and user interfaces for these services are not very intuitive. Amazon’s AWS, itself, does not offer a platform that is intuitive for the users. The platform itself can be extremely confusing when using services such as AWS RDS. As such, third party applications are often used to alleviate these problems one at a time.
+
+In response, our team decided that we wanted to tackle this issue by creating a tool that can be used for all AWS RDS database instances. We would like to introduce stratosDB, a one stop shop for users of AWS RDS to create, test, and deploy their RDS database instances! StratosDB offers a platform built on NodeJS that connects to your specific AWS RDS instance with a streamlined GUI that makes using AWS RDS much more simple and efficient.
 
 <br>
 
@@ -97,7 +107,7 @@ Team StratosDB will strive to continuously release updates and additional featur
 
 ## Main Features
 
-### IMPORTING .SQL AND .TXT FILES
+### Importing .sql & .txt Files
 
 1.  Click on the Import Icon (located on the Left Sidebar)
 2.  Choose the .SQL or .TXT file you would like to import
@@ -112,9 +122,9 @@ Team StratosDB will strive to continuously release updates and additional featur
 	/>
 </center>
 
-### SCHEMA CODE EDITOR
+### Schema Code Editor
 
-Use the Schema Code Editor to input any psql command queries (EG. <strong>CREATE TABLE</strong>, <strong>INSERT INTO</strong>, <strong>DROP TABLE</strong>) to create/read/update/delete tables
+Use the Schema Code Editor to input any psql command queries (EG. <strong>CREATE TABLE</strong>, <strong>INSERT INTO</strong>) to create/read tables
 and/or data entries from your tethered AWS RDS database
 
 <center>
@@ -123,7 +133,7 @@ and/or data entries from your tethered AWS RDS database
 	/>
 </center>
 
-### QUERY TEXT EDITOR
+### Query Text Editor
 
 Enter your <strong>SELECT</strong> psql commands into the provided
 text editor and press <strong>Submit Query</strong> to initiate the
@@ -137,7 +147,7 @@ EG. SELECT \* FROM <em>TABLE_NAME</em>;
 />
 </center>
 
-### RETURN TABLE
+### Return Table
 
 A scrollable table will render based on the <strong>SELECT</strong> query you have entered in the <strong>Query Text Editor</strong>
 
@@ -147,7 +157,7 @@ A scrollable table will render based on the <strong>SELECT</strong> query you ha
 />
 </center>
 
-### VISUAL LINE GRAPH
+### Visual Line Graph
 
 A visual line graph representation will render the performance time
 (milliseconds) for each successfully performed <strong>SELECT</strong> query \*\*
@@ -159,7 +169,7 @@ A visual line graph representation will render the performance time
 </center>
 
 \*\* You can hover over each point in the line graph to view the query
-that was ran and the performance time (ms)
+that was ran and its corresponding the performance time (ms)
 
 <br>
 
@@ -168,9 +178,10 @@ that was ran and the performance time (ms)
 - React
 - TypeScript
 - CodeMirror
-- React-ChartJS-2
+- React-ChartJS
 - Node.JS
   - Express
+  - Multer
 - AWS RDS
   - PostgreSQL
 
