@@ -76,6 +76,7 @@ class Container extends Component<{}, ContainerState> {
     this.emptyInject = this.emptyInject.bind(this);
   }
 
+  // ContainerState types
   state: ContainerState = {
     queries: [],
     queryStatistics: [],
@@ -101,6 +102,7 @@ class Container extends Component<{}, ContainerState> {
     injectedCode: '',
   };
 
+  //  componentDidMount sends an axios request with result data once componenet is mounted
   componentDidMount() {
     console.log('component mounted');
     console.log('before axios');
