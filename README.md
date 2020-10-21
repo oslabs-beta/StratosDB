@@ -6,7 +6,7 @@
 
 <br>
 
-<a href="https://stratosdb.io">stratosDB.io</a>
+<a href="https://stratosdb.io">StratosDB.io</a>
 
 <br>
 
@@ -18,7 +18,7 @@
 
 <br>
 
-<p><b>stratosDB: </b>An all-in-one tool for Cloud SQL</p>
+<p><b>StratosDB: </b>An all-in-one tool for Cloud SQL</p>
 
 </div>
 
@@ -55,7 +55,7 @@ With the current trajectory of technological improvements, businesses and applic
 
 Although cloud computing and serverless architecture has all these great qualities, not everything is rainbows and sunshine! Cloud services are still pretty new and user interfaces for these services are not very intuitive. Amazon’s AWS, itself, does not offer a platform that is intuitive for the users. The platform itself can be extremely confusing when using services such as AWS RDS. As such, third party applications are often used to alleviate these problems one at a time.
 
-In response, our team decided that we wanted to tackle this issue by creating a tool that can be used for all AWS RDS database instances. We would like to introduce stratosDB, a one stop shop for users of AWS RDS to create, test, and deploy their RDS database instances! StratosDB offers a platform built on NodeJS that connects to your specific AWS RDS instance with a streamlined GUI that makes using AWS RDS much more simple and efficient.
+In response, our team decided that we wanted to tackle this issue by creating a tool that can be used for all AWS RDS database instances. We would like to introduce StratosDB, a one stop shop for users of AWS RDS to create, test, and deploy their RDS database instances! StratosDB offers a platform built on NodeJS that connects to your specific AWS RDS instance with a streamlined GUI that makes using AWS RDS much more simple and efficient.
 
 <br>
 
@@ -170,6 +170,22 @@ A visual line graph representation will render the performance time
 
 \*\* You can hover over each point in the line graph to view the query
 that was ran and its corresponding the performance time (ms)
+
+### Information Modal
+
+A dedicated modal (located on the Left Sidebar) guides first time users through the application's features in detail and provides more information about StratosDB
+
+<center>
+	<img
+		src="./client/assets/images/info-modal-info-icon.jpg"
+	/>
+</center>
+
+<center>
+	<img
+		src="./client/assets/images/info-modal-info-modal.jpg"
+	/>
+</center>
 
 <br>
 

@@ -12,7 +12,8 @@ body {
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
-  font-family: $font-karla;
+  font-family: $font-inter;
+  font-weight: 700;
 }
 
 /*
@@ -25,5 +26,6 @@ GLOBAL INHERITANCE:
 *::before,
 *::after {
   box-sizing: inherit;
-  font-family: $font-karla;
+  font-family: $font-inter;
+  font-weight: 700;
 }
