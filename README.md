@@ -18,7 +18,7 @@
 
 <br>
 
-<p><b>stratosDB: </b>A Cloud SQL database performance tester and deployment tool</p>
+<p><b>stratosDB: </b>An all-in-one tool for Cloud SQL</p>
 
 </div>
 
@@ -42,14 +42,20 @@ Team StratosDB will strive to continuously release updates and additional featur
 
 1. If you would like to contribute to this project:
 
-   - Please feel free to submit a PR
+   - Please feel free to <a href="https://github.com/oslabs-beta/StratosDB/pulls">submit a PR</a>
 
 2. If you happen to come across any issues while tinkering with the application:
-   - Please report the bug/issue by submitting a ticket located in the Issues Tab within this repository
+   - Please <a href="https://github.com/oslabs-beta/StratosDB/issues">report the bug/issue</a> by submitting a ticket located in the Issues Tab within this repository
 
 <br>
 
 ## Overview
+
+With the current trajectory of technological improvements, businesses and applications are moving towards a “serverless” architecture. With cloud computing becoming more reliable, it just makes more sense for businesses to take the “pay as you go and avoid upfront costs” approach.
+
+Although cloud computing and serverless architecture has all these great qualities, not everything is rainbows and sunshine! Cloud services are still pretty new and user interfaces for these services are not very intuitive. Amazon’s AWS, itself, does not offer a platform that is intuitive for the users. The platform itself can be extremely confusing when using services such as AWS RDS. As such, third party applications are often used to alleviate these problems one at a time.
+
+In response, our team decided that we wanted to tackle this issue by creating a tool that can be used for all AWS RDS database instances. We would like to introduce stratosDB, a one stop shop for users of AWS RDS to create, test, and deploy their RDS database instances! StratosDB offers a platform built on NodeJS that connects to your specific AWS RDS instance with a streamlined GUI that makes using AWS RDS much more simple and efficient.
 
 <br>
 
@@ -172,9 +178,10 @@ that was ran and its corresponding the performance time (ms)
 - React
 - TypeScript
 - CodeMirror
-- React-ChartJS-2
+- React-ChartJS
 - Node.JS
   - Express
+  - Multer
 - AWS RDS
   - PostgreSQL
 
