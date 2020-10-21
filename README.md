@@ -118,7 +118,7 @@ Team StratosDB will strive to continuously release updates and additional featur
 
 ### Schema Code Editor
 
-Use the Schema Code Editor to input any psql command queries (EG. <strong>CREATE TABLE</strong>, <strong>INSERT INTO</strong>, <strong>DROP TABLE</strong>) to create/read/update/delete tables
+Use the Schema Code Editor to input any psql command queries (EG. <strong>CREATE TABLE</strong>, <strong>INSERT INTO</strong>) to create/read tables
 and/or data entries from your tethered AWS RDS database
 
 <center>
@@ -163,7 +163,7 @@ A visual line graph representation will render the performance time
 </center>
 
 \*\* You can hover over each point in the line graph to view the query
-that was ran and the performance time (ms)
+that was ran and its corresponding the performance time (ms)
 
 <br>
 
