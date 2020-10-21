@@ -1,7 +1,7 @@
 @import './variables';
 
 #info-modal {
-  font-family: $font-karla;
+  font-family: $font-inter;
   height: 80%;
   width: 60%;
   text-align: center;
@@ -21,20 +21,23 @@
 
   h1 {
     color: $stratos-yellow;
-    font-family: $font-kanit;
+    font-family: $font-inter;
     font-size: 32pt;
+    font-weight: 700;
   }
 
   h2 {
     color: $stratos-blue;
-    font-family: $font-kanit;
+    font-family: $font-inter;
     font-size: 18pt;
+    font-weight: 700;
   }
 
   h3 {
     color: $stratos-blue;
-    font-family: $font-kanit;
+    font-family: $font-inter;
     font-size: 18pt;
+    font-weight: 700;
   }
 
   p {
@@ -67,7 +70,7 @@
     color: $stratos-red;
     text-align: right;
     font-size: 25px;
-    font-family: $font-alata;
+    font-family: $font-inter;
 
     &:focus {
       outline: none;
