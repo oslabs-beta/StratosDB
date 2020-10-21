@@ -35,35 +35,35 @@ const UploadModal: React.FC<uploadModalState> = (props: uploadModalState) => {
     <div>
       {/* Modal prop drilled and rendered in sidebar  */}
       <Modal
-        id='upload-modal'
+        id="upload-modal"
         isOpen={props.modalIsOpen}
         onRequestClose={props.closeModal}
         style={customStyles}
-        contentLabel='Upload Modal'
+        contentLabel="Upload Modal"
       >
-        <h1>I M P O R T</h1>
-        <p>.SQL AND .TXT FORMAT ONLY</p>
+        <h1>IMPORT</h1>
+        <p>.sql amd .txt Format Only</p>
         <form
-          id='upload-form'
-          action='/upload'
-          method='post'
-          encType='multipart/form-data'
+          id="upload-form"
+          action="/upload"
+          method="post"
+          encType="multipart/form-data"
         >
           <input
-            className='choose-file-button'
-            type='file'
-            name='myFile'
+            className="choose-file-button"
+            type="file"
+            name="myFile"
             onChange={props.fileUpdate}
           />
         </form>
         <button
-          className='primary-button'
-          type='button'
+          className="primary-button"
+          type="button"
           onClick={props.fileUpload}
         >
           Import
         </button>
-        <button className='secondary-button' onClick={props.closeModal}>
+        <button className="secondary-button" onClick={props.closeModal}>
           Cancel
         </button>
       </Modal>

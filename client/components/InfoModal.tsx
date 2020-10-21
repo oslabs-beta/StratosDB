@@ -49,11 +49,11 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           />
           <br />
           <br />
-          <h1>S E T U P</h1>
+          <h1>Setup</h1>
           <p>1. Click on the Cloud Icon (located on the Left Sidebar)</p>
           <br />
           <img
-            src="./../client/assets/images/info-modal-cloud-icon.png"
+            src="./../client/assets/images/info-modal-cloud-icon.jpg"
             alt=""
             width="60%"
           />
@@ -73,7 +73,7 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           </p>
           <br />
           <img
-            src="./../client/assets/images/info-modal-cloud-modal.png"
+            src="./../client/assets/images/info-modal-cloud-modal.jpg"
             alt=""
             width="60%"
           />
@@ -84,8 +84,8 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
             ** If Database name was left blank when the AWS RDS Datbase Instance
             was created, use <strong>postgres</strong>
           </p>
-          <h1>O V E R V I E W</h1>
-          <h2>IMPORTING .SQL AND .TXT FILES</h2>
+          <h1>Overview</h1>
+          <h2>Importing .sql and .txt Files</h2>
           <p>
             1. Click on the Import Icon (located on the Left Sidebar)
             <br />
@@ -98,32 +98,32 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           </p>
           <br />
           <img
-            src="./../client/assets/images/info-modal-upload-icon.png"
+            src="./../client/assets/images/info-modal-upload-icon.jpg"
             alt=""
             width="60%"
           />
           <br />
           <img
-            src="./../client/assets/images/info-modal-upload-modal.png"
+            src="./../client/assets/images/info-modal-upload-modal.jpg"
             alt=""
             width="60%"
           />
           <br />
-          <h2>SCHEMA CODE EDITOR</h2>
+          <h2>Schema Code Editor</h2>
           <p>
             Use the Schema Code Editor to input any psql command queries (EG.{' '}
-            <strong>CREATE TABLE</strong>, <strong>INSERT INTO</strong>,{' '}
-            <strong>DROP TABLE</strong>) to create/read/update/delete tables
-            and/or data entries from your tethered AWS RDS database
+            <strong>CREATE TABLE</strong>, <strong>INSERT INTO</strong>) to
+            create/read tables and/or data entries from your tethered AWS RDS
+            database
           </p>
           <br />
           <img
-            src="./../client/assets/images/info-modal-code-editor.png"
+            src="./../client/assets/images/info-modal-code-editor.jpg"
             alt=""
             width="60%"
           />
           <br />
-          <h2>QUERY TEXT EDITOR</h2>
+          <h2>Query Text Editor</h2>
           <p>
             Enter your <strong>SELECT</strong> psql commands into the provided
             text editor and press <strong>Submit Query</strong> to initiate the
@@ -134,24 +134,24 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           </p>
           <br />
           <img
-            src="./../client/assets/images/info-modal-query-text-area.png"
+            src="./../client/assets/images/info-modal-query-text-area.jpg"
             alt=""
             width="60%"
           />
           <br />
-          <h2>RETURN TABLE</h2>
+          <h2>Return Table</h2>
           <p>
             A scrollable table will render based on the <strong>SELECT</strong>{' '}
             query you have entered in the <strong>Query Text Editor</strong>
           </p>
           <br />
           <img
-            src="./../client/assets/images/info-modal-returned-table.png"
+            src="./../client/assets/images/info-modal-returned-table.jpg"
             alt=""
             width="60%"
           />
           <br />
-          <h2>VISUAL LINE GRAPH</h2>
+          <h2>Visual Line Graph</h2>
           <p>
             A visual line graph representation will render the performance time
             (milliseconds) for each successfully performed{' '}
@@ -159,17 +159,17 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           </p>
           <br />
           <img
-            src="./../client/assets/images/info-modal-line-graph.png"
+            src="./../client/assets/images/info-modal-line-graph.jpg"
             alt=""
             width="60%"
           />
           <br />
           <p>
             *** You can hover each point in the line graph to view the query
-            that was ran and the performance time (ms)
+            that was ran and its corresponding performance time (ms)
           </p>
           <br />
-          <h1>B E T A</h1>
+          <h1>Beta</h1>
           <p>
             StratosDB is currently still in Beta and our team will strive to
             continuously release updates and additional features.
@@ -187,7 +187,7 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
             Repository
           </a>
           <br />
-          <h1>T H A N K S !</h1>
+          <h1>Thank You</h1>
           <img
             src="./../client/assets/images/stratosdb_logo_white.png"
             alt=""
