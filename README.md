@@ -24,6 +24,7 @@
 ## Table of Contents
 
 - <a href="https://github.com/oslabs-beta/StratosDB#beta-stage">Beta Stage</a>
+- <a href="https://github.com/oslabs-beta/StratosDB#overview">Overview</a>
 - <a href="https://github.com/oslabs-beta/StratosDB#getting-started">Getting Started</a>
 - <a href="https://github.com/oslabs-beta/StratosDB#main-features">Main Features</a>
 - <a href="https://github.com/oslabs-beta/StratosDB#built-with">Built With</a>
@@ -97,7 +98,7 @@ Team StratosDB will strive to continuously release updates and additional featur
 
 ## Main Features
 
-### IMPORTING .SQL AND .TXT FILES
+### Importing .sql & .txt Files
 
 1.  Click on the Import Icon (located on the Left Sidebar)
 2.  Choose the .SQL or .TXT file you would like to import
@@ -112,7 +113,7 @@ Team StratosDB will strive to continuously release updates and additional featur
 	/>
 </center>
 
-### SCHEMA CODE EDITOR
+### Schema Code Editor
 
 Use the Schema Code Editor to input any psql command queries (EG. <strong>CREATE TABLE</strong>, <strong>INSERT INTO</strong>, <strong>DROP TABLE</strong>) to create/read/update/delete tables
 and/or data entries from your tethered AWS RDS database
@@ -123,7 +124,7 @@ and/or data entries from your tethered AWS RDS database
 	/>
 </center>
 
-### QUERY TEXT EDITOR
+### Query Text Editor
 
 Enter your <strong>SELECT</strong> psql commands into the provided
 text editor and press <strong>Submit Query</strong> to initiate the
@@ -137,7 +138,7 @@ EG. SELECT \* FROM <em>TABLE_NAME</em>;
 />
 </center>
 
-### RETURN TABLE
+### Return Table
 
 A scrollable table will render based on the <strong>SELECT</strong> query you have entered in the <strong>Query Text Editor</strong>
 
@@ -147,7 +148,7 @@ A scrollable table will render based on the <strong>SELECT</strong> query you ha
 />
 </center>
 
-### VISUAL LINE GRAPH
+### Visual Line Graph
 
 A visual line graph representation will render the performance time
 (milliseconds) for each successfully performed <strong>SELECT</strong> query \*\*
