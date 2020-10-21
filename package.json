@@ -1,6 +1,6 @@
 {
   "name": "StratosDB",
-  "version": "1.0.0",
+  "version": "0.5.0",
   "description": "StratosDB",
   "main": "App.tsx",
   "scripts": {
@@ -34,13 +34,16 @@
     "transform": {
       "^.+\\.(ts|tsx)$": "ts-jest"
     },
+    "setupFiles": [
+      "raf/polyfill"
+    ],
     "globals": {
       "ts-jest": {
         "tsConfigFile": "tsconfig.json"
       }
     },
     "testMatch": [
-      "*/__tests__/*.+(ts|tsx|js)"
+      "**/__tests__/*.+(ts|tsx|js)"
     ]
   },
   "keywords": [],
@@ -78,6 +81,8 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
     "@skidding/react-codemirror": "^1.0.2",
+    "@types/enzyme": "^3.10.7",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^26.0.14",
     "@types/mocha": "^8.0.3",
     "@types/react-codemirror": "^1.0.3",
@@ -94,6 +99,7 @@
     "node": "^14.13.0",
     "pg": "^8.3.3",
     "postcss": "^8.1.1",
+    "raf": "^3.4.1",
     "react": "^16.13.1",
     "react-chartjs-2": "^2.10.0",
     "react-codemirror": "^1.0.0",
@@ -102,6 +108,7 @@
     "react-modal": "^3.11.2",
     "react-redux": "^7.2.1",
     "sass": "^1.26.11",
+    "ts-jest": "^26.4.1",
     "typescript": "^4.0.3"
   },
   "devDependencies": {
@@ -122,7 +129,7 @@
     "enzyme-adapter-react-16": "^1.15.5",
     "file-loader": "^6.1.0",
     "html-webpack-plugin": "^4.5.0",
-    "jest": "^26.5.3",
+    "jest": "^26.6.0",
     "nodemon": "^2.0.4",
     "postcss-loader": "^4.0.3",
     "react-hot-loader": "^4.13.0",

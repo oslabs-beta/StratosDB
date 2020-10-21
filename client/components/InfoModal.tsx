@@ -1,11 +1,13 @@
 import React from 'react';
 import Modal from 'react-modal';
 
+// initial Info Modal State types
 interface infoModalState {
   modalIsOpen: boolean;
   closeModal: any;
 }
 
+// Modal custom styles
 const customStyles = {
   content: {
     top: '50%',
@@ -24,6 +26,8 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
+// Functional Component, Info Modal
+// Modal toggles on when i Icon is clicked
 const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
   return (
     <div>
@@ -39,7 +43,7 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
             <strong>x</strong>
           </button>
           <img
-            src="./../client/assets/images/stratosdb_logo_white.jpg"
+            src="./../client/assets/images/stratosdb_logo_white.png"
             alt=""
             width="40%"
           />
@@ -49,7 +53,7 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           <p>1. Click on the Cloud Icon (located on the Left Sidebar)</p>
           <br />
           <img
-            src="./../client/assets/images/info-modal-cloud-icon.jpg"
+            src="./../client/assets/images/info-modal-cloud-icon.png"
             alt=""
             width="60%"
           />
@@ -69,7 +73,7 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           </p>
           <br />
           <img
-            src="./../client/assets/images/info-modal-cloud-modal.jpg"
+            src="./../client/assets/images/info-modal-cloud-modal.png"
             alt=""
             width="60%"
           />
@@ -94,13 +98,13 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           </p>
           <br />
           <img
-            src="./../client/assets/images/info-modal-upload-icon.jpg"
+            src="./../client/assets/images/info-modal-upload-icon.png"
             alt=""
             width="60%"
           />
           <br />
           <img
-            src="./../client/assets/images/info-modal-upload-modal.jpg"
+            src="./../client/assets/images/info-modal-upload-modal.png"
             alt=""
             width="60%"
           />
@@ -114,7 +118,7 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           </p>
           <br />
           <img
-            src="./../client/assets/images/info-modal-code-editor.jpg"
+            src="./../client/assets/images/info-modal-code-editor.png"
             alt=""
             width="60%"
           />
@@ -130,7 +134,7 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           </p>
           <br />
           <img
-            src="./../client/assets/images/info-modal-query-text-area.jpg"
+            src="./../client/assets/images/info-modal-query-text-area.png"
             alt=""
             width="60%"
           />
@@ -142,7 +146,7 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           </p>
           <br />
           <img
-            src="./../client/assets/images/info-modal-returned-table.jpg"
+            src="./../client/assets/images/info-modal-returned-table.png"
             alt=""
             width="60%"
           />
@@ -155,7 +159,7 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           </p>
           <br />
           <img
-            src="./../client/assets/images/info-modal-line-graph.jpg"
+            src="./../client/assets/images/info-modal-line-graph.png"
             alt=""
             width="60%"
           />
@@ -185,14 +189,15 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           <br />
           <h1>T H A N K S !</h1>
           <img
-            src="./../client/assets/images/stratosdb_logo_white.jpg"
+            src="./../client/assets/images/stratosdb_logo_white.png"
             alt=""
             width="20%"
           />
           <br />
           <span>
-            <a href="">Website</a> | <a href="">Github</a> |{' '}
-            <a href="">Twitter</a>
+            <a href="https://stratosdb.io">Website</a> |{' '}
+            <a href="https://github.com/oslabs-beta/StratosDB">Github</a> |{' '}
+            <a href="https://twitter.com/TeamStratosDB/">Twitter</a>
           </span>
           <br />
           <br />
