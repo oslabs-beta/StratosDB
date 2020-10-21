@@ -173,7 +173,7 @@ that was ran and its corresponding the performance time (ms)
 
 ### Information Modal
 
-A dedicated modal (located on the Left Sidebar) guides our first time users through our application's features in detail and provides more information about StratosDB
+A dedicated modal (located on the Left Sidebar) guides first time users through the application's features in detail and provides more information about StratosDB
 
 <center>
 	<img
