@@ -38,28 +38,45 @@ interface HTMLInputEvent extends Event {
   target: HTMLInputElement & EventTarget;
 }
 
+// class Componenet, Container
 class Container extends Component<{}, ContainerState> {
   constructor(props: {}) {
     super(props);
 
     this.schemaChange = this.schemaChange.bind(this);
+    // schemaChange function is used to update schemaEntry inside of state
     this.schemaSubmit = this.schemaSubmit.bind(this);
+    //schemaSubmit function is used to submit the schema inputted in the code editor
     this.queryChange = this.queryChange.bind(this);
+    // queryChange function is used to track the inputted values and update queryEntry in state
     this.querySubmit = this.querySubmit.bind(this);
+    // querySubmit function is used to send the inputted information to the server
     this.refresh = this.refresh.bind(this);
+    // refresh function is used to refresh the entire application
     this.connect = this.connect.bind(this);
+    // connect function is used to extablish a cloud connection
     this.awsOpenModal = this.awsOpenModal.bind(this);
+    // awsOpenModal function is used to open the modal
     this.awsCloseModal = this.awsCloseModal.bind(this);
+    //awsCloseModal function is used to close the modal
     this.awsInfoChange = this.awsInfoChange.bind(this);
+    // awsInfoChange function is used to change the aws state
     this.infoOpenModal = this.infoOpenModal.bind(this);
+    // infoOpenModal function is used to change state of modal
     this.infoCloseModal = this.infoCloseModal.bind(this);
+    // infoCloseModal function is used to change state of modal
     this.fileUpload = this.fileUpload.bind(this);
+    // fileUpload function is used to send file to the backend
     this.fileUpdate = this.fileUpdate.bind(this);
+    // fileUpdate function is used to update state to location of file
     this.uploadOpenModal = this.uploadOpenModal.bind(this);
+    // uploadOpenModal function is used to change state to true
     this.uploadCloseModal = this.uploadCloseModal.bind(this);
+    // uploadCloseModal function is used to change state to flase
     this.emptyInject = this.emptyInject.bind(this);
   }
 
+  // ContainerState types
   state: ContainerState = {
     queries: [],
     queryStatistics: [],
@@ -85,6 +102,7 @@ class Container extends Component<{}, ContainerState> {
     injectedCode: '',
   };
 
+  //  componentDidMount sends an axios request with result data once componenet is mounted
   componentDidMount() {
     console.log('component mounted');
     console.log('before axios');
@@ -277,8 +295,8 @@ class Container extends Component<{}, ContainerState> {
 
   render() {
     return (
-      <div id="main-container">
-        <div id="left-panel">
+      <div id='main-container'>
+        <div id='left-panel'>
           <Sidebar
             url={this.state.url}
             refresh={this.refresh}
@@ -299,9 +317,9 @@ class Container extends Component<{}, ContainerState> {
             uploadCloseModal={this.uploadCloseModal}
           />
         </div>
-        <div id="right-panel">
+        <div id='right-panel'>
           <Announcement announcement={this.state.announcement} />
-          <div id="main-feature">
+          <div id='main-feature'>
             <CodeEditor
               schemaEntry={this.state.schemaEntry}
               data={this.state.queries}
@@ -312,13 +330,13 @@ class Container extends Component<{}, ContainerState> {
               injectedCode={this.state.injectedCode}
               emptyInject={this.emptyInject}
             />
-            <div id="queries-results-panel">
-              <div id="query-request">
+            <div id='queries-results-panel'>
+              <div id='query-request'>
                 <textarea
-                  id="query-input"
+                  id='query-input'
                   onChange={this.queryChange}
                 ></textarea>
-                <button id="query-submit" onClick={this.querySubmit}>
+                <button id='query-submit' onClick={this.querySubmit}>
                   Submit Query
                 </button>
               </div>
