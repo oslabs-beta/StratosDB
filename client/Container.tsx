@@ -17,8 +17,7 @@ interface ContainerState {
   //codeEditorState
   schemaEntry: string;
   schemaName: string;
-  //sideBar
-  url: string;
+  //Sidebar
   awsModalIsOpen: boolean;
   awsInfo: {
     user: string;
@@ -41,38 +40,6 @@ interface HTMLInputEvent extends Event {
 class Container extends Component<{}, ContainerState> {
   constructor(props: {}) {
     super(props);
-
-    this.schemaChange = this.schemaChange.bind(this);
-    // schemaChange function is used to update schemaEntry inside of state
-    this.schemaSubmit = this.schemaSubmit.bind(this);
-    //schemaSubmit function is used to submit the schema inputted in the code editor
-    this.queryChange = this.queryChange.bind(this);
-    // queryChange function is used to track the inputted values and update queryEntry in state
-    this.querySubmit = this.querySubmit.bind(this);
-    // querySubmit function is used to send the inputted information to the server
-    this.refresh = this.refresh.bind(this);
-    // refresh function is used to refresh the entire application
-    this.connect = this.connect.bind(this);
-    // connect function is used to extablish a cloud connection
-    this.awsOpenModal = this.awsOpenModal.bind(this);
-    // awsOpenModal function is used to open the modal
-    this.awsCloseModal = this.awsCloseModal.bind(this);
-    //awsCloseModal function is used to close the modal
-    this.awsInfoChange = this.awsInfoChange.bind(this);
-    // awsInfoChange function is used to change the aws state
-    this.infoOpenModal = this.infoOpenModal.bind(this);
-    // infoOpenModal function is used to change state of modal
-    this.infoCloseModal = this.infoCloseModal.bind(this);
-    // infoCloseModal function is used to change state of modal
-    this.fileUpload = this.fileUpload.bind(this);
-    // fileUpload function is used to send file to the backend
-    this.fileUpdate = this.fileUpdate.bind(this);
-    // fileUpdate function is used to update state to location of file
-    this.uploadOpenModal = this.uploadOpenModal.bind(this);
-    // uploadOpenModal function is used to change state to true
-    this.uploadCloseModal = this.uploadCloseModal.bind(this);
-    // uploadCloseModal function is used to change state to flase
-    this.emptyInject = this.emptyInject.bind(this);
   }
 
   // ContainerState types
@@ -85,7 +52,6 @@ class Container extends Component<{}, ContainerState> {
     announcement: 'Welcome to StratosDB Beta',
     schemaEntry: '',
     schemaName: '',
-    url: '',
     awsModalIsOpen: false,
     awsInfo: {
       user: '',
@@ -106,14 +72,14 @@ class Container extends Component<{}, ContainerState> {
   }
 
   // UPDATING SCHEMA STATE DURING TYPING
-  schemaChange(event: string) {
+  schemaChange = (event: string) => {
     this.setState({
       schemaEntry: event,
     });
-  }
+  };
 
   // SUBMITTING SCHEMA CODE TO BACKEND
-  schemaSubmit(event: React.MouseEvent<HTMLElement>) {
+  schemaSubmit = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
 
     const schemaObj: any = {
@@ -122,17 +88,17 @@ class Container extends Component<{}, ContainerState> {
     axios.post('/newSchema', schemaObj).then((data) => {
       this.setState({ queries: data.data[0] });
     });
-  }
+  };
 
   // UPDATING QUERY STATE WHILE TYPING
-  queryChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
+  queryChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     this.setState({
       queryEntry: event.target.value,
     });
-  }
+  };
 
   // SUBMITTING QUERY SEARCH TO BACKEND
-  querySubmit(event: React.MouseEvent<HTMLElement>) {
+  querySubmit = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
     let historyArr: any = this.state.queryHistory;
     historyArr.push(this.state.queryEntry);
@@ -152,10 +118,10 @@ class Container extends Component<{}, ContainerState> {
         queryTable: data.data.queryTable,
       });
     });
-  }
+  };
 
   // ESTABLISH CLOUD CONNECTION FUNCTION
-  connect(event: React.MouseEvent<HTMLElement>) {
+  connect = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
     // ADD THE PROPERTIES IN THE FORM INTO STATE BY USING SETSTATE
     let info = this.state.awsInfo;
@@ -166,36 +132,36 @@ class Container extends Component<{}, ContainerState> {
 
     // CLOSING MODAL
     this.setState({ awsModalIsOpen: false });
-  }
+  };
 
   // SHOW POPUP CLOUD MODAL
-  awsOpenModal: any = () => {
+  awsOpenModal = () => {
     this.setState({ awsModalIsOpen: true });
   };
 
-  awsCloseModal() {
+  awsCloseModal = () => {
     this.setState({ awsModalIsOpen: false });
-  }
+  };
 
   // SHOW POPUP INFO MODAL
-  infoOpenModal: any = () => {
+  infoOpenModal = () => {
     this.setState({ infoModalIsOpen: true });
   };
 
-  infoCloseModal() {
+  infoCloseModal = () => {
     this.setState({ infoModalIsOpen: false });
-  }
+  };
 
-  uploadOpenModal: any = () => {
+  uploadOpenModal = () => {
     this.setState({ uploadModalIsOpen: true });
   };
 
-  uploadCloseModal() {
+  uploadCloseModal = () => {
     this.setState({ uploadModalIsOpen: false });
-  }
+  };
 
   // UPDATING STATE TO LOCATION OF FILE
-  fileUpdate(event: any) {
+  fileUpdate = (event: any) => {
     this.setState({
       injectedCode: '',
     });
@@ -223,10 +189,10 @@ class Container extends Component<{}, ContainerState> {
 
     // FILEREADER FUNCTION ON NEWFILE
     reader.readAsText(newFile);
-  }
+  };
 
   // SENDING FILE TO BACKEND
-  fileUpload() {
+  fileUpload = () => {
     // SETTING UPDATING SCHEMAENTRY STATE WITH NEW INJECTED CODE
 
     this.setState({
@@ -241,35 +207,34 @@ class Container extends Component<{}, ContainerState> {
     axios
       .post('/upload', data)
       .catch((err) => console.log('Error in file upload: ', err));
-  }
+  };
 
   // EMPTY CODE EDITOR TEXT ON X BUTTON CLICK
-  emptyInject() {
+  emptyInject = () => {
     this.setState({
       injectedCode: '',
     });
-  }
+  };
 
   // CHANGING AWSINFO STATE
-  awsInfoChange(e: React.ChangeEvent<HTMLInputElement>) {
+  awsInfoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     let newAWS: any = { ...this.state.awsInfo };
     newAWS[id] = value;
     this.setState({ awsInfo: newAWS });
-  }
+  };
 
   // possibly needs component did update
-  refresh(event: React.ChangeEvent<HTMLSelectElement>) {
+  refresh = (event: React.ChangeEvent<HTMLSelectElement>) => {
     event.preventDefault();
     window.location.reload(false);
-  }
+  };
 
   render() {
     return (
       <div id='main-container'>
         <div id='left-panel'>
           <Sidebar
-            url={this.state.url}
             refresh={this.refresh}
             connect={this.connect}
             awsModalIsOpen={this.state.awsModalIsOpen}
