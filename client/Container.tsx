@@ -16,7 +16,6 @@ interface ContainerState {
   announcement: string;
   //codeEditorState
   schemaEntry: string;
-  onClose: any;
   schemaName: string;
   //sideBar
   url: string;
@@ -85,7 +84,6 @@ class Container extends Component<{}, ContainerState> {
     queryTable: [],
     announcement: 'Welcome to StratosDB Beta',
     schemaEntry: '',
-    onClose: true,
     schemaName: '',
     url: '',
     awsModalIsOpen: false,
@@ -104,17 +102,11 @@ class Container extends Component<{}, ContainerState> {
 
   //  componentDidMount sends an axios request with result data once componenet is mounted
   componentDidMount() {
-    console.log('component mounted');
-    console.log('before axios');
-    axios
-      .get('/refresh')
-      .then((result) => console.log(result))
-      .catch((err) => console.error(err));
+    axios.get('/refresh').catch((err) => console.error(err));
   }
 
   // UPDATING SCHEMA STATE DURING TYPING
   schemaChange(event: string) {
-    console.log('EVENT: ', event);
     this.setState({
       schemaEntry: event,
     });
@@ -124,22 +116,16 @@ class Container extends Component<{}, ContainerState> {
   schemaSubmit(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
 
-    console.log('state.queries before axios: ', this.state);
-
     const schemaObj: any = {
       schemaEntry: this.state.injectedCode,
     };
-    console.log('queryData', schemaObj);
     axios.post('/newSchema', schemaObj).then((data) => {
-      console.log('explain data', data.data[0]);
       this.setState({ queries: data.data[0] });
-      console.log('state after axios: ', this.state);
     });
   }
 
   // UPDATING QUERY STATE WHILE TYPING
   queryChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
-    console.log('EVENT: ', event.target.value);
     this.setState({
       queryEntry: event.target.value,
     });
@@ -158,31 +144,24 @@ class Container extends Component<{}, ContainerState> {
     const queryObj: any = {
       queryEntry: this.state.queryEntry,
     };
-    console.log('state before axios', this.state);
     let newArr: any = this.state.queryStatistics;
     axios.post('/results', queryObj).then((data) => {
-      console.log('this is sparta', data);
       newArr = newArr.concat(data.data.queryStatistics[0]['Execution Time']);
-      console.log('explain data', data.data);
       this.setState({
         queryStatistics: newArr,
         queryTable: data.data.queryTable,
       });
-      console.log('state after axios: ', this.state);
     });
   }
 
   // ESTABLISH CLOUD CONNECTION FUNCTION
   connect(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
-    console.log('in connect');
     // ADD THE PROPERTIES IN THE FORM INTO STATE BY USING SETSTATE
-    console.log('state aws info: ', this.state.awsInfo);
     let info = this.state.awsInfo;
     // REMEMBER TO CHANGE THIS INTO A POST REQUEST ONCE WE GET THE ROUTE WORKING
     axios
       .post('/connect', info)
-      .then(() => console.log('Success'))
       .catch((err) => console.log('There has been an error: ', err));
 
     // CLOSING MODAL
@@ -220,7 +199,6 @@ class Container extends Component<{}, ContainerState> {
     this.setState({
       injectedCode: '',
     });
-    console.log('state: ', this.state.schemaEntry);
     // PULL NEW FILE TARGET
     const newFile = event.target.files[0];
     // SET NEW FILE TO STATE
@@ -228,7 +206,6 @@ class Container extends Component<{}, ContainerState> {
     // READ FILE
     const reader = new FileReader();
     reader.onload = (event: any) => {
-      console.log('entered file update > reader onload');
       // PULL TEXT FROM EVENT.TARGET
       const newText = event.target.result;
       // PARSE THROUGH ANY REGEX ISSUES
@@ -250,8 +227,6 @@ class Container extends Component<{}, ContainerState> {
 
   // SENDING FILE TO BACKEND
   fileUpload() {
-    console.log('upload has been clicked');
-
     // SETTING UPDATING SCHEMAENTRY STATE WITH NEW INJECTED CODE
 
     this.setState({
@@ -260,19 +235,16 @@ class Container extends Component<{}, ContainerState> {
 
     // SETTING FILE META DATA AS FORM DATA TO SEND TO SERVER
     const data = new FormData();
-    console.log('selected file: ', this.state.selectedFile);
     // APPENDING FILE TO DATA
     data.append('myFile', this.state.selectedFile);
     // SENDING FILE TO SERVER FOR PROCESSING AND UPLOADING
     axios
       .post('/upload', data)
-      .then((res) => console.log('upload status: ', res.statusText))
       .catch((err) => console.log('Error in file upload: ', err));
   }
 
   // EMPTY CODE EDITOR TEXT ON X BUTTON CLICK
   emptyInject() {
-    console.log('X button has been clicked');
     this.setState({
       injectedCode: '',
     });
@@ -290,13 +262,12 @@ class Container extends Component<{}, ContainerState> {
   refresh(event: React.ChangeEvent<HTMLSelectElement>) {
     event.preventDefault();
     window.location.reload(false);
-    console.log('refreshing');
   }
 
   render() {
     return (
-      <div id="main-container">
-        <div id="left-panel">
+      <div id='main-container'>
+        <div id='left-panel'>
           <Sidebar
             url={this.state.url}
             refresh={this.refresh}
@@ -317,26 +288,25 @@ class Container extends Component<{}, ContainerState> {
             uploadCloseModal={this.uploadCloseModal}
           />
         </div>
-        <div id="right-panel">
+        <div id='right-panel'>
           <Announcement announcement={this.state.announcement} />
-          <div id="main-feature">
+          <div id='main-feature'>
             <CodeEditor
               schemaEntry={this.state.schemaEntry}
               data={this.state.queries}
-              onClose={this.state.onClose}
               schemaName={this.state.schemaName}
               schemaChange={this.schemaChange}
               schemaSubmit={this.schemaSubmit}
               injectedCode={this.state.injectedCode}
               emptyInject={this.emptyInject}
             />
-            <div id="queries-results-panel">
-              <div id="query-request">
+            <div id='queries-results-panel'>
+              <div id='query-request'>
                 <textarea
-                  id="query-input"
+                  id='query-input'
                   onChange={this.queryChange}
                 ></textarea>
-                <button id="query-submit" onClick={this.querySubmit}>
+                <button id='query-submit' onClick={this.querySubmit}>
                   Submit Query
                 </button>
               </div>

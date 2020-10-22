@@ -36,13 +36,8 @@ export const stratosController: controllers = {
   ) => {
     // DESTRUCTURING SCHEMAENTRY FROM REQ.BODY
     const { schemaEntry } = req.body;
-    console.log(
-      'CONTROLLERS > CREATESCHEMA > REQ.BODY.SCHEMAENTRY ',
-      req.body.schemaEntry
-    );
     db.query(schemaEntry)
-      .then((result: any) => {
-        console.log('DB.QUERY > SCHEMA SUCCESSFULLY SENT');
+      .then(() => {
         return next();
       })
       .catch((error: string) => {
@@ -67,7 +62,6 @@ export const stratosController: controllers = {
     const { queryEntry } = req.body;
     db.query(queryEntry)
       .then((results: any) => {
-        console.log(results.rows);
         res.locals.queryResult = results.rows;
         return next();
       })
@@ -102,7 +96,6 @@ export const stratosController: controllers = {
       .then((queryStatistics: any) => {
         // RE-ASSIGNING OUR NEWDATA.QUERYSTATISTICS TO OUR RETURNED DATA ANALYTICS
         newData.queryStatistics = queryStatistics.rows[0][queryPlan];
-        console.log('Returned query stats: ', newData.queryStatistics);
         res.locals.explain = newData.queryStatistics;
         return next();
       })

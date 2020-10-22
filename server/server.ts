@@ -58,9 +58,7 @@ let type = upload.single('myFile');
 // SERVER SIDE HANDLING OF FILE UPLOAD
 // NOT SURE IF THIS PART ACTUALLY WORKS
 app.post('/upload', type, (req, res, next) => {
-  console.log('upload has been called');
   const file = req.body.file;
-  console.log('file: ', file);
   // CHECKING IF FILE HAS ERRORS
   if (!file) {
     const error = new Error('Please upload a file');
@@ -81,7 +79,6 @@ app.get('/refresh', (req, res) => {
     password: '',
     port: '',
   };
-  console.log('refreshed: ', awsInfo);
   res.status(200).send('DATABASE CONNECTION HAS BEEN RESET');
 });
 
@@ -89,7 +86,6 @@ app.get('/refresh', (req, res) => {
  * APP.POST REQUEST (/CONNECT): USER WILL CONNECT TO DB BASED ON THEIR INPUTTED AWS RDS INFORMATION
  */
 app.post('/connect', (req, res) => {
-  console.log('Incoming form information: ', req.body);
   // REASSIGNING AWSINFO PROPERTY VALUES TO THE USER INPUTTED VALUES FROM THE FRONT END SIDEBAR CLOUD BUTTON MODAL
   awsInfo = {
     user: req.body.user,
@@ -104,7 +100,6 @@ app.post('/connect', (req, res) => {
   db['query'] = (text: string, params?: any, callback?: any) => {
     return pool.query(text, params, callback);
   };
-  console.log('HOOPLAH MAGIC: ', awsInfo, 'We have connected!');
   res.status(200);
 });
 
