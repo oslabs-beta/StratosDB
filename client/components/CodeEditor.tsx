@@ -8,7 +8,6 @@ import 'codemirror/theme/blackboard.css';
 interface CodeEditorState {
   schemaEntry: string;
   data: object;
-  onClose: any;
   schemaName: string;
   schemaChange: any;
   schemaSubmit: any;
