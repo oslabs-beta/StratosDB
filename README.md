@@ -59,6 +59,12 @@ In response, our team decided that we wanted to tackle this issue by creating a 
 
 <br>
 
+<center>
+	<img src="./client/assets/images/stratosdb.gif" />
+</center>
+
+<br>
+
 ## Getting Started
 
 1.  Clone StratosDB to your local machine and point to the StratosDB directory:
@@ -75,14 +81,7 @@ In response, our team decided that we wanted to tackle this issue by creating a 
 
         npm run beta
 
-4.  Once StratosDB is opened on http://localhost:8080, click on the Cloud Icon (located on the Left Sidebar)
-<center>
-	<img
-		src="./client/assets/images/info-modal-cloud-icon.jpg"
-	/>
-</center>
-
-5.  Enter your AWS RDS Information and press <strong>Connect</strong>
+4.  Once StratosDB is opened on http://localhost:8080, click on the Cloud Icon (located on the Left Sidebar) and enter your AWS RDS Information and press <strong>Connect</strong>:
 
     <strong>User:</strong> Database Username
     <br />
@@ -94,8 +93,7 @@ In response, our team decided that we wanted to tackle this issue by creating a 
 
 <center>
 	<img
-		src="./client/assets/images/info-modal-cloud-modal.jpg"
-		alt=""
+		src="./client/assets/images/aws-modal.gif"
 	/>
 </center>
 
@@ -114,12 +112,7 @@ In response, our team decided that we wanted to tackle this issue by creating a 
 3.  Select <strong>Import</strong> to populate your file's code base into the application's built-in code editor.
 
 <center>
-<img
-	src="./client/assets/images/info-modal-upload-icon.jpg"
-/>
-	<img
-		src="./client/assets/images/info-modal-upload-modal.jpg"
-	/>
+<img src="./client/assets/images/upload-modal.gif">
 </center>
 
 ### Schema Code Editor
@@ -177,13 +170,7 @@ A dedicated modal (located on the Left Sidebar) guides first time users through 
 
 <center>
 	<img
-		src="./client/assets/images/info-modal-info-icon.jpg"
-	/>
-</center>
-
-<center>
-	<img
-		src="./client/assets/images/info-modal-info-modal.jpg"
+		src="./client/assets/images/info-modal.gif"
 	/>
 </center>
 

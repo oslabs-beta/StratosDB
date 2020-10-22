@@ -50,17 +50,9 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
           <br />
           <br />
           <h1>Setup</h1>
-          <p>1. Click on the Cloud Icon (located on the Left Sidebar)</p>
-          <br />
-          <img
-            src="./../client/assets/images/info-modal-cloud-icon.jpg"
-            alt=""
-            width="60%"
-          />
-          <br />
-          <br />
           <p>
-            2. Enter your AWS RDS Information and press <strong>Connect</strong>
+            Click on the Cloud Icon (located on the Left Sidebar) and enter your
+            AWS RDS Information and press <strong>Connect</strong>
           </p>
           <p>
             <strong>User:</strong> Database Username
@@ -72,11 +64,7 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
             <strong>Password:</strong> Database Password
           </p>
           <br />
-          <img
-            src="./../client/assets/images/info-modal-cloud-modal.jpg"
-            alt=""
-            width="60%"
-          />
+          <img src="./../client/assets/images/aws-modal.gif" width="60%" />
           <br />
           <p>
             * Sourced from AWS RDS Database Instance Dashboard
@@ -97,17 +85,7 @@ const InfoModal: React.FC<infoModalState> = (props: infoModalState) => {
             into the application's built-in code editor.
           </p>
           <br />
-          <img
-            src="./../client/assets/images/info-modal-upload-icon.jpg"
-            alt=""
-            width="60%"
-          />
-          <br />
-          <img
-            src="./../client/assets/images/info-modal-upload-modal.jpg"
-            alt=""
-            width="60%"
-          />
+          <img src="./../client/assets/images/upload-modal.gif" width="60%" />
           <br />
           <h2>Schema Code Editor</h2>
           <p>
